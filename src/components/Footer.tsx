@@ -1,19 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiTwitter, FiInstagram, FiGithub } from 'react-icons/fi';
+import SparklesText from './ui/sparkles-text';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <Linkedin className="h-5 w-5" />, href: "#", label: "LinkedIn" },
-    { icon: <Twitter className="h-5 w-5" />, href: "#", label: "Twitter" },
-    { icon: <Instagram className="h-5 w-5" />, href: "#", label: "Instagram" }
+    { icon: <FiLinkedin className="h-5 w-5" />, href: "https://linkedin.com/company/dashagriv-aerospace", label: "LinkedIn" },
+    { icon: <FiTwitter className="h-5 w-5" />, href: "https://twitter.com/dashagrivaero", label: "Twitter" },
+    { icon: <FiInstagram className="h-5 w-5" />, href: "https://instagram.com/dashagrivaerospace", label: "Instagram" },
+    { icon: <FiGithub className="h-5 w-5" />, href: "https://github.com/dashagrivaero", label: "GitHub" }
   ];
 
   const contactInfo = [
-    { icon: <Mail className="h-5 w-5" />, text: "contact@company.com" },
-    { icon: <Phone className="h-5 w-5" />, text: "+91 XXX XXX XXXX" },
-    { icon: <MapPin className="h-5 w-5" />, text: "Chennai, Tamil Nadu" }
+    { icon: <FiMail className="h-5 w-5" />, text: "contact@dashagrivaero.com" },
+    { icon: <FiPhone className="h-5 w-5" />, text: "+91 944 XXX XXXX" },
+    { icon: <FiMapPin className="h-5 w-5" />, text: "Chennai, Tamil Nadu, India" }
   ];
+
 
   return (
     <footer className="bg-zinc-900/50 border-t border-zinc-800">
@@ -25,17 +28,19 @@ const Footer = () => {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-lg font-semibold text-zinc-50 mb-4">Company Name</h3>
+            <h3 className="text-lg font-semibold text-zinc-50 mb-4">Dashagriv Aerospace</h3>
             <p className="text-sm text-zinc-400 mb-4">
-              Pioneering the future of aerospace technology through innovation and dedication.
+              Indias first company pioneering stratospheric platforms for near-space applications, revolutionizing aerospace technology through innovation and dedication.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="text-zinc-500 hover:text-zinc-300 transition-colors"
+                  className="text-zinc-500 hover:text-blue-400 transition-colors"
                   aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {social.icon}
                 </a>
@@ -85,7 +90,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-zinc-50 mb-4">Contact</h3>
             <ul className="space-y-3">
               {contactInfo.map((info, index) => (
-                <li key={index} className="flex items-center space-x-2 text-sm text-zinc-400">
+                <li key={index} className="flex items-center space-x-2 text-sm text-zinc-400 hover:text-blue-400 transition-colors">
                   {info.icon}
                   <span>{info.text}</span>
                 </li>
@@ -94,14 +99,18 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Copyright */}
+        {/* Made with Love & Copyright */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 pt-8 border-t border-zinc-800 text-center text-sm text-zinc-500"
+          className="mt-12 pt-8 border-t border-zinc-800 text-center"
         >
-          <p>&copy; {new Date().getFullYear()} Company Name. All rights reserved.</p>
+          <p className="text-sm text-zinc-400 mb-1">Made with ❤️ by</p>
+          <SparklesText text="SocialSync" className="text-white text-4xl m-4" />
+          <p className="text-sm text-zinc-500">
+            &copy; {new Date().getFullYear()} Dashagriv Aerospace. All rights reserved.
+          </p>
         </motion.div>
       </div>
     </footer>
