@@ -30,7 +30,7 @@ const Footer = () => {
           >
             <h3 className="text-lg font-semibold text-zinc-50 mb-4">Dashagriv Aerospace</h3>
             <p className="text-sm text-zinc-400 mb-4">
-              Indias first company pioneering stratospheric platforms for near-space applications, revolutionizing aerospace technology through innovation and dedication.
+              India&apos;s first company pioneering stratospheric platforms for near-space applications, revolutionizing aerospace technology through innovation and dedication.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
