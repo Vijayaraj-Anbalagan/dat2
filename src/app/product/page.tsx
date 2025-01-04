@@ -6,7 +6,7 @@ import Spline from '@splinetool/react-spline';
 import { TextScramble } from '@/components/ui/text-scramble';
 import { Rocket, Orbit, Clock, Globe, ArrowRight, Box, Brain, Layers, Radio } from 'lucide-react';
 import Footer from '@/components/Footer';
-
+import Image from 'next/image';
 
 
 const ProductPage = () => {
@@ -476,25 +476,28 @@ const ProductPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {applications.map((app, index) => (
-              <motion.div
+                <motion.div
                 key={index}
                 className="relative group overflow-hidden rounded-xl border border-zinc-800"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-              >
-                <img
-                  src={app.image}
-                  alt={app.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                >
+                <div className="relative w-full h-64">
+                  <Image
+                    src={app.image}
+                    alt={app.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
                 <div className="absolute bottom-0 p-6 z-10">
                   <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">
-                    {app.title}
+                  {app.title}
                   </h3>
                   <p className="text-sm text-zinc-400">{app.description}</p>
                 </div>
-              </motion.div>
+                </motion.div>
             ))}
           </div>
         </div>
