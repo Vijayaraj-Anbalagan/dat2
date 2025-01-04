@@ -9,7 +9,7 @@ const Team = () => {
       name: "Logeshwaran M",
       role: "Founder & CEO",
       education: "Aerospace Engineer, KCG Alumnus",
-      image: "/api/placeholder/400/400",
+      image: "/team/loki.png",
       links: {
         linkedin: "#",
         twitter: "#",
@@ -20,7 +20,7 @@ const Team = () => {
       name: "Jayashree B",
       role: "Founder & COO",
       education: "Masters in Aerospace Engineering, Coventry University",
-      image: "/api/placeholder/400/400",
+      image: "/team/jayashree.jpg",
       links: {
         linkedin: "#",
         twitter: "#",
@@ -31,7 +31,7 @@ const Team = () => {
       name: "Hariharan R",
       role: "Founder & CTO",
       education: "Masters in Aerospace Engineering, MIT Campus",
-      image: "/api/placeholder/400/400",
+      image: "/team/hariharan.jpg",
       links: {
         linkedin: "#",
         twitter: "#",

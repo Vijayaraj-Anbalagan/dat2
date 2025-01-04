@@ -13,7 +13,7 @@ const TeamsPage = () => {
       role: "Mentor",
       position: "Professor & Head of Department of Aeronautical and Aerospace Engineering, KCG College of Technology",
       linkedin: "Dr.Vijayraja Kvijayraja",
-      image: "/api/placeholder/400/400"
+      image: "/team/vijayaraja.png"
     }
   ];
 
@@ -23,8 +23,16 @@ const TeamsPage = () => {
       role: "Advisor",
       position: "Professor and Educator at KCG College of Technology, Hindustan Group",
       linkedin: "#",
-      image: "/api/placeholder/400/400"
+      image: "/team/asad.png"
+    },
+    {
+      name: "Dr. S. Solai Manohar",
+      role: "Dean and Professor",
+      position: "Professor in the Department of Electrical and Electronics Engineering (EEE) and Dean of the Innovation & Entrepreneurship Development Centre at KCG College of Technology, Chennai",
+      linkedin: "#",
+      image: "/team/solai.jpg"
     }
+    
   ];
 
   const founders = [
@@ -32,7 +40,7 @@ const TeamsPage = () => {
       name: "Logeshwaran M",
       role: "Founder & CEO",
       education: "Aerospace Engineer, KCG Alumnus",
-      image: "/api/placeholder/400/400",
+      image: "/team/loki.png",
       links: {
         linkedin: "#"
       }
@@ -41,7 +49,7 @@ const TeamsPage = () => {
       name: "Jayashree B",
       role: "Founder & COO",
       education: "Masters in Aerospace Engineering, Coventry University",
-      image: "/api/placeholder/400/400",
+      image: "/team/jayashree.jpg",
       links: {
         linkedin: "#"
       }
@@ -50,7 +58,7 @@ const TeamsPage = () => {
       name: "Hariharan R",
       role: "Founder & CTO",
       education: "Masters in Aerospace Engineering, MIT Campus",
-      image: "/api/placeholder/400/400",
+      image: "/team/hariharan.jpg",
       links: {
         linkedin: "#"
       }
@@ -64,42 +72,42 @@ const TeamsPage = () => {
         role: "Chief Manufacturing Officer",
         linkedin: "#",
         education: "KCG Alumnus",
-        image: "/api/placeholder/400/400"
+        image: "/team/srinivasan.jpg"
       },
       {
         name: "Sabari Balan G",
         role: "Flight System Engineer",
         linkedin: "#",
         education: "KCG Alumnus",
-        image: "/api/placeholder/400/400"
+        image: "/team/sabari.png"
       },
       {
         name: "Srikanth R",
         role: "Space Vehicle Design",
         education: "Coventry University",
         linkedin: "#",
-        image: "/api/placeholder/400/400"
+        image: "/team/srikanth.jpg"
       },
       {
         name: "Balajee E",
         role: "Chief Design Engineer",
         education: "MIT, Anna University",
         linkedin: "#",
-        image: "/api/placeholder/400/400"
+        image: "/team/balaji.png"
       },
       {
         name: "Bharath Kanna B O",
         role: "Avionics",
         education: "MIT, Anna University",
         linkedin: "#",
-        image: "/api/placeholder/400/400"
+        image: "/team/barath.png"
       },
       {
         name: "Barani L",
         role: "Re-entry Vehicles",
         education: "IIT MADRAS",
         linkedin: "#",
-        image: "/barani.jpg"
+        image: "/team/barani.jpeg"
       }
     ],
     technical: [
@@ -107,7 +115,7 @@ const TeamsPage = () => {
         name: "Dhilagam Parvathi Nathan C",
         role: "Technical Engineer",
         linkedin: "#",
-        image: "/api/placeholder/400/400"
+        image: "/team/avatar.png"
       }
     ],
     software: [
@@ -115,13 +123,13 @@ const TeamsPage = () => {
         name: "Vijayaraj Anbalagan",
         role: "AI & Software Developer",
         linkedin: "#",
-        image: "/api/placeholder/400/400"
+        image: "/team/vijay.jpg"
       },
       {
         name: "Ravikumar G",
         role: "Data Engineer",
         linkedin: "#",
-        image: "/api/placeholder/400/400"
+        image: "/team/ravi.jpg"
       }
     ],
     operations: [
@@ -129,7 +137,7 @@ const TeamsPage = () => {
         name: "Sowmya R",
         role: "Human Resource Officer",
         linkedin: "#",
-        image: "/api/placeholder/400/400"
+        image: "/team/sowmya.png"
       }
     ]
   };

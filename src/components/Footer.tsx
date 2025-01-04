@@ -12,8 +12,8 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: <FiMail className="h-5 w-5" />, text: "contact@dashagrivaero.com" },
-    { icon: <FiPhone className="h-5 w-5" />, text: "+91 944 XXX XXXX" },
+    { icon: <FiMail className="h-5 w-5" />, text: "info@dashagrivaero.com" },
+    { icon: <FiPhone className="h-5 w-5" />, text: "+91 63794 26638" },
     { icon: <FiMapPin className="h-5 w-5" />, text: "Chennai, Tamil Nadu, India" }
   ];
 
@@ -106,8 +106,10 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 pt-8 border-t border-zinc-800 text-center"
         >
-          <p className="text-sm text-zinc-400 mb-1">Made with ❤️ by</p>
-          <SparklesText text="SocialSync" className="text-white text-4xl m-4" />
+            <p className="text-sm text-zinc-400 mb-1">Made with ❤️ by</p>
+            <a href="https://thesocialsync.in" target="_blank" rel="noopener noreferrer">
+            <SparklesText text="SocialSync" className="text-white text-4xl m-4" />
+            </a>
           <p className="text-sm text-zinc-500">
             &copy; {new Date().getFullYear()} Dashagriv Aerospace. All rights reserved.
           </p>

@@ -31,10 +31,19 @@ const Technology = () => {
   ];
 
   return (
-    <section id="technology" className="py-16 relative sm:pt-40 pt-30">
+    <section id="technology" className="py-16 relative sm:pt-40 pt-30 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900/50 to-zinc-950" />
       <div className="absolute inset-0 bg-grid-white/[0.02]" />
+      
+      {/* Abstract Background Image */}
+      <div className="absolute inset-0 mix-blend-luminosity">
+        <img 
+          src="/technology.png" 
+          alt="Abstract Technology" 
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
       
       <div className="container mx-auto px-6 relative">
         <motion.div
@@ -43,13 +52,6 @@ const Technology = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          {/* Decorative line */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent absolute -top-8 left-0"
-          />
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
@@ -61,7 +63,7 @@ const Technology = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.title}
@@ -95,7 +97,6 @@ const Technology = () => {
           ))}
         </div>
       </div>
-
     </section>
   );
 };
