@@ -5,7 +5,7 @@ import SparklesText from './ui/sparkles-text';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <FiLinkedin className="h-5 w-5" />, href: "https://linkedin.com/company/dashagriv-aerospace", label: "LinkedIn" },
+    { icon: <FiLinkedin className="h-5 w-5" />, href: "https://www.linkedin.com/company/dashagriv-aerospace-technology/", label: "LinkedIn" },
     { icon: <FiTwitter className="h-5 w-5" />, href: "https://twitter.com/dashagrivaero", label: "Twitter" },
     { icon: <FiInstagram className="h-5 w-5" />, href: "https://instagram.com/dashagrivaerospace", label: "Instagram" },
     { icon: <FiGithub className="h-5 w-5" />, href: "https://github.com/dashagrivaero", label: "GitHub" }
