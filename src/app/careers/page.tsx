@@ -88,7 +88,7 @@ const CareersPage = () => {
     {
       icon: Zap,
       title: 'Learning & Growth',
-      description: 'Access to cutting-edge aerospace tech and continuous learning opportunities',
+      description: 'Access to cutting-edge aerospace tech and continuous learning opportunities for personal growth',
       color: 'from-purple-400 to-purple-600'
     },
     {
