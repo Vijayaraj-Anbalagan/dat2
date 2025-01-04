@@ -150,7 +150,7 @@ const Nav = () => {
                 </div>
 
                 <motion.button 
-                    onClick={() => router.push('/contact')}
+                    onClick={() => window.location.href = 'tel:+916382497619'}
                     className="hidden md:flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-all relative group"
                     whileHover={{ x: 5 }}
                 >
@@ -186,7 +186,7 @@ const Nav = () => {
                                 </motion.button>
                             ))}
                             <motion.button 
-                                onClick={() => router.push('/contact')}
+                                onClick={() => window.location.href = 'tel:+916382497619'}
                                 className="flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-all w-full py-2"
                                 whileHover={{ x: 10 }}
                                 initial={{ x: -10, opacity: 0 }}

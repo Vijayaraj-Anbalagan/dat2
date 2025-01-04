@@ -42,7 +42,7 @@ const CareersPage = () => {
         'Strong Python programming skills',
         'Experience with PyTorch or TensorFlow'
       ],
-      formLink: 'https://forms.google.com/...'
+      formLink: 'https://forms.gle/4xGGWTt9A4Kf1gUR9'
     },
     {
       id: 'cad-designer',
@@ -58,7 +58,7 @@ const CareersPage = () => {
         'Understanding of aerospace design principles',
         'Experience with GD&T'
       ],
-      formLink: 'https://forms.google.com/...'
+      formLink: 'https://forms.gle/4xGGWTt9A4Kf1gUR9'
     },
     {
       id: 'intern-aerospace',
@@ -74,7 +74,7 @@ const CareersPage = () => {
         'Knowledge of fluid dynamics and aerodynamics',
         'Basic CAD skills'
       ],
-      formLink: 'https://forms.google.com/...'
+      formLink: 'https://forms.gle/4xGGWTt9A4Kf1gUR9'
     }
   ];
 
@@ -178,11 +178,11 @@ const CareersPage = () => {
                 >
                   <h1 className="text-5xl md:text-6xl font-bold mb-6">
                     <TextScramble duration={1.2}>
-                      Join Our Mission to the Stratosphere
+                    Join our mission to reach stratosphere
                     </TextScramble>
                   </h1>
                   <p className="text-xl text-zinc-300 mb-8">
-                    Be part of Indias pioneering aerospace innovation
+                    Be part of India&apos;s pioneering aerospace innovation
                   </p>
                   <div className="flex flex-wrap gap-4 justify-center">
                     <motion.button

@@ -167,7 +167,6 @@ const Hero = () => {
               Redefining Near Space Access with 
               <span className="bg-gradient-to-r from-blue-500 via-violet-500 to-blue-500 bg-clip-text text-transparent"> HAPS </span>
               Technology
-              <span className="absolute inset-0 blur-xl bg-blue-500/20" />
             </span>
           </motion.h1>
           
@@ -221,13 +220,13 @@ const About = () => {
     },
     {
       title: "Endurance",
-      value: "Months",
+      value: "300+ Days",
       icon: <FiClock className="text-blue-400" />,
     },
   ];
 
   return (
-    <section id="about" className="relative py-8 sm:py-12 md:py-24 overflow-hidden">
+    <section id="about" className="relative py-4 sm:py-6 md:py-12 overflow-hidden">
   {/* Animated stars background */}
   <div className="absolute inset-0 overflow-hidden">
     {[...Array(20)].map((_, i) => (
@@ -274,7 +273,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Indias first company to design and manufacture operational stratospheric platforms,
+            India&apos;s first company to design and manufacture operational stratospheric platforms,
             bridging the gap between satellites and traditional aerial systems.
           </motion.p>
           

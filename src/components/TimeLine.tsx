@@ -16,7 +16,7 @@ const Timeline = () => {
     },
     
     {
-      title: "Demonstrated CubeSat at Ground Station",
+      title: "CubeSat demonstration at Ground Station",
       date: "May 2023",
       category: "Demonstration",
       image: "/demo.png",

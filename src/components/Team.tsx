@@ -8,10 +8,9 @@ const Team = () => {
     {
       name: "Logeshwaran M",
       role: "Founder & CEO",
-      education: "Aerospace Engineer, KCG Alumnus",
       image: "/team/loki.png",
       links: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/logeshwaran-mahendran-ba27572b7/",
         twitter: "#",
         website: "#"
       }
@@ -19,10 +18,9 @@ const Team = () => {
     {
       name: "Jayashree B",
       role: "Founder & COO",
-      education: "Masters in Aerospace Engineering, Coventry University",
       image: "/team/jayashree.jpg",
       links: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/jayashree-b-67950621a/",
         twitter: "#",
         website: "#"
       }
@@ -30,10 +28,9 @@ const Team = () => {
     {
       name: "Hariharan R",
       role: "Founder & CTO",
-      education: "Masters in Aerospace Engineering, MIT Campus",
       image: "/team/hariharan.jpg",
       links: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/hariharan-r-4a9a3b20b/",
         twitter: "#",
         website: "#"
       }
@@ -83,7 +80,7 @@ const Team = () => {
             </span>
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
-            Meet the visionaries behind Dashagriv Aerospaces revolutionary technology
+            Meet the visionaries behind Dashagriv Aerospace&apos;s revolutionary technology
           </p>
         </motion.div>
 
@@ -119,7 +116,6 @@ const Team = () => {
                     {member.name}
                   </h3>
                   <p className="text-blue-400 mb-2 font-medium">{member.role}</p>
-                  <p className="text-zinc-400 text-sm mb-4">{member.education}</p>
                   
                   {/* Social Links */}
                   <div className="flex justify-center items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

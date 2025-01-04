@@ -12,7 +12,7 @@ const TeamsPage = () => {
       name: "Dr. Vijayraja K",
       role: "Mentor",
       position: "Professor & Head of Department of Aeronautical and Aerospace Engineering, KCG College of Technology",
-      linkedin: "Dr.Vijayraja Kvijayraja",
+      linkedin: "https://www.linkedin.com/in/dr-vijayraja-kvijayraja-2627ba2a/",
       image: "/team/vijayaraja.png"
     }
   ];
@@ -22,14 +22,14 @@ const TeamsPage = () => {
       name: "Er. Asad Ahmed. R PhD",
       role: "Advisor",
       position: "Professor and Educator at KCG College of Technology, Hindustan Group",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
       image: "/team/asad.png"
     },
     {
       name: "Dr. S. Solai Manohar",
       role: "Dean and Professor",
       position: "Professor in the Department of Electrical and Electronics Engineering (EEE) and Dean of the Innovation & Entrepreneurship Development Centre at KCG College of Technology, Chennai",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
       image: "/team/solai.jpg"
     }
     
@@ -39,10 +39,10 @@ const TeamsPage = () => {
     {
       name: "Logeshwaran M",
       role: "Founder & CEO",
-      education: "Aerospace Engineer, KCG Alumnus",
+      education: "Aerospace Engineer",
       image: "/team/loki.png",
       links: {
-        linkedin: "#"
+        linkedin: "https://www.linkedin.com/in/logeshwaran-mahendran-ba27572b7/"
       }
     },
     {
@@ -51,16 +51,16 @@ const TeamsPage = () => {
       education: "Masters in Aerospace Engineering, Coventry University",
       image: "/team/jayashree.jpg",
       links: {
-        linkedin: "#"
+        linkedin: "https://www.linkedin.com/in/jayashree-b-67950621a/"
       }
     },
     {
       name: "Hariharan R",
       role: "Founder & CTO",
-      education: "Masters in Aerospace Engineering, MIT Campus",
+      education: "Masters in Aerospace Technology , Anna University (MIT)",
       image: "/team/hariharan.jpg",
       links: {
-        linkedin: "#"
+        linkedin: "https://www.linkedin.com/in/hariharan-r-4a9a3b20b/"
       }
     }
   ];
@@ -70,51 +70,52 @@ const TeamsPage = () => {
       {
         name: "Srinivasan A",
         role: "Chief Manufacturing Officer",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/a-srinivasan-8a64a9297/",
         education: "KCG Alumnus",
         image: "/team/srinivasan.jpg"
       },
       {
-        name: "Sabari Balan G",
-        role: "Flight System Engineer",
-        linkedin: "#",
-        education: "KCG Alumnus",
-        image: "/team/sabari.png"
+        name: "Barani L",
+        role: "Re-entry Vehicles",
+        education: "IIT MADRAS",
+        linkedin: "https://www.linkedin.com/in/barani-l-aa679323b/",
+        image: "/team/barani.jpeg"
       },
       {
         name: "Srikanth R",
         role: "Space Vehicle Design",
         education: "Coventry University",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/srikanth-r-9974b521a/",
         image: "/team/srikanth.jpg"
       },
       {
         name: "Balajee E",
         role: "Chief Design Engineer",
         education: "MIT, Anna University",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/balajee-e-a35755230/",
         image: "/team/balaji.png"
       },
       {
-        name: "Bharath Kanna B O",
+        name: "Barath Kanna B O",
         role: "Avionics",
         education: "MIT, Anna University",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/barath-kanna-079074289/",
         image: "/team/barath.png"
       },
       {
-        name: "Barani L",
-        role: "Re-entry Vehicles",
-        education: "IIT MADRAS",
-        linkedin: "#",
-        image: "/team/barani.jpeg"
+        name: "Sabari Balan G",
+        role: "Flight System Engineer",
+        linkedin: "https://www.linkedin.com/in/sabaribalan1710/",
+        education: "KCG Alumnus",
+        image: "/team/sabari.png"
       }
+      
     ],
     technical: [
       {
         name: "Dhilagam Parvathi Nathan C",
         role: "Technical Engineer",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/dhilagam-parvathi-nathan-39701526b/",
         image: "/team/avatar.png"
       }
     ],
@@ -122,13 +123,13 @@ const TeamsPage = () => {
       {
         name: "Vijayaraj Anbalagan",
         role: "AI & Software Developer",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/vijayarajanbalagan/",
         image: "/team/vijay.jpg"
       },
       {
         name: "Ravikumar G",
         role: "Data Engineer",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/ravikumar-g-605305263/",
         image: "/team/ravi.jpg"
       }
     ],
@@ -136,7 +137,7 @@ const TeamsPage = () => {
       {
         name: "Sowmya R",
         role: "Human Resource Officer",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/sowmya-ramesh-0b1650251/",
         image: "/team/sowmya.png"
       }
     ]

@@ -12,7 +12,7 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: <FiMail className="h-5 w-5" />, text: "info@dashagrivaero.com" },
+    { icon: <FiMail className="h-5 w-5" />, text: "info@dashagriv.in" },
     { icon: <FiPhone className="h-5 w-5" />, text: "+91 63794 26638" },
     { icon: <FiMapPin className="h-5 w-5" />, text: "Chennai, Tamil Nadu, India" }
   ];
