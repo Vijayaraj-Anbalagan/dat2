@@ -136,7 +136,7 @@ const TeamsPage = () => {
     operations: [
       {
         name: "Sowmya R",
-        role: "Human Resource Officer",
+        role: "Cheif Human Resource Officer",
         linkedin: "https://www.linkedin.com/in/sowmya-ramesh-0b1650251/",
         image: "/team/sowmya.png"
       }
