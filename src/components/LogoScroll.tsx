@@ -9,6 +9,8 @@ function LogoScroll() {
     "/logo/SI.png",
     "/logo/TAA.png",
     "/logo/TS.png",
+    "/logo/kcg.png",
+
   ]
 
   return (
