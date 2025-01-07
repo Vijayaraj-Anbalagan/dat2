@@ -27,7 +27,7 @@ const TeamsPage = () => {
     },
     {
       name: "Dr. S. Solai Manohar",
-      role: "Dean and Professor",
+      role: "Dean IEDC and Professor",
       position: "Professor in the Department of Electrical and Electronics Engineering (EEE) and Dean of the Innovation & Entrepreneurship Development Centre at KCG College of Technology, Chennai",
       linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
       image: "/team/solai.jpg"
