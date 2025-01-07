@@ -43,6 +43,7 @@ const SmoothScrollPage: FC = () => {
       >
         <Nav />
         <Hero />
+        <About />
         <Technology />
         <ParallaxShowcase />
         <Team />
@@ -56,7 +57,7 @@ const SmoothScrollPage: FC = () => {
 
 
 
-const SECTION_HEIGHT = 800;
+const SECTION_HEIGHT = 700;
 const HeroBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -143,65 +144,45 @@ const Hero = () => {
       className="relative w-full bg-zinc-950"
     >
       <HeroBackground />
-      {/* Orbital rings with electric blue glow */}
-      <div className="absolute inset-0 flex items-center justify-center hidden sm:flex">
-        <div className="w-[800px] h-[800px] border border-blue-500/20 rounded-full animate-spin-slow shadow-[0_0_15px_rgba(59,130,246,0.2)]" />
-        <div className="absolute w-[600px] h-[600px] border border-blue-500/30 rounded-full animate-spin-slow-reverse shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
-        <div className="absolute w-[400px] h-[400px] border border-blue-500/40 rounded-full animate-spin-slow shadow-[0_0_15px_rgba(59,130,246,0.4)]" />
-      </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-center px-4 relative pt-32 sm:pt-40"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="text-center px-4 relative pt-24 sm:pt-32"
       >
-        <div className="relative max-w-4xl mx-auto">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <span className="relative inline-block text-white">
-              Redefining Near Space Access with 
-              <span className="bg-gradient-to-r from-blue-500 via-violet-500 to-blue-500 bg-clip-text text-transparent"> HAPS </span>
-              Technology
-            </span>
-          </motion.h1>
-          
-            <motion.p 
-            className="text-xl text-white mb-12 max-w-2xl mx-auto relative z-30"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            >
-            <span className="relative">
-              Empowering the future with cutting-edge High-Altitude Platform Systems (HAPS) for near-space applications.
-              <span className="absolute inset-0 blur-lg bg-blue-500/10" />
-            </span>
-            </motion.p>
+      <div className="relative max-w-4xl mx-auto">
+        <motion.h1 
+        className="text-5xl md:text-7xl font-bold mb-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        >
+        <span className="relative inline-block text-white">
+          Redefining Near Space Access with 
+          <span className="bg-gradient-to-r from-blue-500 via-violet-500 to-blue-500 bg-clip-text text-transparent"> HAPS </span>
+          Technology
+        </span>
+        </motion.h1>
+        
+        <motion.p 
+        className="text-xl text-white mb-36 max-w-2xl mx-auto relative z-30"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        >
+        <span className="relative">
+          Empowering the future with cutting-edge High-Altitude Platform Systems (HAPS) for near-space applications.
+          <span className="absolute inset-0 blur-lg bg-blue-500/10" />
+        </span>
+        </motion.p>
 
-            <motion.button 
-            onClick={() => {
-              window.location.href = "/product";
-            }}
-            className="relative z-30 px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg 
-               hover:from-blue-700 hover:to-violet-700 text-white text-lg font-medium
-               transition-all duration-300 shadow-lg shadow-blue-500/25
-               hover:shadow-xl hover:shadow-blue-500/30"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            >
-            View Our Product
-            </motion.button>
-        </div>
-        <LogoScroll/>
-        <About/>
+         
+      </div>
+      <LogoScroll/>
       </motion.div>
       
-      <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-zinc-950/0 to-zinc-950" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-64 bg-gradient-to-b from-zinc-950/0 to-zinc-950" />
     </div>
   );
 };
@@ -211,165 +192,114 @@ const About = () => {
     {
       title: "Payload Capacity",
       value: "200kg",
+      description: "Maximum carrying capacity for various mission equipment and instruments",
       icon: <FiBox className="text-blue-400" />,
     },
     {
       title: "Operational Altitude",
       value: "20-40km",
+      description: "Optimal height range for stratospheric operations and coverage",
       icon: <FiArrowUp className="text-blue-400" />,
     },
     {
       title: "Endurance",
       value: "300+ Days",
+      description: "Extended mission duration with sustained performance",
       icon: <FiClock className="text-blue-400" />,
     },
   ];
 
-  return (
-    <section id="about" className="relative py-4 sm:py-6 md:py-12 overflow-hidden">
-  {/* Animated stars background */}
-  <div className="absolute inset-0 overflow-hidden">
-    {[...Array(20)].map((_, i) => (
-      <div
-        key={i}
-        className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
-        style={{
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 5}s`,
-          animationDuration: `${3 + Math.random() * 4}s`
-        }}
-      />
-    ))}
-  </div>
+  const decorativeElements = [...Array(20)].map((_, i) => (
+    <div
+      key={i}
+      className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
+      style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animation: `float ${10 + Math.random() * 10}s infinite`,
+        animationDelay: `${Math.random() * 5}s`
+      }}
+    />
+  ));
 
-  <div className="container mx-auto px-4 sm:px-6 relative">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center max-w-6xl mx-auto"
-    >
-      <div className="relative p-4 sm:p-6 md:p-8 group w-full">
-        {/* Dark glass effect with electric blue border */}
-        <div className="absolute inset-0 bg-zinc-900/80 backdrop-blur-xl rounded-xl border border-blue-500/30 shadow-lg shadow-blue-500/20" />
-        
-        {/* Gradient border on hover */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 via-violet-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        
-        <div className="relative space-y-6 md:space-y-8">
-          <motion.h2 
-            className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-blue-400 bg-clip-text text-transparent"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+  return (
+    <section className="relative py-20 bg-zinc-950 overflow-hidden">
+      {/* Decorative floating elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-40">
+        {decorativeElements}
+      </div>
+
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-center mb-16"
           >
-            About Dashagriv Aerospace
-          </motion.h2>
-          
-          <motion.p 
-            className="text-zinc-300 text-sm sm:text-base md:text-lg"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            India&apos;s first company to design and manufacture operational stratospheric platforms,
-            bridging the gap between satellites and traditional aerial systems.
-          </motion.p>
-          
-          {/* Uniform Features Grid */}
-          <div className="grid grid-cols-3 gap-4 md:gap-6">
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-br from-blue-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
+              About Dashagriv Aerospace
+            </h2>
+            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mb-6" />
+            <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+              India&apos;s pioneering force in stratospheric innovation, we design and manufacture 
+              state-of-the-art operational platforms that bridge the crucial gap between satellites 
+              and traditional aerial systems.
+            </p>
+          </motion.div>
+
+          {/* Features Section - Horizontal Layout */}
+            <div className="grid grid-cols-1 gap-8 justify-center">
             {features.map((feature, index) => (
               <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group/card relative aspect-square"
+              key={feature.title}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.1 }}
+              className="group w-full sm:w-3/4 mx-auto"
               >
-                {/* Card background with dark glass effect */}
-                <div className="absolute inset-0 bg-zinc-800/50 backdrop-blur-lg rounded-lg 
-                        group-hover/card:bg-zinc-800/70 transition-all duration-300 
-                        border border-blue-500/20" />
+              <div className="relative">
+                {/* Background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-violet-500/5 
+                opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl blur-xl" />
                 
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 
-                        transition-opacity duration-300 bg-gradient-to-t 
-                        from-blue-500/10 via-violet-500/5 to-transparent" />
+                {/* Content container */}
+                <div className={`relative flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} 
+                items-center gap-8 p-8 bg-zinc-900/40 backdrop-blur-sm rounded-2xl 
+                border border-zinc-800 hover:border-blue-500/30 transition-all duration-300`}>
                 
-                <div className="relative h-full flex flex-col justify-between p-3 sm:p-4">
-                  {/* Icon Container */}
-                  <div className="flex justify-start items-center h-8 sm:h-10">
-                    <div className="text-xl sm:text-2xl md:text-3xl transform group-hover/card:scale-110 
-                          group-hover/card:text-blue-400 transition-all duration-300">
-                      {feature.icon}
-                    </div>
-                  </div>
-                  
-                  {/* Text Content */}
-                  <div className="space-y-1">
-                    <div className="text-xs sm:text-sm text-zinc-400 font-medium truncate">
-                      {feature.title}
-                    </div>
-                    <div className="text-sm sm:text-base md:text-lg font-bold text-blue-400 
-                          group-hover/card:text-blue-300 transition-colors">
-                      {feature.value}
-                    </div>
+                {/* Icon section */}
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 flex items-center justify-center rounded-xl 
+                  bg-gradient-to-br from-blue-500/10 to-violet-500/10 
+                  text-zinc-400 group-hover:text-blue-400 transition-colors">
+                  <span className="text-3xl">{feature.icon}</span>
                   </div>
                 </div>
+
+                {/* Text content */}
+                <div className="flex-grow space-y-3">
+                  <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wider 
+                  group-hover:text-zinc-300">
+                  {feature.title}
+                  </h3>
+                  <div className="text-2xl font-bold text-white group-hover:text-blue-400 
+                  transition-colors">
+                  {feature.value}
+                  </div>
+                  <p className="text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                  {feature.description}
+                  </p>
+                </div>
+                </div>
+              </div>
               </motion.div>
             ))}
-          </div>
+            </div>
         </div>
       </div>
-      
-      {/* Image section */}
-      <motion.div 
-        className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] group mt-6 lg:mt-0"
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="absolute inset-0 rounded-xl overflow-hidden">
-          {/* Space-themed gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 
-                  to-violet-500/20 mix-blend-overlay group-hover:opacity-75 
-                  transition-opacity duration-500" />
-          
-          {/* Orbital rings with glow */}
-          <div className="absolute inset-0 flex items-center justify-center 
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-            <div className="w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px] 
-                    h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] 
-                    border border-blue-400/30 rounded-full animate-spin-slow 
-                    shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
-            <div className="absolute w-[100px] sm:w-[150px] md:w-[180px] lg:w-[200px] 
-                    h-[100px] sm:h-[150px] md:h-[180px] lg:h-[200px] 
-                    border border-violet-400/30 rounded-full animate-spin-slow-reverse 
-                    shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
-          </div>
-          
-          <Image
-            src="/blimp.png"
-            alt="HAPS Platform"
-            layout="fill"
-            objectFit="cover"
-            className="group-hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        
-        {/* Corner accents with glow */}
-        <div className="absolute top-0 left-0 w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 
-                  border-l-2 border-t-2 border-blue-400/40 rounded-tl-xl 
-                  group-hover:border-blue-400/60 transition-colors duration-300 
-                  shadow-[0_0_10px_rgba(59,130,246,0.4)]" />
-        <div className="absolute bottom-0 right-0 w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 
-                  border-r-2 border-b-2 border-violet-400/40 rounded-br-xl 
-                  group-hover:border-violet-400/60 transition-colors duration-300 
-                  shadow-[0_0_10px_rgba(139,92,246,0.4)]" />
-      </motion.div>
-    </motion.div>
-  </div>
-</section>
+    </section>
   );
 };
 

@@ -14,7 +14,7 @@ function LogoScroll() {
   ]
 
   return (
-    <div className="logo-scroll-container">
+    <div className="logo-scroll-container mt-96">
     <p className="text-center text-md mt-4 text-white"> Supported and Partnered with </p>
       <div className="logo-scroll">
         <div className="logo-track">
