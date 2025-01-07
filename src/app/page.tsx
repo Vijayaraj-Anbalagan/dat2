@@ -223,7 +223,7 @@ const About = () => {
   ));
 
   return (
-    <section className="relative py-20 bg-zinc-950 overflow-hidden">
+    <section id='about' className="relative py-20 bg-zinc-950 overflow-hidden">
       {/* Decorative floating elements */}
       <div className="absolute inset-0 overflow-hidden opacity-40">
         {decorativeElements}
