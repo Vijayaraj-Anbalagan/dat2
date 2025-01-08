@@ -150,14 +150,14 @@ const ProductPage = () => {
       <Nav />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-start md:justify-center overflow-hidden">
+      <section className="relative min-h-[100vh] flex flex-col items-center justify-start pt-20 md:pt-0 md:justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/70 to-zinc-950" />
         
         {/* Text content with responsive positioning */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="container mx-auto px-6 relative z-20 text-center mt-24 md:mt-0"
+          className="container mx-auto px-6 relative z-20 text-center mt-16 md:mt-0"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -206,11 +206,12 @@ const ProductPage = () => {
         </motion.div>
 
         {/* Spline model */}
-        <div className="relative w-full h-full justify-center items-center">
-          <Spline
-            scene="https://prod.spline.design/XDQLQUryYksHCn0z/scene.splinecode"
-          />
-        </div>
+        <div className="relative w-full h-[50vh] md:h-[70vh] flex justify-center items-center">
+        <Spline
+          scene="https://prod.spline.design/XDQLQUryYksHCn0z/scene.splinecode"
+          className="w-full h-full"
+        />
+      </div>
       </section>
 
       {/* Metrics Section */}
