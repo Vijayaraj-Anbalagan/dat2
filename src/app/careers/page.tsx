@@ -176,7 +176,7 @@ const CareersPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-center max-w-4xl mx-auto"
                 >
-                  <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                  <h1 className="text-5xl md:text-6xl font-bold mb-6 mt-16">
                     <TextScramble duration={1.2}>
                     Join our mission to reach stratosphere
                     </TextScramble>
@@ -251,91 +251,95 @@ const CareersPage = () => {
 
       {/* Open Positions Section */}
       <section id="positions" className="py-20 relative bg-zinc-900/30">
-        <div className="container mx-auto px-6">
+  <div className="container mx-auto px-4 sm:px-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      className="text-center max-w-3xl mx-auto mb-12"
+    >
+      <h2 className="text-4xl font-bold mb-6">
+        <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+          Open Positions
+        </span>
+      </h2>
+      
+      {/* Filter Buttons - Made scrollable on mobile */}
+      <div className="overflow-x-auto pb-4 -mb-4">
+        <div className="flex justify-center gap-3 min-w-min mx-auto">
+          {[
+            { id: 'all', label: 'All Positions' },
+            { id: 'fulltime', label: 'Full-time' },
+            { id: 'internship', label: 'Internships' }
+          ].map((filter) => (
+            <button
+              key={filter.id}
+              onClick={() => setActiveFilter(filter.id as typeof activeFilter)}
+              className={`px-6 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
+                activeFilter === filter.id
+                  ? 'bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/20'
+                  : 'bg-zinc-800/50 text-zinc-400 hover:bg-zinc-800'
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeFilter}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        className="grid gap-4 sm:gap-6 max-w-5xl mx-auto"
+      >
+        {filteredPositions.map((position) => (
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-center max-w-3xl mx-auto mb-12"
+            key={position.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="relative group cursor-pointer"
+            onClick={() => setSelectedPosition(position)}
           >
-            <h2 className="text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-                Open Positions
-              </span>
-            </h2>
-            <div className="flex justify-center gap-4 mt-8">
-              {[
-                { id: 'all', label: 'All Positions' },
-                { id: 'fulltime', label: 'Full-time' },
-                { id: 'internship', label: 'Internships' }
-              ].map((filter) => (
-                <button
-                  key={filter.id}
-                  onClick={() => setActiveFilter(filter.id as typeof activeFilter)}
-                  className={`px-6 py-2 rounded-lg transition-all duration-300 ${
-                    activeFilter === filter.id
-                      ? 'bg-gradient-to-r from-blue-600 to-violet-600 text-white'
-                      : 'bg-zinc-800/50 text-zinc-400 hover:bg-zinc-800'
-                  }`}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-violet-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+            <div className="relative p-4 sm:p-8 border border-zinc-800 rounded-xl backdrop-blur-lg hover:border-zinc-700 transition-colors">
+              <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
+                    {position.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-zinc-400">
+                    <span className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      {position.location}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Building2 className="w-4 h-4" />
+                      {position.mode}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      {position.type === 'internship' ? 'Internship' : 'Full-time'}
+                    </span>
+                  </div>
+                </div>
+                <motion.div
+                  className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors self-start sm:self-center"
+                  whileHover={{ scale: 1.1 }}
                 >
-                  {filter.label}
-                </button>
-              ))}
+                  <Rocket className="w-6 h-6 text-blue-400" />
+                </motion.div>
+              </div>
             </div>
           </motion.div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFilter}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="grid gap-6"
-            >
-              {filteredPositions.map((position) => (
-                <motion.div
-                  key={position.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  className="relative group cursor-pointer"
-                  onClick={() => setSelectedPosition(position)}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-violet-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-                  <div className="relative p-8 border border-zinc-800 rounded-xl backdrop-blur-lg hover:border-zinc-700 transition-colors">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
-                          {position.title}
-                        </h3>
-                        <div className="flex gap-6 text-sm text-zinc-400">
-                          <span className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4" />
-                            {position.location}
-                          </span>
-                          <span className="flex items-center gap-2">
-                            <Building2 className="w-4 h-4" />
-                            {position.mode}
-                          </span>
-                          <span className="flex items-center gap-2">
-                            <Clock className="w-4 h-4" />
-                            {position.type === 'internship' ? 'Internship' : 'Full-time'}
-                          </span>
-                        </div>
-                      </div>
-                      <motion.div
-                        className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        <Rocket className="w-6 h-6 text-blue-400" />
-                      </motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
+        ))}
+      </motion.div>
+    </AnimatePresence>
+  </div>
+</section>
 
       <section id="collaborate" className="py-20">
         <div className="container mx-auto px-6">
