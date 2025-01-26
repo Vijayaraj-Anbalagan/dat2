@@ -345,9 +345,7 @@ export function WorkshopRegistrationDialog() {
   const generateQRCode = async () => {
     setIsLoading(true)
     try {
-      const price = isEarlyBirdActive
-        ? pricingDetails[formData.category].earlyBird
-        : pricingDetails[formData.category].normal
+      const price = calculatePricing()
 
       const qrCode = await generateUPIQRCode(upiDetails.upiId, price, formData.name)
 
