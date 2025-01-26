@@ -25,10 +25,38 @@ const inter = Inter({
 })
 
 const pricingDetails = {
-  Undergraduate: { normal: 1999, earlyBird: 1499 },
-  Postgraduate: { normal: 2499, earlyBird: 1999 },
-  "Research Scholar": { normal: 2999, earlyBird: 2499 },
-  "Startup/Industrial": { normal: 3499, earlyBird: 2999 },
+  Undergraduate: { 
+    normal: 1999, 
+    earlyBird: 1499,
+    kcgDiscount: {
+      earlyBird: 759,
+      normal: 999
+    }
+  },
+  Postgraduate: { 
+    normal: 2499, 
+    earlyBird: 1999,
+    kcgDiscount: {
+      earlyBird: 999,
+      normal: 1249
+    }
+  },
+  "Research Scholar": { 
+    normal: 2999, 
+    earlyBird: 2499,
+    kcgDiscount: {
+      earlyBird: 1249,
+      normal: 1499
+    }
+  },
+  "Startup/Industrial": { 
+    normal: 3499, 
+    earlyBird: 2999,
+    kcgDiscount: {
+      earlyBird: 1499,
+      normal: 1749
+    }
+  },
 }
 
 const upiDetails = {
@@ -142,7 +170,7 @@ const FileUploader = ({
 export function WorkshopRegistrationDialog() {
   const [isOpen, setIsOpen] = useState(false)
   const [step, setStep] = useState(1)
-  const [formData, setFormData] = useState<RegistrationData & { category: Category }>({
+  const [formData, setFormData] = useState<RegistrationData & { category: Category , isKcgSudent : boolean }>({
     name: "",
     email: "",
     phone: "",
@@ -156,6 +184,7 @@ export function WorkshopRegistrationDialog() {
     attended: false,
     feedback: "0",
     feedbackContent: "",
+    isKcgSudent : false
   })
   const [formErrors, setFormErrors] = useState({
     name: "",
@@ -235,10 +264,16 @@ export function WorkshopRegistrationDialog() {
       institution: formData.institution.trim() ? "" : "Institution is required",
     }
 
+    const isKcgStudent = formData.email.toLowerCase().endsWith("kcgcollege.in") ||
+    ["kcg", "kcg college of technology", "kcg college"].some(institution =>
+      formData.institution.toLowerCase().includes(institution)
+    )
+    setFormData(prev => ({ ...prev, isKcgStudent }))
+
     setFormErrors(errors)
     return Object.values(errors).every((error) => error === "")
   }
-
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ 
@@ -263,6 +298,47 @@ export function WorkshopRegistrationDialog() {
     } catch (error) {
       console.error("Upload error:", error)
       toast.error("Failed to upload screenshot")
+    }
+  }
+
+  const calculatePricing = () => {
+    const isEarlyBird = isEarlyBirdActive
+    const category = formData.category
+    const isKcgStudent = formData.email.toLowerCase().endsWith("@kcgcollege.com")
+
+    if (isKcgStudent) {
+      return isEarlyBird 
+        ? pricingDetails[category].kcgDiscount.earlyBird 
+        : pricingDetails[category].kcgDiscount.normal
+    }
+
+    return isEarlyBird 
+      ? pricingDetails[category].earlyBird 
+      : pricingDetails[category].normal
+  }
+
+  const calculateDiscountDetails = () => {
+    const category = formData.category
+    const isKcgStudent = formData.email.toLowerCase().endsWith("@kcgcollege.com")
+
+    if (!isKcgStudent) return null
+
+    const originalPrice = isEarlyBirdActive 
+      ? pricingDetails[category].earlyBird 
+      : pricingDetails[category].normal
+
+    const discountedPrice = isEarlyBirdActive 
+      ? pricingDetails[category].kcgDiscount.earlyBird 
+      : pricingDetails[category].kcgDiscount.normal
+
+    const savedAmount = originalPrice - discountedPrice
+    const discountPercentage = Math.round((savedAmount / originalPrice) * 100)
+
+    return {
+      originalPrice,
+      discountedPrice,
+      savedAmount,
+      discountPercentage
     }
   }
 
@@ -309,6 +385,85 @@ export function WorkshopRegistrationDialog() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+
+  const renderPricingDetails = () => {
+    const discountDetails = calculateDiscountDetails()
+    const price = calculatePricing()
+    const isKcgStudent = formData.email.toLowerCase().endsWith("@kcgcollege.com")
+
+    return (
+      <div className="mt-4 space-y-4">
+  {upiQRCode ? (
+    <div className="relative flex flex-col items-center">
+      <div className="w-full max-w-[300px] relative">
+        <img
+          src={upiQRCode || "/placeholder.svg"}
+          alt="UPI QR Code"
+          className="mx-auto mb-2 max-w-full rounded-lg"
+        />
+      </div>
+
+      <div className="bg-zinc-800 rounded-lg p-4 w-full space-y-3">
+        <div className="flex justify-between items-center">
+          <span>Registration Fee</span>
+          <div className="flex items-center space-x-2">
+            {isKcgStudent && discountDetails ? (
+              <>
+                <span className="line-through text-gray-500">
+                  ₹{discountDetails.originalPrice}
+                </span>
+                <span className="font-bold text-green-500">
+                  ₹{discountDetails.discountedPrice}
+                </span>
+              </>
+            ) : (
+              <span className={isEarlyBirdActive ? 'text-green-500' : 'text-white'}>
+                ₹{price}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {isKcgStudent && discountDetails && (
+          <div className="bg-green-900/30 p-3 rounded-lg">
+            <div className="flex justify-between items-center">
+              <span className="text-green-400">KCG Student Discount</span>
+              <span className="font-bold text-green-300">
+                {discountDetails.discountPercentage}% OFF
+              </span>
+            </div>
+            <div className="text-sm text-green-200 mt-1">
+              You saved ₹{discountDetails.savedAmount}
+            </div>
+          </div>
+        )}
+
+        {isEarlyBirdActive && !isKcgStudent && (
+          <div className="bg-blue-900/30 p-3 rounded-lg text-blue-300">
+            Early Bird Discount Applied
+          </div>
+        )}
+      </div>
+
+      <div className="mt-4 w-full">
+        <div className="flex justify-between items-center bg-zinc-700 p-2 rounded-lg">
+          <span>UPI ID</span>
+          <div className="flex items-center">
+            <span className="mr-2">{upiDetails.upiId}</span>
+            <Button variant="ghost" size="sm" onClick={() => copyToClipboard(upiDetails.upiId)}>
+              <Copy size={16} />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className="text-center text-gray-400">Generating QR Code...</div>
+  )}
+</div>
+    )
   }
 
   // Rendering Logic
@@ -391,48 +546,18 @@ export function WorkshopRegistrationDialog() {
               <DialogTitle>Payment Details</DialogTitle>
               <DialogDescription>Complete your payment</DialogDescription>
             </DialogHeader>
-            <div className="mt-4 space-y-4">
-              <div className="bg-zinc-800 rounded-lg p-4">
-                {upiQRCode ? (
-                <img
-                  src={upiQRCode || "/placeholder.svg"}
-                  alt="UPI QR Code"
-                  className="mx-auto mb-4 max-w-full rounded-lg"
-                />
-                ) : (
-                <div className="text-center text-gray-400">Generating QR Code...</div>
-                )}
-                <div className="space-y-2">
-                <div className="flex justify-between items-center bg-zinc-700 p-2 rounded-lg">
-                  <span>UPI ID</span>
-                  <div className="flex items-center">
-                    <span className="mr-2">{upiDetails.upiId}</span>
-                    <Button variant="ghost" size="sm" onClick={() => copyToClipboard(upiDetails.upiId)}>
-                    <Copy size={16} />
-                    </Button>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center bg-zinc-700 p-2 rounded-lg">
-                  <span>Phone Number</span>
-                  <div className="flex items-center">
-                    <span className="mr-2">{upiDetails.phoneNumber}</span>
-                    <Button variant="ghost" size="sm" onClick={() => copyToClipboard(upiDetails.phoneNumber)}>
-                    <Copy size={16} />
-                    </Button>
-                  </div>
-                </div>
-                </div>
-              </div>
+            {renderPricingDetails()}
+            <div className="flex justify-center mt-4">
               <div className="grid grid-cols-3 gap-4">
-                {upiDetails.apps.map((app) => (
-                  <div 
-                  key={app.name} 
-                  onClick={() => openUPIApp(isEarlyBirdActive, formData)} 
-                  className="cursor-pointer text-gray-400 hover:text-blue-500"
-                  >
-                  <app.icon className="w-12 h-12 mx-auto" />
-                  </div>
-                ))}
+              {upiDetails.apps.map((app) => (
+                <div 
+                key={app.name} 
+                onClick={() => openUPIApp(isEarlyBirdActive, formData)} 
+                className="cursor-pointer text-gray-400 hover:text-blue-500 flex flex-col items-center"
+                >
+                <app.icon className="w-12 h-12" />
+                </div>
+              ))}
               </div>
             </div>
             <div className="flex justify-between mt-4">
