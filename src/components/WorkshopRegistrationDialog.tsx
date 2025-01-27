@@ -42,19 +42,19 @@ const pricingDetails = {
     }
   },
   "Research Scholar": { 
+    normal: 2499, 
+    earlyBird: 1999,
+    kcgDiscount: {
+      earlyBird: 999,
+      normal: 1249
+    }
+  },
+  "Startup/Industrial": { 
     normal: 2999, 
     earlyBird: 2499,
     kcgDiscount: {
       earlyBird: 1249,
       normal: 1499
-    }
-  },
-  "Startup/Industrial": { 
-    normal: 3499, 
-    earlyBird: 2999,
-    kcgDiscount: {
-      earlyBird: 1499,
-      normal: 1749
     }
   },
 }
@@ -631,7 +631,7 @@ export function WorkshopRegistrationDialog() {
   return (
     <div>
       <Button 
-        className="bg-blue-600 hover:bg-blue-700 px-8 py-4 text-lg"  
+        className="bg-blue-600 hover:bg-blue-700 px-8 py-4 text-lg mb-4"  
         onClick={() => setIsOpen(true)}
       >
         Register Now

@@ -51,16 +51,19 @@ const WorkshopPage = () => {
 
   const pricingTiers = [
     {
-      category: 'Students',
+      category: 'UG Students',
+      originalPrice: '₹2,000',
       price: '₹1,499'
     },
     {
-      category: 'Research Scholars',
+      category: 'PG, Research Scholars',
+      originalPrice: '₹2,500',
       price: '₹1,999'
     },
     {
       category: 'Professionals',
-      price: '₹1,999'
+      originalPrice: '₹3,000',
+      price: '₹2,500'
     }
   ];
 
@@ -70,7 +73,7 @@ const WorkshopPage = () => {
       title: 'Introduction to Satellite System',
       topics: [
         'Overview of satellites and orbits (LEO, MEO, GEO)',
-        'Basics of satellite communication applications'
+        'Basics of satellite communication'
       ],
       activities: [
         'Interactive presentation on satellite tracking concepts',
@@ -78,39 +81,51 @@ const WorkshopPage = () => {
       ]
     },
     {
-      time: '10:45 am - 12:30 pm',
+      time: '10:45 am - 12:15 pm',
       title: 'Ground Station Setup & Software',
       topics: [
-        'Components of a ground station: Rotator, SDR, Antenna',
-        'Software for satellite tracking and signal processing'
+        'Components of a ground station and their functionality',
+        'Step-by-step demonstration of system setup'
       ],
       activities: [
-        'Live demonstration of setting up a portal ground station',
-        'Software setup using GPredict and Orbitron'
+        'Live demonstration of setting up ground station',
+        'Hands-on system configuration'
       ]
     },
     {
-      time: '1:30 pm - 3:30 pm',
+      time: '1:00 pm - 2:15 pm',
       title: 'Real-Time Satellite Pass Monitoring',
       topics: [
-        'Scheduling and monitoring satellite passes (NOAA, ISS)',
-        'Data acquisition using SDR and signal decoding basics'
+        'Scheduling and Monitoring satellite passes',
+        'Data acquisition and signal decoding'
       ],
       activities: [
-        'Real-time satellite signal reception using SDRSharp/CubicSDR',
-        'Processing and decoding weather satellite images'
+        'Real-time satellite tracking demonstration',
+        'Signal acquisition practice'
       ]
     },
     {
-      time: '3:45 pm - 5:00 pm',
+      time: '2:30 pm - 3:30 pm',
       title: 'Data Analysis & Visualization',
       topics: [
-        'Data interpretation and telemetry analysis',
-        'Visualization techniques for acquired satellite data'
+        'Processing and analyzing Satellite Data',
+        'Practical applications and visualization techniques'
       ],
       activities: [
-        'Analyze captured data using Python (Matplotlib)',
-        'Data visualization and interpretation techniques'
+        'Data analysis workshop',
+        'Visualization practice session'
+      ]
+    },
+    {
+      time: '3:30 pm - 4:00 pm',
+      title: 'Wrap Up',
+      topics: [
+        'Showcase student projects',
+        'Feedback and Discussions on future pathways'
+      ],
+      activities: [
+        'Project presentations',
+        'Certificate Distribution'
       ]
     }
   ];
@@ -147,6 +162,7 @@ const WorkshopPage = () => {
                     className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50 shadow-lg"
                   >
                     <h3 className="text-2xl font-bold mb-4 text-blue-400">{tier.category}</h3>
+                    <div className="text-xl text-zinc-400 line-through mb-2">{tier.originalPrice}</div>
                     <div className="text-3xl font-bold text-blue-500 mb-4">{tier.price}</div>
                     <p className="text-zinc-300">Early Bird Price</p>
                   </div>
@@ -163,13 +179,10 @@ const WorkshopPage = () => {
               className="text-center relative z-10 mb-16"
             >
               <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent">
-                Dashagriv Aerospace Technology
+                Dashagriv Aerospace
                 <br />
-                One-Day Training Workshop
+                Monitoring Satellite Tracking Data Acquisition
               </h1>
-              <p className="text-xl text-zinc-300 max-w-2xl mx-auto">
-                Satellite Tracking Data Acquisition Monitoring
-              </p>
             </motion.div>
 
             {/* Workshop Overview Grid */}
@@ -182,13 +195,13 @@ const WorkshopPage = () => {
               >
                 <h2 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
                   <Satellite className="mr-4 text-blue-500" />
-                  What You&apos;ll Learn
+                  What You&apos;ll LEARN?
                 </h2>
                 <ul className="space-y-4 list-none pl-0">
                   {[
-                    'Satellite tracking, communication, and data acquisition',
+                    'Satellite tracking Communication, and data acquisition',
                     'Practical skills for space research and projects',
-                    'Ground station setup and real-time satellite tracking'
+                    'Gain practical knowledge and hands-on experience in Satellite communication, ground station setup, and real-time satellite tracking'
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
                       <CheckCircle className="mr-3 mt-1 text-blue-500 flex-shrink-0" />
@@ -206,14 +219,16 @@ const WorkshopPage = () => {
               >
                 <h2 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
                   <Rocket className="mr-4 text-blue-500" />
-                  Why Attend
+                  Why ATTEND?
                 </h2>
                 <ul className="space-y-4 list-none pl-0">
                   {[
-                    'Hands-on training with live demos',
+                    'Hands-on training, live demos',
+                    'Internship opportunities with Dashagriv Aerospace',
                     'Interactive sessions by industry experts',
-                    'Internship opportunities',
-                    'Participation certificate'
+                    'Advanced tools, softwares',
+                    'Expert guidance with practical demonstrations',
+                    'Professional-grade equipment'
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
                       <CheckCircle className="mr-3 mt-1 text-blue-500 flex-shrink-0" />
@@ -237,8 +252,8 @@ const WorkshopPage = () => {
                 <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
                   <Clock className="mx-auto mb-4 text-blue-500" size={48} />
                   <h3 className="text-xl font-semibold mb-2">Date & Time</h3>
-                  <p className="text-zinc-300">5th February 2025</p>
-                  <p className="text-zinc-300">8:00 am - 4:30 pm</p>
+                  <p className="text-zinc-300">7th February 2025</p>
+                  <p className="text-zinc-300">9:00 am - 4:00 pm</p>
                 </div>
                 <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
                   <MapPin className="mx-auto mb-4 text-blue-500" size={48} />
@@ -248,10 +263,31 @@ const WorkshopPage = () => {
                 </div>
                 <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
                   <CheckCircle className="mx-auto mb-4 text-blue-500" size={48} />
-                  <h3 className="text-xl font-semibold mb-2">Who Can Attend</h3>
-                  <p className="text-zinc-300">Undergraduates</p>
-                  <p className="text-zinc-300">Graduates, Research Scholars</p>
+                  <h3 className="text-xl font-semibold mb-2">Who Can ATTEND?</h3>
+                  <p className="text-zinc-300">Under Graduate students</p>
+                  <p className="text-zinc-300">Post Graduate students</p>
+                  <p className="text-zinc-300">Research Scholars</p>
+                  <p className="text-zinc-300">Open to all streams with an interest in satellite system</p>
                 </div>
+              </div>
+            </motion.div>
+
+            {/* About Us Section */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-16 bg-zinc-900/60 backdrop-blur-xl rounded-2xl p-8 border border-zinc-800/50"
+            >
+              <h2 className="text-4xl font-bold mb-6 text-blue-400 text-center">About Us</h2>
+              <p className="text-zinc-300 text-center">
+                We are pioneering the development of high-altitude platform systems designed for intelligence surveillance 
+                and reconnaissance (ISR) and near space applications. Our solutions provide sustainable, cost-effective 
+                alternative for defense, research and commercial enterprises.
+              </p>
+              <div className="mt-6 text-center">
+                <p className="text-blue-400">www.dashagriv.in</p>
+                <p className="text-blue-400">info@dashagriv.in</p>
+                <p className="text-zinc-300">KCG College of Technology, Chennai - 600097</p>
               </div>
             </motion.div>
 
@@ -288,7 +324,7 @@ const WorkshopPage = () => {
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-xl mb-2 text-blue-500">Activities</h4>
+                      <h4 className="font-semibold text-xl mb-2 text-blue-500">Activities</h4>
                         <ul className="list-disc pl-5 text-zinc-300">
                           {session.activities.map((activity, idx) => (
                             <li key={idx}>{activity}</li>
@@ -301,11 +337,12 @@ const WorkshopPage = () => {
               </div>
 
               {/* Call to Action */}
-              <div className="text-center mt-8 space-x-3">
-                <WorkshopRegistrationDialog />
-              </div>
-              <div className="text-center mt-8 space-x-3">
-                <AlreadyRegisteredDialog />
+              <div className="text-center mt-12">
+                <p className="text-2xl text-blue-400 mb-8">Register NOW!</p>
+                <div className="space-y-4 gap-4">
+                  <WorkshopRegistrationDialog />
+                  <AlreadyRegisteredDialog />
+                </div>
               </div>
             </div>
           </div>

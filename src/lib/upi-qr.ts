@@ -23,7 +23,7 @@ export const generateRegQR = async (
   category: string,
   status: string
 ) => {
-  const regurl = `https://dat-ala.vercel.app/dashboard/qr?email=${email}&name=${name}&phone=${phone}&institution=${institution}&category=${category}&status=${status}`;
+  const regurl = `https://datworkspace.in/dashboard/qr?email=${email}&name=${name}&phone=${phone}&institution=${institution}&category=${category}&status=${status}`;
   try {
     const qrCode = await QRCode.toDataURL(regurl);
     return qrCode;

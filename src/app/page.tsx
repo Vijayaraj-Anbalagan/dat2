@@ -340,11 +340,11 @@ const WorkshopPreview = () => {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-blue-400 mb-2">Date</h3>
-                <p className="text-zinc-300">5th February 2025</p>
+                <p className="text-zinc-300">7th February 2025</p>
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-blue-400 mb-2">Duration</h3>
-                <p className="text-zinc-300">8:00 am - 4:30 pm</p>
+                <p className="text-zinc-300">9:00 am - 4:00 pm</p>
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-blue-400 mb-2">Location</h3>

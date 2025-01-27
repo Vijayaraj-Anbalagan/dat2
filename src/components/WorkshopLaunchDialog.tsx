@@ -60,11 +60,11 @@ const WorkshopLaunchDialog = () => {
                         <div className="space-y-4 mb-6">
                             <div className="flex items-center space-x-4">
                                 <Calendar className="text-blue-500" />
-                                <span>5th February 2025</span>
+                                <span>7th February 2025</span>
                             </div>
                             <div className="flex items-center space-x-4">
                                 <Clock className="text-blue-500" />
-                                <span>8:00 am - 4:30 pm</span>
+                                <span>9:00 am - 4:00 pm</span>
                             </div>
                             <div className="flex items-center space-x-4">
                                 <MapPin className="text-blue-500" />
