@@ -17,7 +17,10 @@ import { saveRegistration, type RegistrationData, checkRegistrationStatus } from
 import { uploadToCloudinary } from "@/lib/cloudinary-utils"
 import { AlreadyRegisteredDialog } from "./AlreadyRegisteredDialog"
 
+type ReferralSource = "College" | "Faculty" | "Friends" | "SocialMedia" | `Others - ${string}`
+
 type Category = "Undergraduate" | "Postgraduate" | "Research Scholar" | "Startup/Industrial"
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -170,7 +173,7 @@ const FileUploader = ({
 export function WorkshopRegistrationDialog() {
   const [isOpen, setIsOpen] = useState(false)
   const [step, setStep] = useState(1)
-  const [formData, setFormData] = useState<RegistrationData & { category: Category , isKcgSudent : boolean }>({
+  const [formData, setFormData] = useState<RegistrationData & { category: Category , isKcgSudent : boolean, otherReferralDetails?: string }>({
     name: "",
     email: "",
     phone: "",
@@ -184,13 +187,17 @@ export function WorkshopRegistrationDialog() {
     attended: false,
     feedback: "0",
     feedbackContent: "",
-    isKcgSudent : false
+    isKcgSudent : false,
+    referralSource: "College",
   })
   const [formErrors, setFormErrors] = useState({
     name: "",
     email: "",
     phone: "",
     institution: "",
+    category: "",
+    referralSource: "",
+    otherReferralDetails: "",
   })
   const [upiQRCode, setUpiQRCode] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -262,6 +269,11 @@ export function WorkshopRegistrationDialog() {
       email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? "" : "Enter a valid email address",
       phone: /^[6-9]\d{9}$/.test(formData.phone) ? "" : "Enter a valid 10-digit Indian mobile number",
       institution: formData.institution.trim() ? "" : "Institution is required",
+      category: formData.category ? "" : "Select a category",
+      referralSource: formData.referralSource ? "" : "Please select how you knew about us",
+      otherReferralDetails: formData.referralSource === "Others - " && !formData.otherReferralDetails?.trim()
+        ? "Please specify how you knew about us" 
+        : ""
     }
 
     const isKcgStudent = formData.email.toLowerCase().endsWith("kcgcollege.in") ||
@@ -372,7 +384,14 @@ export function WorkshopRegistrationDialog() {
 
     setIsLoading(true)
     try {
-      await saveRegistration(formData.email, formData)
+      const finalFormData: RegistrationData = {
+        ...formData,
+        // If referral source is "Others", combine it with the details
+        referralSource: formData.referralSource.startsWith("Others - ")
+          ? `Others - ${formData.otherReferralDetails}`
+          : formData.referralSource
+      }
+      await saveRegistration(formData.email, finalFormData)
       localStorage.setItem("dashagrivemail", formData.email)
 
       toast.success("Registration submitted successfully!")
@@ -469,7 +488,7 @@ export function WorkshopRegistrationDialog() {
     switch (step) {
       case 1:
         return (
-          <div className="space-y-6">
+          <div className="space-y-3">
             <DialogHeader>
               <DialogTitle className="text-white">Registration Details</DialogTitle>
               <DialogDescription>Enter your personal information</DialogDescription>
@@ -520,7 +539,59 @@ export function WorkshopRegistrationDialog() {
                   </SelectContent>
                 </Select>
               </div>
+              <div >
+  <Label className="text-white">How did you know about us?</Label>
+  <Select
+    name="referralSource"
+    value={formData.referralSource}
+    onValueChange={(value: ReferralSource) => {
+      setFormData(prev => ({
+        ...prev,
+        referralSource: value,
+        otherReferralDetails: !value.startsWith("Others - ") ? "" : prev.otherReferralDetails
+      }))
+      setFormErrors(prev => ({ ...prev, referralSource: "", otherReferralDetails: "" }))
+    }}
+  >
+    <SelectTrigger className="bg-zinc-900 text-white border-gray-700 focus:border-blue-500">
+      <SelectValue placeholder="Select how you knew about us" />
+    </SelectTrigger>
+    <SelectContent className="bg-zinc-900 text-white">
+      {["College", "Faculty", "Friends", "SocialMedia", "Others - "].map((source) => (
+        <SelectItem
+          key={source}
+          value={source}
+          className="hover:bg-zinc-800"
+        >
+          {source}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+  {formErrors.referralSource && (
+    <p className="text-red-500 text-sm mt-1">{formErrors.referralSource}</p>
+  )}
+</div>
             </div>
+            
+{formData.referralSource.startsWith("Others - ") && (
+  <div className="col-span-2">
+    <Label className="text-white">Please specify</Label>
+    <Input
+      name="otherReferralDetails"
+      value={formData.otherReferralDetails}
+      onChange={handleInputChange}
+      placeholder="Tell us how you knew about us"
+      className={`
+        ${formErrors.otherReferralDetails ? "border-red-500" : "border-gray-700 focus:border-blue-500"}
+        bg-zinc-900 text-white
+      `}
+    />
+    {formErrors.otherReferralDetails && (
+      <p className="text-red-500 text-sm mt-1">{formErrors.otherReferralDetails}</p>
+    )}
+  </div>
+)}
             <div className="flex justify-end mt-4">
               <Button
                 onClick={() => {

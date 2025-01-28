@@ -23,7 +23,7 @@ export const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 
-
+type ReferralSource = "College" | "Faculty" | "Friends" | "SocialMedia" | `Others - ${string}`
 export interface RegistrationData {
   name: string;
   email: string;
@@ -37,7 +37,9 @@ export interface RegistrationData {
   timestamp: string;
   attended: boolean;
   feedback: string;
+  isKcgSudent: boolean;
   feedbackContent: string
+  referralSource: ReferralSource
 }
 
 
