@@ -9,10 +9,12 @@ import {
   MapPin, 
   CheckCircle
 } from 'lucide-react';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { WorkshopRegistrationDialog } from '@/components/WorkshopRegistrationDialog';
 import { AlreadyRegisteredDialog } from '@/components/AlreadyRegisteredDialog';
+import { ReactLenis } from '@studio-freight/react-lenis';
 
 const WorkshopPage = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -131,7 +133,15 @@ const WorkshopPage = () => {
   ];
 
   return (
+    
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-950 to-black text-white">
+       {/* @ts-expect-error - Known issue with ReactLenis types */}
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.05,
+        }}
+      >
       <Navbar />
       
       <main className="flex-grow">
@@ -179,9 +189,9 @@ const WorkshopPage = () => {
               className="text-center relative z-10 mb-16"
             >
               <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent">
-                Dashagriv Aerospace
-                <br />
-                Monitoring Satellite Tracking Data Acquisition
+              Dashagriv Aerospace
+              <br />
+              Satellite monitoring tracking & Data Acquisition
               </h1>
             </motion.div>
 
@@ -189,55 +199,64 @@ const WorkshopPage = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-16">
               {/* What You'll Learn */}
               <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="bg-zinc-900/60 backdrop-blur-xl rounded-2xl p-8 border border-zinc-800/50 shadow-2xl"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="bg-zinc-900/60 backdrop-blur-xl rounded-2xl p-8 border border-zinc-800/50 shadow-2xl"
               >
-                <h2 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
-                  <Satellite className="mr-4 text-blue-500" />
-                  What You&apos;ll LEARN?
-                </h2>
-                <ul className="space-y-4 list-none pl-0">
-                  {[
-                    'Satellite tracking Communication, and data acquisition',
-                    'Practical skills for space research and projects',
-                    'Gain practical knowledge and hands-on experience in Satellite communication, ground station setup, and real-time satellite tracking'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <CheckCircle className="mr-3 mt-1 text-blue-500 flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              <h2 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
+                <Satellite className="mr-4 text-blue-500" />
+                What You&apos;ll LEARN?
+              </h2>
+              <ul className="space-y-4 list-none pl-0">
+                {[
+                'Satellite tracking Communication, and data acquisition',
+                'Practical skills for space research and projects',
+                'Gain practical knowledge and hands-on experience in Satellite communication, ground station setup, and real-time satellite tracking'
+                ].map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="mr-3 mt-1 text-blue-500 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+                ))}
+              </ul>
               </motion.div>
 
               {/* Why Attend */}
               <motion.div 
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="bg-zinc-900/60 backdrop-blur-xl rounded-2xl p-8 border border-zinc-800/50 shadow-2xl"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="bg-zinc-900/60 backdrop-blur-xl rounded-2xl p-8 border border-zinc-800/50 shadow-2xl"
               >
-                <h2 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
-                  <Rocket className="mr-4 text-blue-500" />
-                  Why ATTEND?
-                </h2>
-                <ul className="space-y-4 list-none pl-0">
-                  {[
-                    'Hands-on training, live demos',
-                    'Internship opportunities with Dashagriv Aerospace',
-                    'Interactive sessions by industry experts',
-                    'Advanced tools, softwares',
-                    'Expert guidance with practical demonstrations',
-                    'Professional-grade equipment'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <CheckCircle className="mr-3 mt-1 text-blue-500 flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              <h2 className="text-3xl font-bold mb-6 text-blue-400 flex items-center">
+                <Rocket className="mr-4 text-blue-500" />
+                Why ATTEND?
+              </h2>
+              <ul className="space-y-4 list-none pl-0">
+                {[
+                'Hands-on training, live demos',
+                'Internship opportunities with Dashagriv Aerospace',
+                'Interactive sessions by industry experts',
+                'Advanced tools, softwares',
+                'Expert guidance with practical demonstrations',
+                'Professional-grade equipment'
+                ].map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="mr-3 mt-1 text-blue-500 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+                ))}
+              </ul>
               </motion.div>
             </div>
+
+            {/* Image Placeholder */}
+              <Image 
+                src="/sat.jpg" 
+                alt="Satellite Image" 
+                width={800} 
+                height={400} 
+                className="rounded-2xl mx-auto mb-6"
+              />
 
             {/* Event Details */}
             <motion.div 
@@ -246,29 +265,29 @@ const WorkshopPage = () => {
               className="text-center mb-16"
             >
               <h2 className="text-4xl font-bold mb-8 text-blue-400">
-                Event Details
+              Event Details
               </h2>
               <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
-                  <Clock className="mx-auto mb-4 text-blue-500" size={48} />
-                  <h3 className="text-xl font-semibold mb-2">Date & Time</h3>
-                  <p className="text-zinc-300">7th February 2025</p>
-                  <p className="text-zinc-300">9:00 am - 4:00 pm</p>
-                </div>
-                <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
-                  <MapPin className="mx-auto mb-4 text-blue-500" size={48} />
-                  <h3 className="text-xl font-semibold mb-2">Venue</h3>
-                  <p className="text-zinc-300">KCG Space Technology Centre</p>
-                  <p className="text-zinc-300">Chennai, Tamil Nadu</p>
-                </div>
-                <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
-                  <CheckCircle className="mx-auto mb-4 text-blue-500" size={48} />
-                  <h3 className="text-xl font-semibold mb-2">Who Can ATTEND?</h3>
-                  <p className="text-zinc-300">Under Graduate students</p>
-                  <p className="text-zinc-300">Post Graduate students</p>
-                  <p className="text-zinc-300">Research Scholars</p>
-                  <p className="text-zinc-300">Open to all streams with an interest in satellite system</p>
-                </div>
+              <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
+                <Clock className="mx-auto mb-4 text-blue-500" size={48} />
+                <h3 className="text-xl font-semibold mb-2">Date & Time</h3>
+                <p className="text-zinc-300">7th February 2025</p>
+                <p className="text-zinc-300">9:00 am - 4:00 pm</p>
+              </div>
+              <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
+                <MapPin className="mx-auto mb-4 text-blue-500" size={48} />
+                <h3 className="text-xl font-semibold mb-2">Venue</h3>
+                <p className="text-zinc-300">KCG Space Technology Centre</p>
+                <p className="text-zinc-300">Chennai, Tamil Nadu</p>
+              </div>
+              <div className="bg-zinc-900/60 backdrop-blur-xl rounded-xl p-6 border border-zinc-800/50">
+                <CheckCircle className="mx-auto mb-4 text-blue-500" size={48} />
+                <h3 className="text-xl font-semibold mb-2">Who Can ATTEND?</h3>
+                <p className="text-zinc-300">Under Graduate students</p>
+                <p className="text-zinc-300">Post Graduate students</p>
+                <p className="text-zinc-300">Research Scholars</p>
+                <p className="text-zinc-300">Open to all streams with an interest in satellite system</p>
+              </div>
               </div>
             </motion.div>
 
@@ -280,14 +299,14 @@ const WorkshopPage = () => {
             >
               <h2 className="text-4xl font-bold mb-6 text-blue-400 text-center">About Us</h2>
               <p className="text-zinc-300 text-center">
-                We are pioneering the development of high-altitude platform systems designed for intelligence surveillance 
-                and reconnaissance (ISR) and near space applications. Our solutions provide sustainable, cost-effective 
-                alternative for defense, research and commercial enterprises.
+              We are pioneering the development of high-altitude platform systems designed for intelligence surveillance 
+              and reconnaissance (ISR) and near space applications. Our solutions provide sustainable, cost-effective 
+              alternative for defense, research and commercial enterprises.
               </p>
               <div className="mt-6 text-center">
-                <p className="text-blue-400">www.dashagriv.in</p>
-                <p className="text-blue-400">info@dashagriv.in</p>
-                <p className="text-zinc-300">KCG College of Technology, Chennai - 600097</p>
+              <p className="text-blue-400">www.dashagriv.in</p>
+              <p className="text-blue-400">info@dashagriv.in</p>
+              <p className="text-zinc-300">KCG College of Technology, Chennai - 600097</p>
               </div>
             </motion.div>
 
@@ -349,7 +368,9 @@ const WorkshopPage = () => {
         </div>
       </main>
       <Footer />
+      </ReactLenis>
     </div>
+    
   );
 };
 
