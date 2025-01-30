@@ -17,7 +17,6 @@ import Timeline from '@/components/TimeLine';
 import Footer from '@/components/Footer';
 import LogoScroll from '@/components/LogoScroll';
 import Nav from '@/components/Navbar';
-import WorkshopLaunchDialog from '@/components/WorkshopLaunchDialog';
 const SmoothScrollPage: FC = () => {
   return (
     <div className="bg-zinc-950 vmin-h-screen relative">
@@ -53,7 +52,6 @@ const SmoothScrollPage: FC = () => {
         <Contact />
         <Footer/>
       </ReactLenis>
-      <WorkshopLaunchDialog />
     </div>
   );
 };
@@ -337,13 +335,6 @@ const WorkshopPreview = () => {
             <div className="text-center">
               <h3 className="text-xl font-semibold text-blue-400 mb-2">Coming Soon</h3>
               <p className="text-zinc-300">Stay updated for more details</p>
-            </div>
-            <div className="text-center mt-6">
-              <button 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
-              >
-                Stay Updated.. Comming Soon
-              </button>
             </div>
           </div>
         </motion.div>
