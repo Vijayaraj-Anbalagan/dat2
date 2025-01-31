@@ -5,7 +5,7 @@ export const generateUPIQRCode = async (
   amount: number,
   name: string
 ) => {
-  const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=10&cu=INR`;
+  const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR`;
   try {
     const qrCode = await QRCode.toDataURL(upiUrl);
     return qrCode;
