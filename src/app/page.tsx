@@ -291,9 +291,9 @@ const NewsRoomSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-8">
           Newsroom
         </h2>
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Top box spanning full width */}
-          <div className="col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <NewsCard {...newsItems[0]} />
           </div>
           
@@ -336,7 +336,11 @@ const NewsCard = ({ title, date, image, description , link  }: NewsCardProps) =>
       <h3 className="text-xl font-semibold text-white mb-2">
         {title}
       </h3>
-      <p className="text-sm text-zinc-300">{description}</p>
+      <p className="text-sm text-zinc-300">
+        {window.innerWidth < 768 
+          ? `${description.substring(0, 150)}...` 
+          : description}
+      </p>
     </div>
   </div>
   </Link>
