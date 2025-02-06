@@ -337,7 +337,7 @@ const NewsCard = ({ title, date, image, description , link  }: NewsCardProps) =>
         {title}
       </h3>
       <p className="text-sm text-zinc-300">
-        {window.innerWidth < 768 
+        {typeof window !== 'undefined' && window.innerWidth < 768 
           ? `${description.substring(0, 150)}...` 
           : description}
       </p>
