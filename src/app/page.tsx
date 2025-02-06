@@ -4,19 +4,14 @@ import { ReactLenis } from '@studio-freight/react-lenis';
 import {
   motion
 } from "framer-motion";
-import {
-  FiArrowUp,
-  FiBox,
-  FiClock,
-} from "react-icons/fi";
 import {  FC, useEffect, useRef } from "react";
 import Image from "next/image";
 import Technology from '@/components/Technology';
-import Team from '@/components/Team';
 import Timeline from '@/components/TimeLine';
 import Footer from '@/components/Footer';
 import LogoScroll from '@/components/LogoScroll';
 import Nav from '@/components/Navbar';
+import Link from 'next/link';
 const SmoothScrollPage: FC = () => {
   return (
     <div className="bg-zinc-950 vmin-h-screen relative">
@@ -43,12 +38,11 @@ const SmoothScrollPage: FC = () => {
       >
         <Nav />
         <Hero />
-        <About />
-        <WorkshopPreview />
         <Technology />
+        <NewsRoomSection />
         <ParallaxShowcase />
-        <Team />
         <Timeline />
+        <LogoShowcase />
         <Contact />
         <Footer/>
       </ReactLenis>
@@ -188,160 +182,6 @@ const Hero = () => {
   );
 };
 
-const About = () => {
-  const features = [
-    {
-      title: "Payload Capacity",
-      value: "200kg",
-      description: "Maximum carrying capacity for various mission equipment and instruments",
-      icon: <FiBox className="text-blue-400" />,
-    },
-    {
-      title: "Operational Altitude",
-      value: "20-40km",
-      description: "Optimal height range for stratospheric operations and coverage",
-      icon: <FiArrowUp className="text-blue-400" />,
-    },
-    {
-      title: "Endurance",
-      value: "300+ Days",
-      description: "Extended mission duration with sustained performance",
-      icon: <FiClock className="text-blue-400" />,
-    },
-  ];
-
-  const decorativeElements = [...Array(20)].map((_, i) => (
-    <div
-      key={i}
-      className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
-      style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animation: `float ${10 + Math.random() * 10}s infinite`,
-        animationDelay: `${Math.random() * 5}s`
-      }}
-    />
-  ));
-
-  return (
-    <section id='about' className="relative py-20 bg-zinc-950 overflow-hidden">
-      {/* Decorative floating elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-40">
-        {decorativeElements}
-      </div>
-
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-br from-blue-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
-              About Dashagriv Aerospace
-            </h2>
-            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mb-6" />
-            <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-              India&apos;s pioneering force in stratospheric innovation, we design and manufacture 
-              state-of-the-art operational platforms that bridge the crucial gap between satellites 
-              and traditional aerial systems.
-            </p>
-          </motion.div>
-
-          {/* Features Section - Horizontal Layout */}
-            <div className="grid grid-cols-1 gap-8 justify-center">
-            {features.map((feature, index) => (
-              <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
-              className="group w-full sm:w-3/4 mx-auto"
-              >
-              <div className="relative">
-                {/* Background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-violet-500/5 
-                opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl blur-xl" />
-                
-                {/* Content container */}
-                <div className={`relative flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} 
-                items-center gap-8 p-8 bg-zinc-900/40 backdrop-blur-sm rounded-2xl 
-                border border-zinc-800 hover:border-blue-500/30 transition-all duration-300`}>
-                
-                {/* Icon section */}
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 flex items-center justify-center rounded-xl 
-                  bg-gradient-to-br from-blue-500/10 to-violet-500/10 
-                  text-zinc-400 group-hover:text-blue-400 transition-colors">
-                  <span className="text-3xl">{feature.icon}</span>
-                  </div>
-                </div>
-
-                {/* Text content */}
-                <div className="flex-grow space-y-3">
-                  <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wider 
-                  group-hover:text-zinc-300">
-                  {feature.title}
-                  </h3>
-                  <div className="text-2xl font-bold text-white group-hover:text-blue-400 
-                  transition-colors">
-                  {feature.value}
-                  </div>
-                  <p className="text-zinc-500 group-hover:text-zinc-400 transition-colors">
-                  {feature.description}
-                  </p>
-                </div>
-                </div>
-              </div>
-              </motion.div>
-            ))}
-            </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-
-const WorkshopPreview = () => {
-  return (
-    <section className="py-20 bg-zinc-950 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-br from-blue-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
-            Satellite Tracking Workshop
-          </h2>
-          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mb-6" />
-          <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Dive into the world of satellite tracking with our comprehensive training program. 
-            Learn cutting-edge techniques in ground station setup, data acquisition, and signal processing.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex justify-center"
-        >
-          <div className="bg-zinc-900/40 backdrop-blur-sm rounded-2xl p-8 border border-zinc-800 max-w-3xl w-full">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-blue-400 mb-2">Coming Soon</h3>
-              <p className="text-zinc-300">Stay updated for more details</p>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
 
 
 const Contact = () => {
@@ -375,6 +215,132 @@ const Contact = () => {
     </section>
   );
 };
+
+
+const LogoShowcase = () => {
+  const logos = [
+    "/logo/DPIIT.png",
+    "/logo/HAPS.png",
+    "/logo/MSME.png",
+    "/logo/SI.png",
+    "/logo/TAA.png",
+    "/logo/TS.png",
+    "/logo/kcg.png",
+  ];
+
+  return (
+    <div className="container mx-auto py-16 px-4">
+      <p className="text-center text-md text-white">
+        Supported and Partnered with
+      </p>
+      <div className="mt-8 grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center">
+        {logos.map((logo, index) => (
+          <div
+            key={`logo-${index}`}
+            className="flex justify-center items-center"
+          >
+            <Image
+              src={logo}
+              alt={`Logo ${index + 1}`}
+              width={100}
+              height={75}
+              objectFit="contain"
+              className="transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+const NewsRoomSection = () => {
+  const newsItems = [
+    {
+      id: 1,
+      title: "Successful Low Altitude Trials",
+      date: "Jan 23, 2025",
+      image: "/news/lta.jpg",
+      description:
+      "Our platform successfully completed low altitude trials, demonstrating advanced aerodynamics and endurance in near-space conditions and also  In this groundbreaking test, our AI-powered system successfully detected and tracked human presence in real-time from an altitude of 100+ feet—a testament to its precision and cutting-edge capabilities.",
+    link: "https://www.youtube.com/watch?v=5UyAUkmlnN8",   },
+    {
+      id: 2,
+      title: "YouTube Channel Update",
+      date: "Feb 06, 2025", // update with the current or relevant date
+      image: "/news/yt.jpg", // replace with your image path
+      description:
+        "Subscribe to our YouTube channel for the latest updates, behind-the-scenes footage, and detailed explanations of our groundbreaking projects.",
+      link: "https://www.youtube.com/@Dashagriv_Aerospace",
+    },
+    {
+      id: 3,
+      title: "Featured in LTA News by the Airship Association",
+      date: "Feb 01, 2025", // update with the correct date
+      image: "/news/lnk.jpg", // replace with your image path
+      description:
+        "Discover how our innovations are making headlines in the LTA News of the Airship Association, underscoring our leadership in aerospace technology.",
+      link: "https://www.linkedin.com/company/the-airship-association/",
+    }
+  ];
+
+  return (
+    <section className="py-16">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-8">
+          Newsroom
+        </h2>
+        <div className="grid grid-cols-4 gap-6">
+          {/* Top box spanning full width */}
+          <div className="col-span-2">
+            <NewsCard {...newsItems[0]} />
+          </div>
+          
+          {/* Two boxes side by side */}
+          <div className="col-span-1">
+            <NewsCard {...newsItems[1]} />
+          </div>
+          <div className="col-span-1">
+            <NewsCard {...newsItems[2]} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Separate NewsCard component for better organization
+interface NewsCardProps {
+  title: string;
+  date: string;
+  image: string;
+  description: string;
+  link: string;
+}
+
+const NewsCard = ({ title, date, image, description , link  }: NewsCardProps) => (
+  <Link href={link}>
+  <div className="bg-zinc-800 rounded-xl overflow-hidden border border-zinc-700 hover:border-blue-500 transition-colors h-full">
+    <div className="relative h-48">
+      <Image
+        src={image}
+        alt={title}
+        layout="fill"
+        objectFit="cover"
+        className="transition-transform duration-500 hover:scale-105"
+      />
+    </div>
+    <div className="p-4">
+      <p className="text-xs text-zinc-400 mb-2">{date}</p>
+      <h3 className="text-xl font-semibold text-white mb-2">
+        {title}
+      </h3>
+      <p className="text-sm text-zinc-300">{description}</p>
+    </div>
+  </div>
+  </Link>
+);
 
 
 

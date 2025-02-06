@@ -1,14 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiTwitter, FiInstagram, FiGithub } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiYoutube } from 'react-icons/fi';
 import SparklesText from './ui/sparkles-text';
 
 const Footer = () => {
   const socialLinks = [
     { icon: <FiLinkedin className="h-5 w-5" />, href: "https://www.linkedin.com/company/dashagriv-aerospace-technology/", label: "LinkedIn" },
-    { icon: <FiTwitter className="h-5 w-5" />, href: "https://twitter.com/dashagrivaero", label: "Twitter" },
-    { icon: <FiInstagram className="h-5 w-5" />, href: "https://instagram.com/dashagrivaerospace", label: "Instagram" },
-    { icon: <FiGithub className="h-5 w-5" />, href: "https://github.com/dashagrivaero", label: "GitHub" }
+    { icon: <FiYoutube className="h-5 w-5" />, href: "https://www.youtube.com/@Dashagriv_Aerospace", label: "YouTube" }
   ];
 
   const contactInfo = [
