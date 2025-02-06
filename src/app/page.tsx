@@ -38,6 +38,7 @@ const SmoothScrollPage: FC = () => {
       >
         <Nav />
         <Hero />
+        <About />
         <Technology />
         <NewsRoomSection />
         <ParallaxShowcase />
@@ -182,6 +183,50 @@ const Hero = () => {
   );
 };
 
+
+const About = () => {
+  const decorativeElements = [...Array(20)].map((_, i) => (
+    <div
+      key={i}
+      className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
+      style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animation: `float ${10 + Math.random() * 10}s infinite`,
+        animationDelay: `${Math.random() * 5}s`
+      }}
+    />
+  ));
+  return (
+    <section id='about' className="relative py-20 bg-zinc-950 overflow-hidden">
+      {/* Decorative floating elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-40">
+        {decorativeElements}
+      </div>
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-br from-blue-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
+              About Dashagriv Aerospace
+            </h2>
+            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mb-6" />
+            <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+              India&apos;s pioneering force in stratospheric innovation, we design and manufacture 
+              state-of-the-art operational platforms that bridge the crucial gap between satellites 
+              and traditional aerial systems.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 
 const Contact = () => {
