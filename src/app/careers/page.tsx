@@ -29,53 +29,69 @@ const CareersPage = () => {
 
   const positions: Position[] = [
     {
-      id: 'aiml-engineer',
-      title: 'AI/ML Engineer',
-      type: 'fulltime',
+      id: 'aerospace-intern',
+      title: 'Aerospace Intern',
+      type: 'internship',
       location: 'Chennai',
       mode: 'Hybrid',
       department: 'Technology',
-      description: 'Join our team to develop cutting-edge AI/ML solutions for aerospace applications.',
+      description: 'Work on aerodynamics, structural design, and flight performance analysis for high-altitude platforms.',
       requirements: [
-        'Masters/PhD in Computer Science or related field',
-        '3+ years experience in machine learning',
-        'Strong Python programming skills',
-        'Experience with PyTorch or TensorFlow'
+        'Strong understanding of aerodynamics, flight mechanics, and structural analysis.',
+        'Proficiency in SolidWorks, ANSYS, or MATLAB.',
+        'Knowledge of LTA (Lighter-Than-Air) systems is a plus.',
+        'Ability to contribute to design and simulation tasks.'
       ],
-      formLink: 'https://forms.gle/4xGGWTt9A4Kf1gUR9'
+      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
     },
     {
-      id: 'cad-designer',
+      id: 'uav-intern',
       title: '3D CAD Designer',
-      type: 'fulltime',
-      location: 'Chennai',
-      mode: 'Remote',
-      department: 'Engineering',
-      description: 'Design next-generation aerospace components using advanced CAD tools.',
-      requirements: [
-        'Bachelors in Mechanical/Aerospace Engineering',
-        'Proficiency in CATIA/SolidWorks',
-        'Understanding of aerospace design principles',
-        'Experience with GD&T'
-      ],
-      formLink: 'https://forms.gle/4xGGWTt9A4Kf1gUR9'
-    },
-    {
-      id: 'intern-aerospace',
-      title: 'Aerospace Engineering Intern',
       type: 'internship',
       location: 'Chennai',
-      mode: 'On-site',
+      mode: 'hybrid',
       department: 'Engineering',
-      description: 'Learn and contribute to cutting-edge aerospace projects.',
+      description: 'Assist in UAV and drone system design, development, and flight testing.',
       requirements: [
-        'Currently pursuing B.Tech/M.Tech in Aerospace Engineering',
-        'Strong academic record',
-        'Knowledge of fluid dynamics and aerodynamics',
-        'Basic CAD skills'
+        'Experience with UAV design, propulsion systems, and autopilot integration.',
+        'Proficiency in PX4, ArduPilot, or similar platforms.',
+        'Knowledge of CAD software and flight simulation tools.',
+        'Ability to work on autonomous navigation and control systems.'
       ],
-      formLink: 'https://forms.gle/4xGGWTt9A4Kf1gUR9'
-    }
+      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
+    },
+    {
+      id: 'embedded-systems-intern',
+      title: 'Embedded Systems Intern',
+      type: 'internship',
+      location: 'Chennai',
+      mode: 'Hybrid',
+      department: 'Engineering',
+      description: 'Develop and integrate embedded firmware for avionics and autonomous systems.',
+      requirements: [
+        'Experience with microcontrollers (Pixhawk, STM32, Arduino, ESP32, etc.).',
+        'Proficiency in C/C++ and embedded system programming.',
+        'Knowledge of communication protocols (LoRa, SPI, I2C, UART).',
+        'Ability to integrate sensors and optimize real-time performance.'
+      ],
+      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
+    },
+    {
+      id: 'pcb-designer-intern',
+      title: 'PCB Designer Intern',
+      type: 'internship',
+      location: 'Chennai',
+      mode: 'Hybrid',
+      department: 'Engineering',
+      description: 'Design and develop PCB layouts for avionics and embedded systems.',
+      requirements: [
+        'Experience in PCB design using Altium Designer, KiCad, or Eagle.',
+        'Understanding of circuit design, signal integrity, and EMI/EMC considerations.',
+        'Ability to design multi-layer PCBs for embedded systems.',
+        'Knowledge of PCB manufacturing processes and component selection.'
+      ],
+      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
+    },
   ];
 
   const benefits = [
