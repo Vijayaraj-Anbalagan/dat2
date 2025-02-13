@@ -45,22 +45,6 @@ const CareersPage = () => {
       formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
     },
     {
-      id: 'uav-intern',
-      title: '3D CAD Designer',
-      type: 'internship',
-      location: 'Chennai',
-      mode: 'hybrid',
-      department: 'Engineering',
-      description: 'Assist in UAV and drone system design, development, and flight testing.',
-      requirements: [
-        'Experience with UAV design, propulsion systems, and autopilot integration.',
-        'Proficiency in PX4, ArduPilot, or similar platforms.',
-        'Knowledge of CAD software and flight simulation tools.',
-        'Ability to work on autonomous navigation and control systems.'
-      ],
-      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
-    },
-    {
       id: 'embedded-systems-intern',
       title: 'Embedded Systems Intern',
       type: 'internship',
