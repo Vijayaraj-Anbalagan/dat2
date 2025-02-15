@@ -14,6 +14,12 @@ const TeamsPage = () => {
       position: "Professor & Head of Department of Aeronautical and Aerospace Engineering, KCG College of Technology",
       linkedin: "https://www.linkedin.com/in/dr-vijayraja-kvijayraja-2627ba2a/",
       image: "/team/vijayaraja.png"
+    },{
+      name: "Dr. Anumula Swarnalatha",
+      role: "Mentor ( Avionics )",
+      position: "Assistant Professor (S.S) at KCG College of Technology, Hindustan Group",
+      linkedin:"https://www.linkedin.com/in/dr-sanagavarapu-swarnalatha-a067171a/",
+      image: "/team/swarnalatha.jpg"
     }
   ];
 
