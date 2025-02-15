@@ -17,7 +17,7 @@ const TeamsPage = () => {
     },{
       name: "Dr. Anumula Swarnalatha",
       role: "Mentor ( Avionics )",
-      position: "Assistant Professor (S.S) at KCG College of Technology, Hindustan Group",
+      position: "Assistant Professor (S.G) at KCG College of Technology, Hindustan Group",
       linkedin:"https://www.linkedin.com/in/dr-sanagavarapu-swarnalatha-a067171a/",
       image: "/team/swarnalatha.jpg"
     }
