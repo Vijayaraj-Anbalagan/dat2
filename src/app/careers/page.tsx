@@ -43,10 +43,9 @@ const CareersPage = () => {
         'Ability to contribute to design and simulation tasks.'
       ],
       formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
-    },
-    {
+    },{
       id: 'uav-intern',
-      title: '3D CAD Designer',
+      title: 'UAV Engineer',
       type: 'internship',
       location: 'Chennai',
       mode: 'hybrid',
