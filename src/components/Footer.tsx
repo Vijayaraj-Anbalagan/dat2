@@ -106,7 +106,7 @@ const Footer = () => {
         >
             <p className="text-sm text-zinc-400 mb-1">Made with ❤️ by</p>
             <a href="https://thesocialsync.in" target="_blank" rel="noopener noreferrer">
-            <SparklesText text="SocialSync" className="text-white text-4xl m-4" />
+            <SparklesText text="TheSocialSync" className="text-white text-4xl m-4" />
             </a>
           <p className="text-sm text-zinc-500">
             &copy; {new Date().getFullYear()} Dashagriv Aerospace. All rights reserved.
