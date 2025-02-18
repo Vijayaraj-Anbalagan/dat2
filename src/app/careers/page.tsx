@@ -29,21 +29,6 @@ const CareersPage = () => {
 
   const positions: Position[] = [
     {
-      id: 'aerospace-intern',
-      title: 'Aerospace Intern',
-      type: 'internship',
-      location: 'Chennai',
-      mode: 'Hybrid',
-      department: 'Technology',
-      description: 'Work on aerodynamics, structural design, and flight performance analysis for high-altitude platforms.',
-      requirements: [
-        'Strong understanding of aerodynamics, flight mechanics, and structural analysis.',
-        'Proficiency in SolidWorks, ANSYS, or MATLAB.',
-        'Knowledge of LTA (Lighter-Than-Air) systems is a plus.',
-        'Ability to contribute to design and simulation tasks.'
-      ],
-      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
-    },{
       id: 'uav-intern',
       title: 'UAV Engineer',
       type: 'internship',
