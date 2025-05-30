@@ -307,26 +307,24 @@ const NewsRoomSection = () => {
       title: "Successful Low Altitude Trials",
       date: "Jan 23, 2025",
       image: "/news/lta.jpg",
-      description:
-      "Our platform successfully completed low altitude trials, demonstrating advanced aerodynamics and endurance in near-space conditions and also  In this groundbreaking test, our AI-powered system successfully detected and tracked human presence in real-time from an altitude of 100+ feet—a testament to its precision and cutting-edge capabilities.",
-    link: "https://www.youtube.com/watch?v=5UyAUkmlnN8",   },
+      description: "Our platform completed low altitude trials with AI-powered human detection system operating successfully.",
+      link: "https://www.youtube.com/watch?v=5UyAUkmlnN8"
+    },
     {
       id: 2,
-      title: "YouTube Channel Update",
-      date: "Feb 06, 2025", // update with the current or relevant date
-      image: "/news/yt.jpg", // replace with your image path
-      description:
-        "Subscribe to our YouTube channel for the latest updates, behind-the-scenes footage, and detailed explanations of our groundbreaking projects.",
-      link: "https://www.youtube.com/@Dashagriv_Aerospace",
+      title: "Inauguration of Dashagriv Aerospace",
+      date: "April 2025",
+      image: "/news/inag.jpg",
+      description: "Official inauguration featuring MEGNATH scaled model, attended by StartupTN CEO, Airport Authority Director, and Hindustan Group Chairman.",
+      link: "https://www.linkedin.com/posts/dashagriv-aerospace-technology_dashagrivaerospace-highaltitudeplatform-activity-7312709328984002561-hm-B?utm_source=chatgpt.com"
     },
     {
       id: 3,
-      title: "Featured in LTA News by the Airship Association",
-      date: "Feb 01, 2025", // update with the correct date
-      image: "/news/lnk.jpg", // replace with your image path
-      description:
-        "Discover how our innovations are making headlines in the LTA News of the Airship Association, underscoring our leadership in aerospace technology.",
-      link: "https://www.linkedin.com/company/the-airship-association/",
+      title: "Indo-French Space-Tech Meet",
+      date: "May 2025",
+      image: "/news/indofrenchmeet.png",
+      description: "Co-founders represented Dashagriv at the Indo-French networking event to foster international collaboration in space technology.",
+      link: "https://in.linkedin.com/company/dashagriv-aerospace-technology?utm_source=chatgpt.com"
     }
   ];
 
