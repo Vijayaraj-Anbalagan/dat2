@@ -21,6 +21,11 @@ const Nav = () => {
             type: 'section',
             sectionId: 'technology'
         },
+         { 
+            name: 'Solution', 
+            type: 'page',
+            path: '/solution'
+        },
         { 
             name: 'Product', 
             type: 'page',

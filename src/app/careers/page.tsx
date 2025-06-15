@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Dialog } from '@/components/ui/dialog';
 import { TextScramble } from '@/components/ui/text-scramble';
-import { Rocket, BookOpen, Factory, X, MapPin, Clock, Users, Building2, Coffee, Target, Zap, Mail } from 'lucide-react';
+import { Rocket, BookOpen, Factory, X, MapPin, Clock, Users, Building2, Mail } from 'lucide-react';
 import Nav from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
+import Image from 'next/image';
 interface Position {
   id: string;
   title: string;
@@ -78,44 +78,44 @@ const CareersPage = () => {
     },
   ];
 
-  const benefits = [
-    {
-      icon: Clock,
-      title: 'Flexible Work Culture',
-      description: 'Design your own schedule with our flexible work policy, promoting work-life harmony',
-      color: 'from-blue-400 to-blue-600'
-    },
-    {
-      icon: Zap,
-      title: 'Learning & Growth',
-      description: 'Access to cutting-edge aerospace tech and continuous learning opportunities for personal growth',
-      color: 'from-purple-400 to-purple-600'
-    },
-    {
-      icon: Coffee,
-      title: 'Modern Workspace',
-      description: 'State-of-the-art facilities with collaborative spaces and latest equipment',
-      color: 'from-pink-400 to-pink-600'
-    },
-    {
-      icon: Target,
-      title: 'Innovation Focus',
-      description: 'Work on breakthrough aerospace technologies that shape the future',
-      color: 'from-green-400 to-green-600'
-    },
-    {
-      icon: Users,
-      title: 'Diverse Teams',
-      description: 'Collaborate with experts from various fields in a inclusive environment',
-      color: 'from-yellow-400 to-yellow-600'
-    },
-    {
-      icon: Building2,
-      title: 'Global Impact',
-      description: 'Be part of projects that revolutionize the aerospace industry worldwide',
-      color: 'from-red-400 to-red-600'
-    }
-  ];
+  // const benefits = [
+  //   {
+  //     icon: Clock,
+  //     title: 'Flexible Work Culture',
+  //     description: 'Design your own schedule with our flexible work policy, promoting work-life harmony',
+  //     color: 'from-blue-400 to-blue-600'
+  //   },
+  //   {
+  //     icon: Zap,
+  //     title: 'Learning & Growth',
+  //     description: 'Access to cutting-edge aerospace tech and continuous learning opportunities for personal growth',
+  //     color: 'from-purple-400 to-purple-600'
+  //   },
+  //   {
+  //     icon: Coffee,
+  //     title: 'Modern Workspace',
+  //     description: 'State-of-the-art facilities with collaborative spaces and latest equipment',
+  //     color: 'from-pink-400 to-pink-600'
+  //   },
+  //   {
+  //     icon: Target,
+  //     title: 'Innovation Focus',
+  //     description: 'Work on breakthrough aerospace technologies that shape the future',
+  //     color: 'from-green-400 to-green-600'
+  //   },
+  //   {
+  //     icon: Users,
+  //     title: 'Diverse Teams',
+  //     description: 'Collaborate with experts from various fields in a inclusive environment',
+  //     color: 'from-yellow-400 to-yellow-600'
+  //   },
+  //   {
+  //     icon: Building2,
+  //     title: 'Global Impact',
+  //     description: 'Be part of projects that revolutionize the aerospace industry worldwide',
+  //     color: 'from-red-400 to-red-600'
+  //   }
+  // ];
       
   const collaborationTypes = [
     {
@@ -154,58 +154,77 @@ const CareersPage = () => {
       <Nav />
 
       {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {[...Array(50)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-1 h-1 bg-blue-500/30 rounded-full animate-twinkle"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                      animationDelay: `${Math.random() * 5}s`,
-                      animationDuration: `${3 + Math.random() * 4}s`
-                    }}
-                  />
-                ))}
-              </div>
-      
-              <div className="container mx-auto px-6 relative z-10">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center max-w-4xl mx-auto"
-                >
-                  <h1 className="text-5xl md:text-6xl font-bold mb-6 mt-16">
-                    <TextScramble duration={1.2}>
-                    Join our mission to reach stratosphere
-                    </TextScramble>
-                  </h1>
-                  <p className="text-xl text-zinc-300 mb-8">
-                    Be part of India&apos;s pioneering aerospace innovation
-                  </p>
-                  <div className="flex flex-wrap gap-4 justify-center">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      className="px-8 py-3 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg"
-                      onClick={() => document.getElementById('positions')?.scrollIntoView({ behavior: 'smooth' })}
-                    >
-                      View Open Positions
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      className="px-8 py-3 bg-transparent border border-blue-500 rounded-lg hover:bg-blue-500/10"
-                      onClick={() => document.getElementById('collaborate')?.scrollIntoView({ behavior: 'smooth' })}
-                    >
-                      Collaborate With Us
-                    </motion.button>
-                  </div>
-                </motion.div>
-              </div>
-            </section>
+         <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image Layer */}
+         <div className="absolute inset-0 z-0">
+          <Image
+            src="/Career_bg.png"
+            alt="Hero background"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+        </div>
+
+  {/* Star Animation Layer */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    {[...Array(50)].map((_, i) => (
+      <div
+        key={i}
+        className="absolute w-1 h-1 bg-blue-500/30 rounded-full animate-twinkle"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${3 + Math.random() * 4}s`
+        }}
+      />
+    ))}
+  </div>
+
+  {/* Content */}
+  <div className="container mx-auto px-6 relative z-10">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="text-center max-w-4xl mx-auto"
+    >
+      <h1 className="text-5xl md:text-6xl font-bold mb-6 mt-16">
+        <TextScramble duration={1.2}>
+          Join our mission to reach stratosphere
+        </TextScramble>
+      </h1>
+      <p className="text-xl text-zinc-300 mb-8">
+        Be part of India&apos;s pioneering aerospace innovation
+      </p>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="px-8 py-3 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg"
+          onClick={() =>
+            document.getElementById('positions')?.scrollIntoView({ behavior: 'smooth' })
+          }
+        >
+          View Open Positions
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="px-8 py-3 bg-transparent border border-blue-500 rounded-lg hover:bg-blue-500/10"
+          onClick={() =>
+            document.getElementById('collaborate')?.scrollIntoView({ behavior: 'smooth' })
+          }
+        >
+          Collaborate With Us
+        </motion.button>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
+
       
 
-      {/* Benefits Section */}
+      {/* Benefits Section
       <section className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.div
@@ -245,7 +264,7 @@ const CareersPage = () => {
           </div>
         </div>
       </section>
-
+ */}
 
      
 

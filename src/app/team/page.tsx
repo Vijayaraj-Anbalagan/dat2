@@ -5,41 +5,42 @@ import { FaLinkedin } from 'react-icons/fa';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
+import Image from 'next/image';
 const TeamsPage = () => {
   const mentors = [
-    {
-      name: "Dr. Vijayraja K",
-      role: "Mentor",
-      position: "Professor & Head of Department of Aeronautical and Aerospace Engineering, KCG College of Technology",
-      linkedin: "https://www.linkedin.com/in/dr-vijayraja-kvijayraja-2627ba2a/",
-      image: "/team/vijayaraja.png"
-    },{
-      name: "Dr. Anumula Swarnalatha",
-      role: "Mentor ( Avionics )",
-      position: "Assistant Professor (S.G) at KCG College of Technology, Hindustan Group",
-      linkedin:"https://www.linkedin.com/in/dr-sanagavarapu-swarnalatha-a067171a/",
-      image: "/team/swarnalatha.jpg"
-    }
-  ];
+  {
+    name: "Dr. Vijayraja K",
+    role: "Mentor",
+    position: "Professor & Head, Aero & Aerospace, KCG Tech",
+    linkedin: "https://www.linkedin.com/in/dr-vijayraja-kvijayraja-2627ba2a/",
+    image: "/team/vijayaraja.png"
+  },
+  {
+    name: "Dr. Anumula Swarnalatha",
+    role: "Mentor (Avionics)",
+    position: "Asst. Professor (SG), KCG Tech",
+    linkedin: "https://www.linkedin.com/in/dr-sanagavarapu-swarnalatha-a067171a/",
+    image: "/team/swarnalatha.jpg"
+  }
+];
 
   const advisors = [
-    {
-      name: "Er. Asad Ahmed. R PhD",
-      role: "Advisor",
-      position: "Professor and Educator at KCG College of Technology, Hindustan Group",
-      linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
-      image: "/team/asad.png"
-    },
-    {
-      name: "Dr. S. Solai Manohar",
-      role: "Dean IEDC and Professor",
-      position: "Professor in the Department of Electrical and Electronics Engineering (EEE) and Dean of the Innovation & Entrepreneurship Development Centre at KCG College of Technology, Chennai",
-      linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
-      image: "/team/solai.jpg"
-    }
-    
-  ];
+  {
+    name: "Er. Asad Ahmed. R PhD",
+    role: "Advisor",
+    position: "Professor, KCG Tech",
+    linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
+    image: "/team/asad.png"
+  },
+  {
+    name: "Dr. S. Solai Manohar",
+    role: "Dean IEDC & Professor",
+    position: "Dean, IEDC & Professor, EEE, KCG Tech",
+    linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
+    image: "/team/solai.jpg"
+  }
+];
+
 
   const founders = [
     {
@@ -54,7 +55,7 @@ const TeamsPage = () => {
     {
       name: "Jayashree B",
       role: "Founder & COO",
-      education: "Masters in Aerospace Engineering, Coventry University",
+      education: "Coventry University",
       image: "/team/jayashree.jpg",
       links: {
         linkedin: "https://www.linkedin.com/in/jayashree-b-67950621a/"
@@ -63,7 +64,7 @@ const TeamsPage = () => {
     {
       name: "Hariharan R",
       role: "Founder & CTO",
-      education: "Masters in Aerospace Technology , Anna University (MIT)",
+      education: "Anna University (MIT)",
       image: "/team/hariharan.jpg",
       links: {
         linkedin: "https://www.linkedin.com/in/hariharan-r-4a9a3b20b/"
@@ -175,15 +176,58 @@ const TeamsPage = () => {
         ))}
       </div>
 
+      {/* Bg image and Story */}
+      <section className="relative py-20">
+     <div className="absolute inset-0 z-0">
+      <Image
+        src="/team/Team_bg.png" // replace with your image path
+        alt="Founders background"
+        fill
+        className="object-cover opacity-40"
+        priority
+      />
+    </div>
+
+  {/* Content overlay */}
+  <div className="relative z-10 container mx-auto px-6">
+    <motion.h2
+      className="text-5xl font-bold mb-8 text-center mt-24"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+    >
+      <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+        Our Story
+      </span>
+    </motion.h2>
+
+    <motion.p
+      className="text-center text-zinc-300 text-lg font-medium mb-12 max-w-7xl mx-auto"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+    >
+      Exactly two years ago, what began as a simple college project fueled by curiosity, late nights, and pure ambition has transformed into a full-fledged spacetech revolution. At the center of this journey are our co-founders — <span className="font-bold text-white">Logeshwaran, Jayashree, and Hariharan</span> — three college students who refused to see space as something out of reach.
+      With a shared dream of pushing the boundaries of aerospace innovation, we built our first prototype from scratch — not in a lab, but in our college workshop.
+      <br /><br />
+      Today, <span className="font-bold text-white">Dashagriv Aerospace</span> is proud to be <span className="font-bold text-white">India’s first dedicated HAPS spacetech startup</span>, building next-gen platforms for <span className="font-bold text-white">surveillance, Earth observation, defense, telecom, and scientific research</span> — all operating in the stratosphere.
+      <br /><br />
+      But our story is still being written — and the stratosphere is just the beginning.
+    </motion.p>
+
+
+    </div>
+  </section>
+
       {/* Founders Section */}
-      <section className="py-20">
+      <section className="py-20 mt-36">
         <div className="container mx-auto px-6">
           <motion.h2 
             className="text-4xl font-bold mb-16 text-center mt-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
           >
-            <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
               Our Founders
             </span>
           </motion.h2>

@@ -57,6 +57,7 @@ const Footer = () => {
               {[
               { name: 'About', route: false },
               { name: 'Technology', route: false },
+               { name: 'Solution', route: true },
               { name: 'Product', route: true },
               { name: 'Team', route: true },
               { name: 'Careers', route: true }

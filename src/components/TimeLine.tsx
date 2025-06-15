@@ -7,30 +7,30 @@ const Timeline = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const milestones = [
-    {
-      title: "Designed and Developed Nanosatellite",
-      date: "March 2023",
-      category: "Development",
-      image: "/cubesat.png",
-      location: "KCG Space Technology Center",
-    },
+    // {
+    //   title: "Designed and Developed Nanosatellite",
+    //   date: "March 2023",
+    //   category: "Development",
+    //   image: "/cubesat.png",
+    //   location: "KCG Space Technology Center",
+    // },
     
-    {
-      title: "CubeSat demonstration at Ground Station",
-      date: "May 2023",
-      category: "Demonstration",
-      image: "/demo.png",
-      location: "KCG Space Technology Center",
-      description: "In the presence of Dr. A.S. Kiran Kumar, Former Chairman of ISRO.",
-    },
-    {
-      title: "Presented HAPS Project",
-      date: "November 2023",
-      category: "Presentation",
-      image: "/present.png",
-      location: "KCG Space Technology Center",
-      description: "Presented to Padma Shree Dr. A. S. Sivathanu Pillai, Father of BrahMos.",
-    },
+    // {
+    //   title: "CubeSat demonstration at Ground Station",
+    //   date: "May 2023",
+    //   category: "Demonstration",
+    //   image: "/demo.png",
+    //   location: "KCG Space Technology Center",
+    //   description: "In the presence of Dr. A.S. Kiran Kumar, Former Chairman of ISRO.",
+    // },
+    // {
+    //   title: "Presented HAPS Project",
+    //   date: "November 2023",
+    //   category: "Presentation",
+    //   image: "/present.png",
+    //   location: "KCG Space Technology Center",
+    //   description: "Presented to Padma Shree Dr. A. S. Sivathanu Pillai, Father of BrahMos.",
+    // },
     {
       title: "Initial Prototype Developed",
       date: "May 2024",
@@ -45,13 +45,13 @@ const Timeline = () => {
       image: "/demohaps.png",
       location: "Testing Facility",
     },
-    {
-      title: "Incubated at KCG",
-      date: "September 2024",
-      category: "Achievement",
-      image: "",
-      location: "KCG College",
-    },
+    // {
+    //   title: "Incubated at KCG",
+    //   date: "September 2024",
+    //   category: "Achievement",
+    //   image: "",
+    //   location: "KCG College",
+    // },
     {
       title: "Joined HAPS Alliance",
       date: "November 2024",
@@ -69,6 +69,21 @@ const Timeline = () => {
     {
       title: "Low Altitude Trials",
       date: "January 2025",
+      category: "Upcoming",
+      location: "Testing Field",
+      upcoming: true,
+    },
+    {
+      title: "Mid Altitude Trials",
+      date: "August 2025",
+      category: "Upcoming",
+      location: "Testing Field",
+      upcoming: true,
+    },
+    
+     {
+      title: "High Altitude Trials",
+      date: "Januaru 2026",
       category: "Upcoming",
       location: "Testing Field",
       upcoming: true,
