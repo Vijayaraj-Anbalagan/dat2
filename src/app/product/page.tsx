@@ -24,7 +24,7 @@ const solutions = [
       'Sensor fusion support',
       'Fault-tolerant firmware architecture',
     ],
-    image: '/solutions/product-1.png',
+    image: '/solutions/Product-1.png',
   },
   {
     title: 'StratoVolt – Electrical Power System (EPS)',
@@ -37,7 +37,7 @@ const solutions = [
       'Dual battery support',
       'Integrated power distribution & load switching',
     ],
-    image: '/solutions/product-2.png',
+    image: '/solutions/Product-2.png',
   },
   {
     title: 'XS-Com – UHF Telemetry Module',
@@ -52,7 +52,7 @@ const solutions = [
       'AES-128 encryption support',
       'Ground station compatible',
     ],
-    image: '/solutions/product-3.png',
+    image: '/solutions/Product-3.png',
   },
   {
     title: 'StratoPack – Battery Power Bank',
@@ -66,7 +66,7 @@ const solutions = [
       'Custom BMS with protections',
       'JST-XH / XT60 connectors',
     ],
-    image: '/solutions/product-4.png',
+    image: '/solutions/Product-4.png',
   },
   {
     title: 'Strato-Frame – Payload Frame',
@@ -79,7 +79,7 @@ const solutions = [
       'Modular rails, stackable design',
       'Compatible with OBC, EPS, Comm',
     ],
-    image: '/solutions/product-5.png',
+    image: '/solutions/Product-5.png',
   },
 ];
 
