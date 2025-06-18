@@ -4,6 +4,20 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Nav from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Inter } from 'next/font/google';
+import { 
+  Cpu, 
+  Battery, 
+  Radio, 
+  Zap, 
+  Box,
+  CheckCircle
+} from 'lucide-react';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 type Solution = {
   title: string;
   specs: string[];
@@ -90,7 +104,7 @@ export default function ProductPage() {
     <div className="bg-black text-white px-4 ">
       <section className="relative w-full h-[90vh] overflow-hidden mb-12">
         <video
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0 brightness-150"
           src="/product-bg-vid.mp4"
           autoPlay
           muted
@@ -99,33 +113,24 @@ export default function ProductPage() {
         />
         <div className="flex flex-col items-center justify-end h-full text-center text-white px-4 backdrop-brightness-[0.5]">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 text-transparent bg-clip-text">
-            Our Stratospheric Solutions
+        Our Stratospheric Solutions
           </h2>
           <p className="text-gray-200 mt-4 max-w-2xl">
-            Explore our suite of high-altitude, plug-and-play aerospace hardware designed for mission-critical operations.
+        Explore our suite of high-altitude, plug-and-play aerospace hardware designed for mission-critical operations.
           </p>
         </div>
-      </section>
-
-      {/* Grid Wrapper */}
-      <div className="flex flex-col items-center gap-8 mt-36">
-        {/* First Row (3 Cards) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
-          {solutions.slice(0, 3).map((item, i) => (
-            <SolutionCard item={item} key={i} index={i} />
-          ))}
-        </div>
-
-        {/* Second Row (2 Cards Centered) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl">
-          {solutions.slice(3).map((item, i) => (
-            <SolutionCard item={item} key={i} index={i + 3} />
-          ))}
-        </div>
-      </div>
-
-       {/* Call to Action */}
-      <section className="py-20 mt-24 relative bg-gradient-to-r from-blue-500/10 via-violet-500/10 to-pink-500/10">
+      </section>      {/* Product Listing Section */}
+      <div className="w-full max-w-[75%] mx-auto mb-16">
+        {solutions.map((product, index) => (
+          <div key={index}>
+            <ProductRow product={product} index={index} />
+            {index < solutions.length - 1 && (
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent my-8"></div>
+            )}
+          </div>
+        ))}
+      </div>{/* Call to Action */}
+      <section className="py-20 relative bg-gradient-to-r from-blue-500/10 via-violet-500/10 to-pink-500/10">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6 text-white">
             Ready to Transform Your Operations?
@@ -147,40 +152,127 @@ export default function ProductPage() {
   );
 }
 
-function SolutionCard({ item, index }: { item: Solution; index: number }) {
+function ProductRow({ product, index }: { product: Solution; index: number }) {
+  const isEven = index % 2 === 0;
+  
+  // Icon mapping for different products
+  const getProductIcon = (title: string) => {
+    if (title.includes('Computer') || title.includes('OBC')) return <Cpu className="w-6 h-6 text-white" />;
+    if (title.includes('Power') || title.includes('EPS')) return <Zap className="w-6 h-6 text-white" />;
+    if (title.includes('Telemetry') || title.includes('Com')) return <Radio className="w-6 h-6 text-white" />;
+    if (title.includes('Battery') || title.includes('Pack')) return <Battery className="w-6 h-6 text-white" />;
+    if (title.includes('Frame')) return <Box className="w-6 h-6 text-white" />;
+    return <CheckCircle className="w-6 h-6 text-white" />;
+  };
+
+  // Dynamic image sizing based on product title
+  const getImageScale = (title: string) => {
+    if (title.includes('StratoVolt')) return 'scale-140'; // 50% increase
+    if (title.includes('XS-Com')) return 'scale-125'; // 25% increase  
+    if (title.includes('StratoPack')) return 'scale-125'; // 25% increase
+    if (title.includes('Strato-Frame')) return 'scale-115'; // 15% increase
+    return 'scale-100'; // Default size
+  };
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="bg-[#111] border border-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col"
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="flex flex-col lg:flex-row w-full"
     >
-      <div className="relative h-48 w-full">
-        <Image
-          src={item.image}
-          alt={item.title}
-          fill
-          className="object-cover"
-        />
-      </div>
-      <div className="p-6 flex flex-col flex-grow justify-between">
-        <div>
-          <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-          <ul className="text-sm text-gray-400 mb-2 space-y-1">
-            {item.specs.map((spec: string, idx: number) => (
-              <li key={idx}>• {spec}</li>
-            ))}
-          </ul>
-          <ul className="text-sm text-gray-300 space-y-1">
-            {item.features.map((feature: string, idx: number) => (
-              <li key={idx}>✓ {feature}</li>
-            ))}
-          </ul>
+      {/* Image Section */}
+      <div className={`w-full lg:w-1/2 relative group bg-black overflow-hidden ${isEven ? 'order-1' : 'order-2 lg:order-2'}`}>
+        <div className="h-full flex items-center justify-center min-h-[350px]">
+          <motion.div
+            whileHover={{ 
+              scale: 1.02
+            }}
+            transition={{ 
+              duration: 0.3,
+              ease: "easeInOut"
+            }}
+            className="relative"
+          >
+            <Image
+              src={product.image}
+              alt={product.title}
+              width={400}
+              height={300}
+              className={`max-w-full max-h-full object-contain transition-all duration-300 ${getImageScale(product.title)} group-hover:brightness-105`}
+            />
+          </motion.div>
         </div>
-       <button className="mt-6 w-full rounded-md bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 px-4 py-2 text-sm font-medium text-white shadow hover:opacity-90 transition-all">
-  Enquire Now
-</button>
+        
+        {/* Enquire Now Button - Overlapping at bottom */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+          <button className="bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 text-white px-6 py-2 font-medium transition-all duration-300 hover:bg-black hover:text-white hover:border hover:border-white hover:shadow-lg">
+            Enquire Now
+          </button>
+        </div>
+      </div>
+
+      {/* Details Section */}
+      <div className={`w-full lg:w-1/2 bg-black text-white ${isEven ? 'order-2' : 'order-1 lg:order-1'}`}>
+        <div className="h-full p-6 flex flex-col justify-start">
+          {/* Header */}
+          <div className="flex items-start gap-4 mb-4">
+            <div className="bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 p-3">
+              {getProductIcon(product.title)}
+            </div>
+            <div>
+              <h3 className={`text-2xl font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 text-transparent bg-clip-text leading-tight ${inter.className}`}>
+                {product.title}
+              </h3>
+              <div className="h-1 w-16 bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 mt-2"></div>
+            </div>
+          </div>
+
+          {/* Specifications Table */}
+          <div className="mb-4">
+            <h4 className={`text-lg font-semibold text-white mb-3 ${inter.className}`}>
+              Technical Specifications
+            </h4>
+            <div className="overflow-hidden border border-gray-700">
+              <table className="w-full">
+                <tbody>
+                  {product.specs.map((spec, idx) => {
+                    const [label, value] = spec.split(':');
+                    return (
+                      <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-900/50' : 'bg-black/50'}>
+                        <td className={`py-2 px-3 text-sm font-medium text-gray-300 border-r border-gray-700 ${inter.className}`}>
+                          {label?.trim()}
+                        </td>
+                        <td className={`py-2 px-3 text-sm text-white ${inter.className}`}>
+                          {value?.trim() || spec}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Features */}
+          <div className="mb-6">
+            <h4 className={`text-lg font-semibold text-white mb-3 ${inter.className}`}>
+              Key Features
+            </h4>
+            <div className="grid grid-cols-1 gap-2">
+              {product.features.map((feature, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <div className="bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 p-1 rounded-full">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <span className={`text-sm text-gray-300 ${inter.className}`}>
+                    {feature}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
