@@ -76,7 +76,7 @@ const Timeline = () => {
     },
     {
       title: "Pre-flight Medium Altitude Trials",
-      date: "August 2025",
+      date: "May 2025",
       category: "Achievement",
       image: "/mid-flight.jpg" ,
       location: "Testing Field",
@@ -91,7 +91,7 @@ const Timeline = () => {
     },
      {
       title: "High Altitude Trials",
-      date: "Januaru 2026",
+      date: "January 2026",
       category: "Upcoming",
       location: "Testing Field",
       upcoming: true,
