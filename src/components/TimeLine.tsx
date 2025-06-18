@@ -91,7 +91,7 @@ const Timeline = () => {
     },
      {
       title: "High Altitude Trials",
-      date: "Januaru 2026",
+      date: "January 2026",
       category: "Upcoming",
       location: "Testing Field",
       upcoming: true,
