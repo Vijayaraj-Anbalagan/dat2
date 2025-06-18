@@ -154,7 +154,7 @@ const CareersPage = () => {
       <Nav />
 
       {/* Hero Section */}
-         <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+         <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
           {/* Background Image Layer */}
          <div className="absolute inset-0 z-0">
           <Image

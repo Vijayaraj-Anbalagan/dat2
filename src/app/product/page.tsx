@@ -87,18 +87,28 @@ export default function ProductPage() {
   return (
     <>
     <Nav />
-    <div className="bg-black text-white px-4  pt-36">
-      <div className="max-w-6xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 text-transparent bg-clip-text">
-          Our Stratospheric Solutions
-        </h2>
-        <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-          Explore our suite of high-altitude, plug-and-play aerospace hardware designed for mission-critical operations.
-        </p>
-      </div>
+    <div className="bg-black text-white px-4 ">
+      <section className="relative w-full h-[90vh] overflow-hidden mb-12">
+        <video
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          src="/product-bg-vid.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="flex flex-col items-center justify-end h-full text-center text-white px-4 backdrop-brightness-[0.5]">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 text-transparent bg-clip-text">
+            Our Stratospheric Solutions
+          </h2>
+          <p className="text-gray-200 mt-4 max-w-2xl">
+            Explore our suite of high-altitude, plug-and-play aerospace hardware designed for mission-critical operations.
+          </p>
+        </div>
+      </section>
 
       {/* Grid Wrapper */}
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center gap-8 mt-36">
         {/* First Row (3 Cards) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
           {solutions.slice(0, 3).map((item, i) => (

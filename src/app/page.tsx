@@ -265,7 +265,7 @@ const LogoShowcase = () => {
   const logos = [
     // "/logo/DPIIT.png",
     "/logo/Ediit-tn-logo.png",
-    "/logo/HAPS.png",
+    "/logo/haps-alliance.png",
     "/logo/vaanam-logo.png",
     // "/logo/MSME.png",
     "/logo/IN-SPACe_Logo.png",

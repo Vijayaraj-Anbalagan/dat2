@@ -31,56 +31,64 @@ const Timeline = () => {
     //   location: "KCG Space Technology Center",
     //   description: "Presented to Padma Shree Dr. A. S. Sivathanu Pillai, Father of BrahMos.",
     // },
+    // {
+    //   title: "Initial Prototype Developed",
+    //   date: "May 2024",
+    //   category: "Development",
+    //   image: "/hapsproto.png",
+    //   location: "Testing Facility",
+    // },
     {
-      title: "Initial Prototype Developed",
-      date: "May 2024",
-      category: "Development",
-      image: "/hapsproto.png",
-      location: "Testing Facility",
-    },
-    {
-      title: "Successful SATCOM Demonstration",
+      title: "Prototype developed and Tested ",
       date: "August 2024",
       category: "Demonstration",
       image: "/demohaps.png",
       location: "Testing Facility",
     },
+    {
+      title: "Inauguration",
+      date: "September 2024",
+      category: "Achievement",
+      image: "/incubation.jpg",
+      location: "KCG College",
+    },
     // {
-    //   title: "Incubated at KCG",
-    //   date: "September 2024",
-    //   category: "Achievement",
+    //   title: "Joined HAPS Alliance",
+    //   date: "November 2024",
+    //   category: "Partnership",
     //   image: "",
-    //   location: "KCG College",
+    //   location: "Virtual Event",
     // },
-    {
-      title: "Joined HAPS Alliance",
-      date: "November 2024",
-      category: "Partnership",
-      image: "",
-      location: "Virtual Event",
-    },
-    {
-      title: "Joined The Airship Association",
-      date: "December 2024",
-      category: "Partnership",
-      image: "",
-      location: "Virtual Event",
-    },
+    // {
+    //   title: "Joined The Airship Association",
+    //   date: "December 2024",
+    //   category: "Partnership",
+    //   image: "",
+    //   location: "Virtual Event",
+    // },
     {
       title: "Low Altitude Trials",
       date: "January 2025",
-      category: "Upcoming",
+      category: "Achievement",
+      image: "/low-altitude.jpg" ,
       location: "Testing Field",
-      upcoming: true,
+      // upcoming: true,
     },
     {
+      title: "Pre-flight Medium Altitude Trials",
+      date: "August 2025",
+      category: "Achievement",
+      image: "/mid-flight.jpg" ,
+      location: "Testing Field",
+      // upcoming: true,
+    },
+     {
       title: "Mid Altitude Trials",
       date: "August 2025",
       category: "Upcoming",
       location: "Testing Field",
       upcoming: true,
     },
-    
      {
       title: "High Altitude Trials",
       date: "Januaru 2026",
@@ -98,7 +106,7 @@ const Timeline = () => {
         transition={{ ease: "easeInOut", duration: 0.75 }}
         className="text-3xl font-bold uppercase text-zinc-50 mb-2 sm:text-4xl"
       >
-        Our Journey
+        Traction
       </motion.h1>
       <motion.p
         initial={{ y: 48, opacity: 0 }}

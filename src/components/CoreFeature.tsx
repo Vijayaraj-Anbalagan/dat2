@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Layers, Zap } from 'lucide-react';
+import { ArrowRight, Code, Layers, SatelliteDish, Zap } from 'lucide-react';
 
 interface BentoGridItemProps {
   title: string;
@@ -42,7 +42,7 @@ const BentoGridItem = ({
           <p className="text-sm text-gray-400">{description}</p>
         </div>
         <div className="mt-4 flex items-center text-sm bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 ">
-          <span className="mr-1">Learn more</span>
+          {/* <span className="mr-1">Learn more</span> */}
           <ArrowRight className="size-4 transition-all duration-500 group-hover:translate-x-2" />
         </div>
       </div>
@@ -54,8 +54,8 @@ const BentoGridItem = ({
 const items = [
   {
     title: 'Stratospheric HAPS Development',
-    description: 'High-altitude platform development for advanced aerospace applications.',
-    icon: <>🛰️</>,
+    description: 'Building high-altitude platforms (HAPS) for long-endurance missions in research, surveillance, and advanced communications.',
+     icon: <SatelliteDish className="size-6" />,
     size: 'large' as const,
   },
   {
@@ -93,7 +93,7 @@ export default function BentoGrid1() {
     <div className={` bg-black px-4 mt-16`}>
       <div className="mx-auto max-w-6xl px-4 py-12 bg-black">
         <h2 className="mb-4 text-center text-4xl font-bold leading-[1.2] bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600  tracking-tighter md:text-5xl">
-          What We Do – Core Offering
+          What We Do 
         </h2>
         <p className="mx-auto mb-8 max-w-lg text-center text-lg font-medium text-gray-400">
           Explore our core stratospheric solutions built for the future.
@@ -117,7 +117,7 @@ export default function BentoGrid1() {
                   : item.size === 'medium'
                   ? 'col-span-3'
                   : 'col-span-2',
-                'h-full',
+                'h-full sm:h-[210px]',
               )}
             />
           ))}

@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+
+
 const TeamsPage = () => {
   const mentors = [
   {
@@ -21,11 +23,8 @@ const TeamsPage = () => {
     position: "Asst. Professor (SG), KCG Tech",
     linkedin: "https://www.linkedin.com/in/dr-sanagavarapu-swarnalatha-a067171a/",
     image: "/team/swarnalatha.jpg"
-  }
-];
-
-  const advisors = [
-  {
+  },
+   {
     name: "Er. Asad Ahmed. R PhD",
     role: "Advisor",
     position: "Professor, KCG Tech",
@@ -40,6 +39,23 @@ const TeamsPage = () => {
     image: "/team/solai.jpg"
   }
 ];
+
+//   const advisors = [
+//   {
+//     name: "Er. Asad Ahmed. R PhD",
+//     role: "Advisor",
+//     position: "Professor, KCG Tech",
+//     linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
+//     image: "/team/asad.png"
+//   },
+//   {
+//     name: "Dr. S. Solai Manohar",
+//     role: "Dean IEDC & Professor",
+//     position: "Dean, IEDC & Professor, EEE, KCG Tech",
+//     linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
+//     image: "/team/solai.jpg"
+//   }
+// ];
 
 
   const founders = [
@@ -78,7 +94,7 @@ const TeamsPage = () => {
         name: "Srinivasan A",
         role: "Chief Manufacturing Officer",
         linkedin: "https://www.linkedin.com/in/a-srinivasan-8a64a9297/",
-        education: "KCG Alumnus",
+        education: " ",
         image: "/team/srinivasan.jpg"
       },
       {
@@ -113,7 +129,7 @@ const TeamsPage = () => {
         name: "Sabari Balan G",
         role: "Flight System Engineer",
         linkedin: "https://www.linkedin.com/in/sabaribalan1710/",
-        education: "KCG Alumnus",
+        education: " ",
         image: "/team/sabari.png"
       }
       
@@ -189,35 +205,49 @@ const TeamsPage = () => {
     </div>
 
   {/* Content overlay */}
-  <div className="relative z-10 container mx-auto px-6">
-    <motion.h2
-      className="text-5xl font-bold mb-8 text-center mt-24"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-    >
-      <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-        Our Story
-      </span>
-    </motion.h2>
+ <div className="relative z-10 container px-6">
+    <div className="flex flex-col lg:flex-row items-start gap-12">
+      {/* Left Text Content */}
+      <div className="flex-1">
+        <motion.h2
+          className="text-5xl font-bold mb-8 text-left mt-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+            Our Story
+          </span>
+        </motion.h2>
 
-    <motion.p
-      className="text-center text-zinc-300 text-lg font-medium mb-12 max-w-7xl mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: true }}
-    >
+        <motion.p
+          className="text-left text-zinc-300 text-lg font-medium mb-12 max-w-3xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
       Exactly two years ago, what began as a simple college project fueled by curiosity, late nights, and pure ambition has transformed into a full-fledged spacetech revolution. At the center of this journey are our co-founders — <span className="font-bold text-white">Logeshwaran, Jayashree, and Hariharan</span> — three college students who refused to see space as something out of reach.
       With a shared dream of pushing the boundaries of aerospace innovation, we built our first prototype from scratch — not in a lab, but in our college workshop.
       <br /><br />
       Today, <span className="font-bold text-white">Dashagriv Aerospace</span> is proud to be <span className="font-bold text-white">India’s first dedicated HAPS spacetech startup</span>, building next-gen platforms for <span className="font-bold text-white">surveillance, Earth observation, defense, telecom, and scientific research</span> — all operating in the stratosphere.
       <br /><br />
       But our story is still being written — and the stratosphere is just the beginning.
-    </motion.p>
+     </motion.p>
+      </div>
 
-
+      {/* Right Image */}
+      {/* <div className="flex-1 mt-10 lg:mt-24">
+        <Image
+          src="/grp-img-bg.png" // change this to your actual image
+          alt="Founders"
+          width={600}
+          height={400}
+          className="rounded-2xl shadow-lg object-cover w-full h-[80vh]"
+        />
+      </div> */}
     </div>
-  </section>
+  </div>
+</section>
 
       {/* Founders Section */}
       <section className="py-20 mt-36">
@@ -269,56 +299,57 @@ const TeamsPage = () => {
         </div>
       </section>
 
-      {/* Mentors & Advisors Section */}
+      {/* Mentors & adiviory removed */}
       <section className="py-20 bg-zinc-900/50">
         <div className="container mx-auto px-6">
           {/* Mentors */}
-          <motion.div 
-            className="mb-16"
+          <motion.h2 
+            className="text-4xl font-bold mb-16 text-center mt-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
           >
-            <h2 className="text-4xl font-bold mb-12 text-center">
               <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
                 Our Mentor
               </span>
-            </h2>
+            </motion.h2>
 
-            <div className="max-w-3xl mx-auto">
-              {mentors.map((mentor) => (
-                <CardWrapper key={mentor.name} className="p-8">
-                  <div className="flex flex-col md:flex-row items-center gap-8">
-                    <div className="w-32 h-32 rounded-full overflow-hidden flex-shrink-0">
-                      <img
-                        src={mentor.image}
-                        alt={mentor.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    
-                    <div className="text-center md:text-left">
-                      <h3 className="text-2xl font-bold mb-2 text-white">
-                        {mentor.name}
-                      </h3>
-                      <p className="text-blue-400 mb-2 text-lg">{mentor.role}</p>
-                      <p className="text-zinc-400 mb-4">{mentor.position}</p>
-                      
-                      <a 
-                        href={`https://linkedin.com/in/${mentor.linkedin}`}
-                        className="inline-flex items-center gap-2 text-zinc-400 hover:text-blue-400 transition-colors"
-                      >
-                        <FaLinkedin className="w-5 h-5" />
-                        <span>Connect on LinkedIn</span>
-                      </a>
-                    </div>
+          <div className="w-full">
+          <div className="flex flex-col lg:flex-row gap-6 px-4">
+            {mentors.map((mentor, index) => (
+              <motion.div
+                key={mentor.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <CardWrapper className="w-full lg:min-w-[300px] p-6 flex flex-col items-center text-center">
+                  <div className="w-32 h-32 rounded-full overflow-hidden mb-4">
+                    <img
+                      src={mentor.image}
+                      alt={mentor.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+
+                  <h3 className="text-2xl font-bold mb-2 text-white">{mentor.name}</h3>
+                  <p className="text-blue-400 mb-2 text-lg">{mentor.role}</p>
+                  <p className="text-zinc-400 mb-4">{mentor.position}</p>
+
+                  <a
+                    href={`https://linkedin.com/in/${mentor.linkedin}`}
+                    className="inline-flex items-center gap-2 text-zinc-400 hover:text-blue-400 transition-colors"
+                  >
+                    <FaLinkedin className="w-5 h-5" />
+                    {/* <span>Connect on LinkedIn</span> */}
+                  </a>
                 </CardWrapper>
-              ))}
-            </div>
-          </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
           {/* Advisors */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
           >
@@ -359,7 +390,7 @@ const TeamsPage = () => {
                 </CardWrapper>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 
@@ -379,7 +410,7 @@ const TeamsPage = () => {
           {/* Aerospace Team */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-8 text-blue-400 text-center justify-center items-center">Aerospace Engineering Team</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 ">
               {teamMembers.aerospace.map((member, index) => (
                 <motion.div
                   key={member.name}
@@ -388,7 +419,7 @@ const TeamsPage = () => {
                   transition={{ delay: index * 0.1 }}
                 >
                   <CardWrapper>
-                    <div className="p-6 h-full">
+                    <div className="p-6 h-[320px]">
                       <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
                         <img
                           src={member.image}
@@ -403,8 +434,9 @@ const TeamsPage = () => {
                         </h3>
                         <p className="text-blue-400 mb-2">{member.role}</p>
                         {member.education && (
-                          <p className="text-zinc-400 text-sm mb-3">{member.education}</p>
-                        )}
+                          <p className="text-zinc-400 text-sm mb-3">{member.education }</p>
+                        )} 
+                       
                         
                         <a 
                           href={member.linkedin}

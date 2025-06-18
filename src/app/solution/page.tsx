@@ -7,7 +7,7 @@ import { ArrowRight, Box, Brain, Layers, Radio } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import BentoGrid1 from '@/components/CoreFeature';
-import { Case1 } from '@/components/Gallery';
+import { StaticGallery } from '@/components/Gallery';
 
 
 
@@ -17,9 +17,9 @@ const SolutionPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const featuresRef = useRef<HTMLElement>(null);
 
-  const scrollToFeatures = () => {
-    featuresRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // const scrollToFeatures = () => {
+  //   featuresRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // };
 
 
   // const metrics = [
@@ -101,21 +101,21 @@ const SolutionPage = () => {
   ];
 
   const applications = [
-    {
-      title: "Green Field Coverage",
-      description: "Extending connectivity to remote areas efficiently.",
-      image: "/applications/greenfield.jpg"
-    },
+   {
+    title: "Earth Observation",
+    description: "Remote sensing and data access in isolated areas.",
+    image: "/applications/earth-observation.jpg"
+  },
     {
       title: "Emergency Response",
       description: "Rapid deployment for disaster recovery.",
       image: "/applications/emergency.jpg"
     },
     {
-      title: "IoT Connectivity",
-      description: "Enabling wide-area IoT networks.",
-      image: "/applications/iot.jpg"
-    },
+    title: "Border Surveillance",
+    description: "Real-time monitoring with wide-area IoT coverage.",
+    image: "/applications/border-survilance.jpg"
+  },
     {
       title: "Urban Air Mobility",
       description: "Support infrastructure for future urban air transportation.",
@@ -132,9 +132,9 @@ const SolutionPage = () => {
       image: "/applications/private_networks.jpg"
     },
     {
-      title: "Temporary Event Coverage",
-      description: "Connectivity for large-scale events and gatherings.",
-      image: "/applications/event_coverage.jpg"
+      title: "Maritime Surveillance",
+      description: "Offshore tracking and vessel monitoring at scale.",
+      image: "/applications/marirtime-survilance.jpg"
     },
     {
       title: "White Spot Reduction",
@@ -154,6 +154,17 @@ const SolutionPage = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-[100vh] flex flex-col items-center justify-start pt-20 md:pt-0 md:justify-center overflow-hidden">
+             {/* Background Image Layer */}
+                 <div className="absolute inset-0 z-10">
+                  <Image
+                    src="/solutions/solution-bg1.png"
+                    alt="Hero background"
+                    fill
+                    className="object-cover opacity-40"
+                    priority
+                  />
+                </div>
+        
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/70 to-zinc-950" />
         
         {/* Text content with responsive positioning */}
@@ -196,7 +207,7 @@ const SolutionPage = () => {
             transition={{ delay: 0.4 }}
             className="mt-8"
           >
-            <motion.button
+            {/* <motion.button
               onClick={scrollToFeatures}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -204,7 +215,7 @@ const SolutionPage = () => {
                 hover:from-blue-600 hover:to-violet-600 transition-all duration-300 shadow-lg shadow-blue-500/25"
             >
               Explore Solutions
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </motion.div>
 
@@ -331,7 +342,7 @@ const SolutionPage = () => {
         </div>
       </div> */}
     </section>
-    <Case1 />
+    <StaticGallery />
 
       {/* Features Section */}
       <section ref={featuresRef} className="py-20 relative overflow-hidden">
