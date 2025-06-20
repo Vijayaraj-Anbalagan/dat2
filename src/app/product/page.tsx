@@ -101,9 +101,10 @@ export default function ProductPage() {
   return (
     <>
     <Nav />
-    <div className="bg-black text-white">      <section className="relative w-full h-[45vh] sm:h-[70vh] lg:h-[90vh] overflow-hidden mb-12">
+    <div className="bg-black text-white">     
+       <section className="relative w-full h-[45vh] sm:h-[70vh] lg:h-[100vh] overflow-hidden mb-12">
         <video
-          className="absolute inset-0 w-full h-full object-cover object-center z-0 brightness-200"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 "
           src="/product-bg-vid.mp4"
           autoPlay
           muted
@@ -111,7 +112,9 @@ export default function ProductPage() {
           playsInline
           style={{ objectPosition: 'center center' }}
         />
-        <div className="flex flex-col items-center justify-end h-full text-center text-white px-4 backdrop-brightness-[0.5]">
+        
+      </section>      {/* Product Listing Section */}
+      <div className="flex flex-col items-center justify-center h-full text-center text-white px-4 md:mt-24 backdrop-brightness-[0.5]">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 text-transparent bg-clip-text">
         Our Stratospheric Solutions
           </h2>
@@ -119,8 +122,7 @@ export default function ProductPage() {
         Explore our suite of high-altitude, plug-and-play aerospace hardware designed for mission-critical operations.
           </p>
         </div>
-      </section>      {/* Product Listing Section */}
-      <div className="w-full max-w-[95%] sm:max-w-[85%] lg:max-w-[75%] mx-auto mb-16 px-4">
+      <div className="w-full max-w-[95%] sm:max-w-[85%] lg:max-w-[75%] mx-auto mt-16 sm:mt-24 md:mt-30 mb-16 px-4">
         {solutions.map((product, index) => (
           <div key={index}>
             <ProductRow product={product} index={index} />
