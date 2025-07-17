@@ -266,7 +266,7 @@ const LogoShowcase = () => {
     // "/logo/DPIIT.png",
     "/logo/Ediit-tn-logo.png",
     "/logo/haps-alliance.png",
-    "/logo/vaanam.png",
+    // "/logo/vaanam.png",
     // "/logo/MSME.png",
     "/logo/IN-SPACe_Logo.png",
     "/logo/SI.png",

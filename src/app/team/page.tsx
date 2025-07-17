@@ -27,7 +27,7 @@ const TeamsPage = () => {
    {
     name: "Er. Asad Ahmed. R PhD",
     role: "Advisor",
-    position: "Professor, KCG Tech",
+    position: "Professor, BSA crescent",
     linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
     image: "/team/asad.png"
   },
