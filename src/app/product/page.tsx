@@ -122,7 +122,7 @@ export default function ProductPage() {
         Explore our suite of high-altitude, plug-and-play aerospace hardware designed for mission-critical operations.
           </p>
         </div>
-      <div className="w-full max-w-[95%] sm:max-w-[85%] lg:max-w-[75%] mx-auto mt-16 sm:mt-24 md:mt-30 mb-16 px-4">
+      {/* <div className="w-full max-w-[95%] sm:max-w-[85%] lg:max-w-[75%] mx-auto mt-16 sm:mt-24 md:mt-30 mb-16 px-4">
         {solutions.map((product, index) => (
           <div key={index}>
             <ProductRow product={product} index={index} />
@@ -137,7 +137,19 @@ export default function ProductPage() {
             )}
           </div>
         ))}
-      </div>{/* Call to Action */}
+      </div>Call to Action */}
+           <div className="bg-black px-4 pb-4 lg:hidden">
+          <button className="w-full bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 text-white px-6 py-2 font-medium transition-all duration-300 hover:bg-black hover:text-white hover:border hover:border-white hover:shadow-lg">
+            Enquire Now
+          </button>
+        </div>
+
+          <div className="hidden  lg:flex items-center justify-center mt-8 mb-8">
+            <button className="bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 text-white px-6 py-2 font-medium transition-all duration-300 hover:bg-black hover:text-white hover:border hover:border-white hover:shadow-lg">
+              Enquire Now
+            </button>
+          </div>
+
       <section className="py-20 relative bg-gradient-to-r from-blue-500/10 via-violet-500/10 to-pink-500/10">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6 text-white">

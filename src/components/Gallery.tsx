@@ -6,9 +6,9 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const imageList = [
   "/solutions/gallery-6.jpg",
-  "/solutions/gallery-7.jpg",
-  "/solutions/gallery-8.jpg",
-  "/solutions/gallery-1.png",
+  // "/solutions/gallery-7.jpg",
+  // "/solutions/gallery-8.jpg",
+  // "/solutions/gallery-1.png",
   "/solutions/gallery-5.jpg",
 ];
 
@@ -24,7 +24,7 @@ export const StaticGallery = () => {
 
         <div className="max-w-6xl mx-auto px-4">
           {/* First Row: 3 images */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-4">
             {imageList.slice(0, 3).map((src, index) => (
               <div
                 key={index}

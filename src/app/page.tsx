@@ -268,7 +268,7 @@ const LogoShowcase = () => {
     "/logo/haps-alliance.png",
     // "/logo/vaanam.png",
     // "/logo/MSME.png",
-    "/logo/IN-SPACe_Logo.png",
+    // "/logo/IN-SPACe_Logo.png",
     "/logo/SI.png",
     "/logo/TAA.png",
     "/logo/startup tn.png",
@@ -280,7 +280,7 @@ const LogoShowcase = () => {
       <p className="text-center text-md text-white">
         Supported and Partnered with
       </p>
-      <div className="mt-8 grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8       gap-8 items-center">
+      <div className="mt-8 grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6       gap-8 items-center">
         {logos.map((logo, index) => (
           <div
             key={`logo-${index}`}

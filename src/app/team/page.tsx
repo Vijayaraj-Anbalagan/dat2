@@ -113,7 +113,7 @@ const TeamsPage = () => {
       },
       {
         name: "Balajee E",
-        role: "Chief Design Engineer",
+        role: "Design Engineer",
         education: "MIT, Anna University",
         linkedin: "https://www.linkedin.com/in/balajee-e-a35755230/",
         image: "/team/balaji.png"
@@ -131,6 +131,20 @@ const TeamsPage = () => {
         linkedin: "https://www.linkedin.com/in/sabaribalan1710/",
         education: " ",
         image: "/team/sabari.png"
+      },
+        {
+        name: "Karpaganathn N",
+        role: "Embedded Engineer",
+        linkedin: "https://www.linkedin.com/in/karpaganathan-nagendran-5791551/",
+        education: " ",
+        image: "/team/karpagaanathan.jpg"
+      },
+        {
+        name: "Atharva Atul Gado",
+        role: "R&D advisor",
+        linkedin: "https://www.linkedin.com/in/atharva-atul-gado-516ba81b8/",
+        education: " ",
+        image: "/team/atul.jpg"
       }
       
     ],
@@ -410,46 +424,84 @@ const TeamsPage = () => {
           {/* Aerospace Team */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-8 text-blue-400 text-center justify-center items-center">Aerospace Engineering Team</h3>
-            <div className="grid md:grid-cols-3 gap-6 ">
-              {teamMembers.aerospace.map((member, index) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <CardWrapper>
-                    <div className="p-6 h-[320px]">
-                      <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      
-                      <div className="text-center">
-                        <h3 className="text-lg font-bold mb-2 text-white">
-                          {member.name}
-                        </h3>
-                        <p className="text-blue-400 mb-2">{member.role}</p>
-                        {member.education && (
-                          <p className="text-zinc-400 text-sm mb-3">{member.education }</p>
-                        )} 
-                       
-                        
-                        <a 
-                          href={member.linkedin}
-                          className="inline-flex items-center justify-center text-zinc-400 hover:text-blue-400 transition-colors"
-                        >
-                          <FaLinkedin className="w-5 h-5" />
-                        </a>
-                      </div>
-                    </div>
-                  </CardWrapper>
-                </motion.div>
-              ))}
+         <div className="space-y-12">
+  {/* First 6 in 3-column grid */}
+  <div className="grid md:grid-cols-3 gap-6">
+    {teamMembers.aerospace.slice(0, 6).map((member, index) => (
+      <motion.div
+        key={member.name}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        <CardWrapper>
+          <div className="p-6 h-[320px]">
+            <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover"
+              />
             </div>
+
+            <div className="text-center">
+              <h3 className="text-lg font-bold mb-2 text-white">{member.name}</h3>
+              <p className="text-blue-400 mb-2">{member.role}</p>
+              {member.education && (
+                <p className="text-zinc-400 text-sm mb-3">{member.education}</p>
+              )}
+              <a
+                href={member.linkedin}
+                className="inline-flex items-center justify-center text-zinc-400 hover:text-blue-400 transition-colors"
+              >
+                <FaLinkedin className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </CardWrapper>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Last 2 centered in a flex row */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 justify-center gap-6 max-w-4xl mx-auto">
+    {teamMembers.aerospace.slice(6).map((member, index) => (
+      <motion.div
+        key={member.name}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        <CardWrapper>
+          <div className="p-6 h-[320px]">
+            <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="text-center">
+              <h3 className="text-lg font-bold mb-2 text-white">{member.name}</h3>
+              <p className="text-blue-400 mb-2">{member.role}</p>
+              {member.education && (
+                <p className="text-zinc-400 text-sm mb-3">{member.education}</p>
+              )}
+              <a
+                href={member.linkedin}
+                className="inline-flex items-center justify-center text-zinc-400 hover:text-blue-400 transition-colors"
+              >
+                <FaLinkedin className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </CardWrapper>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
           </div>
 
           {/* Software Team */}
