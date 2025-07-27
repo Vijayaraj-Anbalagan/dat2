@@ -1,29 +1,29 @@
 'use client';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Nav from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Inter } from 'next/font/google';
-import { 
-  Cpu, 
-  Battery, 
-  Radio, 
-  Zap, 
-  Box,
-  CheckCircle
-} from 'lucide-react';
+// import { Inter } from 'next/font/google';
+// import { 
+//   Cpu, 
+//   Battery, 
+//   Radio, 
+//   Zap, 
+//   Box,
+//   CheckCircle
+// } from 'lucide-react';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
-type Solution = {
-  title: string;
-  specs: string[];
-  features: string[];
-  image: string;
-};
+// const inter = Inter({
+//   subsets: ['latin'],
+//   variable: '--font-inter',
+// });
+// type Solution = {
+//   title: string;
+//   specs: string[];
+//   features: string[];
+//   image: string;
+// };
 // const solutions = [
 //   {
 //     title: 'Stratocore On-Board Computer (OBC)',
