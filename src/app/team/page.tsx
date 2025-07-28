@@ -83,7 +83,7 @@ const TeamsPage = () => {
       education: "Anna University (MIT)",
       image: "/team/hariharan.jpg",
       links: {
-        linkedin: "https://www.linkedin.com/in/hariharan-r-4a9a3b20b/"
+        linkedin: "https://www.linkedin.com/in/hariharan-rajaraman/"
       }
     }
   ];
@@ -93,7 +93,7 @@ const TeamsPage = () => {
       {
         name: "Srinivasan A",
         role: "Chief Manufacturing Officer",
-        linkedin: "https://www.linkedin.com/in/a-srinivasan-8a64a9297/",
+        linkedin: "https://www.linkedin.com/in/srinivasan-arumugam16601/",
         education: " ",
         image: "/team/srinivasan.jpg"
       },
@@ -108,7 +108,7 @@ const TeamsPage = () => {
         name: "Srikanth R",
         role: "Space Vehicle Design",
         education: "Coventry University",
-        linkedin: "https://www.linkedin.com/in/srikanth-r-9974b521a/",
+        linkedin: "https://www.linkedin.com/in/srikanth-ravichandran-9974b521a/",
         image: "/team/srikanth.jpg"
       },
       {
@@ -133,9 +133,9 @@ const TeamsPage = () => {
         image: "/team/sabari.png"
       },
         {
-        name: "Karpaganathn N",
+        name: "Karpaganathan N",
         role: "Embedded Engineer",
-        linkedin: "https://www.linkedin.com/in/karpaganathan-nagendran-5791551/",
+        linkedin: "https://www.linkedin.com/in/karpaganathan-nagendran-5791551ab/",
         education: " ",
         image: "/team/karpagaanathan.jpg"
       },
@@ -143,7 +143,7 @@ const TeamsPage = () => {
         name: "Atharva Atul Gado",
         role: "R&D advisor",
         linkedin: "https://www.linkedin.com/in/atharva-atul-gado-516ba81b8/",
-        education: " ",
+        education: "University of Wisconsin-Madison",
         image: "/team/atul.jpg"
       }
       
