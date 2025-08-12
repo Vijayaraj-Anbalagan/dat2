@@ -151,21 +151,23 @@ export default function ProductPage() {
           </div>
 
       <section className="py-20 relative bg-gradient-to-r from-blue-500/10 via-violet-500/10 to-pink-500/10">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-6 text-white">
-            Ready to Transform Your Operations?
-          </h2>
-          <p className="text-zinc-400 mb-8">
-            Join us in revolutionizing near-space technology and unlock new possibilities for your mission.
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="px-8 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-white"
-          >
-            Contact Us
-          </motion.button>
-        </div>
-      </section>
+      <div className="container mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-6 text-white">
+          Ready to Transform Your Operations?
+        </h2>
+        <p className="text-zinc-400 mb-8">
+          Join us in revolutionizing near-space technology and unlock new possibilities for your mission.
+        </p>
+
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          href="mailto:info@dashagriv.in?subject=Inquiry about product"
+          className="inline-block px-8 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-white"
+        >
+          Contact Us
+        </motion.a>
+      </div>
+    </section>
       <Footer/>
     </div>
     </>

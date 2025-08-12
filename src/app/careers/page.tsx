@@ -421,12 +421,13 @@ const CareersPage = () => {
           <p className="text-zinc-400 mb-8">
             Join us in revolutionizing near-space technology and unlock new possibilities for your mission.
           </p>
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.05 }}
+            href="mailto:info@dashagriv.in?subject=Inquiry about careers"
             className="px-8 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-white"
           >
             Contact Us
-          </motion.button>
+          </motion.a>
         </div>
       </section>
       {selectedPosition && (
