@@ -31,7 +31,7 @@ const CareersPage = () => {
     {
       id: 'uav-intern',
       title: 'UAV Engineer',
-      type: 'internship',
+      type: 'fulltime',
       location: 'Chennai',
       mode: 'hybrid',
       department: 'Engineering',
@@ -47,7 +47,7 @@ const CareersPage = () => {
     {
       id: 'embedded-systems-intern',
       title: 'Embedded Systems Intern',
-      type: 'internship',
+      type: 'fulltime',
       location: 'Chennai',
       mode: 'Hybrid',
       department: 'Engineering',
@@ -63,7 +63,7 @@ const CareersPage = () => {
     {
       id: 'pcb-designer-intern',
       title: 'PCB Designer Intern',
-      type: 'internship',
+      type: 'fulltime',
       location: 'Chennai',
       mode: 'Hybrid',
       department: 'Engineering',
