@@ -29,53 +29,55 @@ const CareersPage = () => {
 
   const positions: Position[] = [
     {
-      id: 'uav-intern',
-      title: 'UAV Engineer',
+      id: 'cad-intern',
+      title: 'CAD Intern',
       type: 'fulltime',
       location: 'Chennai',
       mode: 'hybrid',
       department: 'Engineering',
-      description: 'Assist in UAV and drone system design, development, and flight testing.',
+      description: 'Support the engineering team in creating and refining 3D models, assemblies, and detailed drawings for product design and manufacturing',
       requirements: [
-        'Experience with UAV design, propulsion systems, and autopilot integration.',
-        'Proficiency in PX4, ArduPilot, or similar platforms.',
-        'Knowledge of CAD software and flight simulation tools.',
-        'Ability to work on autonomous navigation and control systems.'
+        'Basic experience with CAD software such as SolidWorks, CATIA, or Autodesk Inventor.',
+        'Understanding of engineering drawings, tolerances, and manufacturing processes.',
+        'Ability to convert conceptual sketches into accurate 3D models.',
+        'Familiarity with product lifecycle management (PLM) systems is a plus.',
+        'Strong attention to detail and willingness to learn.'
       ],
       formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
     },
     {
-      id: 'embedded-systems-intern',
-      title: 'Embedded Systems Intern',
+      id: 'cfd/feq-analysis-intern',
+      title: 'CFD/FEA Analysis Intern',
       type: 'fulltime',
       location: 'Chennai',
       mode: 'Hybrid',
       department: 'Engineering',
-      description: 'Develop and integrate embedded firmware for avionics and autonomous systems.',
+      description: 'Assist in performing Computational Fluid Dynamics (CFD) and Finite Element Analysis (FEA) to evaluate and optimize product designs for performance, strength, and efficiency',
       requirements: [
-        'Experience with microcontrollers (Pixhawk, STM32, Arduino, ESP32, etc.).',
-        'Proficiency in C/C++ and embedded system programming.',
-        'Knowledge of communication protocols (LoRa, SPI, I2C, UART).',
-        'Ability to integrate sensors and optimize real-time performance.'
+        'Basic knowledge of simulation tools such as ANSYS, COMSOL, or Abaqus.',
+        'Understanding of fluid mechanics, thermodynamics, and structural analysis fundamentals.',
+        'Ability to set up and run simulations for flow, heat transfer, and stress analysis',
+        'Familiarity with pre-processing (meshing) and post-processing of simulation results.',
+        'Strong analytical and problem-solving skills.'
       ],
       formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
     },
-    {
-      id: 'pcb-designer-intern',
-      title: 'PCB Designer Intern',
-      type: 'fulltime',
-      location: 'Chennai',
-      mode: 'Hybrid',
-      department: 'Engineering',
-      description: 'Design and develop PCB layouts for avionics and embedded systems.',
-      requirements: [
-        'Experience in PCB design using Altium Designer, KiCad, or Eagle.',
-        'Understanding of circuit design, signal integrity, and EMI/EMC considerations.',
-        'Ability to design multi-layer PCBs for embedded systems.',
-        'Knowledge of PCB manufacturing processes and component selection.'
-      ],
-      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
-    },
+    // {
+    //   id: 'pcb-designer-intern',
+    //   title: 'PCB Designer Intern',
+    //   type: 'fulltime',
+    //   location: 'Chennai',
+    //   mode: 'Hybrid',
+    //   department: 'Engineering',
+    //   description: 'Design and develop PCB layouts for avionics and embedded systems.',
+    //   requirements: [
+    //     'Experience in PCB design using Altium Designer, KiCad, or Eagle.',
+    //     'Understanding of circuit design, signal integrity, and EMI/EMC considerations.',
+    //     'Ability to design multi-layer PCBs for embedded systems.',
+    //     'Knowledge of PCB manufacturing processes and component selection.'
+    //   ],
+    //   formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
+    // },
   ];
 
   // const benefits = [
