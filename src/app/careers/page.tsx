@@ -43,7 +43,7 @@ const CareersPage = () => {
         'Familiarity with product lifecycle management (PLM) systems is a plus.',
         'Strong attention to detail and willingness to learn.'
       ],
-      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
+      formLink: 'https://forms.gle/ZTL7oGpZyJZ1EAjh8'
     },
     {
       id: 'cfd/feq-analysis-intern',
@@ -60,7 +60,7 @@ const CareersPage = () => {
         'Familiarity with pre-processing (meshing) and post-processing of simulation results.',
         'Strong analytical and problem-solving skills.'
       ],
-      formLink: 'https://docs.google.com/forms/d/e/1FAIpQLScDj30aw4NMFGLiNoqP4xHoqUFK0XO1wjKcNAJn1taei19kyg/viewform?usp=header'
+      formLink: 'https://forms.gle/ZTL7oGpZyJZ1EAjh8'
     },
     // {
     //   id: 'pcb-designer-intern',
