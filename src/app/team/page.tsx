@@ -105,6 +105,13 @@ const TeamsPage = () => {
         image: "/team/barani.jpeg"
       },
       {
+        name: "Hariharamadhavan M",
+        role: "Chief Innovation Officer",
+        education: " ",
+        linkedin: "https://www.linkedin.com/in/hariharamadhavan-m-3121b522b/",
+        image: "/team/harimahadev.png"
+      },
+      {
         name: "Srikanth R",
         role: "Space Vehicle Design",
         education: "Coventry University",
