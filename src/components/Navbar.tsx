@@ -27,11 +27,6 @@ const Nav = () => {
             path: '/solution'
         },
         { 
-            name: 'Product', 
-            type: 'page',
-            path: '/product'
-        },
-        { 
             name: 'Team', 
             type: 'page',
             path: '/team'

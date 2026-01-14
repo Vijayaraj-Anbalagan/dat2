@@ -17,27 +17,27 @@ const TeamsPage = () => {
     linkedin: "https://www.linkedin.com/in/dr-vijayraja-kvijayraja-2627ba2a/",
     image: "/team/vijayaraja.png"
   },
-  {
-    name: "Dr. Anumula Swarnalatha",
-    role: "Mentor (Avionics)",
-    position: "Asst. Professor (SG), KCG Tech",
-    linkedin: "https://www.linkedin.com/in/dr-sanagavarapu-swarnalatha-a067171a/",
-    image: "/team/swarnalatha.jpg"
-  },
-   {
-    name: "Er. Asad Ahmed. R PhD",
-    role: "Advisor",
-    position: "Professor, BSA crescent",
-    linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
-    image: "/team/asad.png"
-  },
-  {
-    name: "Dr. S. Solai Manohar",
-    role: "Dean IEDC & Professor",
-    position: "Dean, IEDC & Professor, EEE, KCG Tech",
-    linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
-    image: "/team/solai.jpg"
-  }
+  // {
+  //   name: "Dr. Anumula Swarnalatha",
+  //   role: "Mentor (Avionics)",
+  //   position: "Asst. Professor (SG), KCG Tech",
+  //   linkedin: "https://www.linkedin.com/in/dr-sanagavarapu-swarnalatha-a067171a/",
+  //   image: "/team/swarnalatha.jpg"
+  // },
+  //  {
+  //   name: "Er. Asad Ahmed. R PhD",
+  //   role: "Advisor",
+  //   position: "Professor, BSA crescent",
+  //   linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
+  //   image: "/team/asad.png"
+  // },
+  // {
+  //   name: "Dr. S. Solai Manohar",
+  //   role: "Dean IEDC & Professor",
+  //   position: "Dean, IEDC & Professor, EEE, KCG Tech",
+  //   linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
+  //   image: "/team/solai.jpg"
+  // }
 ];
 
 //   const advisors = [
@@ -80,7 +80,7 @@ const TeamsPage = () => {
     {
       name: "Hariharan R",
       role: "Founder & CTO",
-      education: "Anna University (MIT)",
+      education: "University of Leicester",
       image: "/team/hariharan.jpg",
       links: {
         linkedin: "https://www.linkedin.com/in/hariharan-rajaraman/"
@@ -328,7 +328,7 @@ const TeamsPage = () => {
             </motion.h2>
 
           <div className="w-full">
-          <div className="flex flex-col lg:flex-row gap-6 px-4">
+          <div className="flex flex-col lg:flex-row justify-center gap-6 px-4">
             {mentors.map((mentor, index) => (
               <motion.div
                 key={mentor.name}
