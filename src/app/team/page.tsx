@@ -31,13 +31,6 @@ const TeamsPage = () => {
   //   linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
   //   image: "/team/asad.png"
   // },
-  // {
-  //   name: "Dr. S. Solai Manohar",
-  //   role: "Dean IEDC & Professor",
-  //   position: "Dean, IEDC & Professor, EEE, KCG Tech",
-  //   linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
-  //   image: "/team/solai.jpg"
-  // }
 ];
 
 //   const advisors = [
@@ -48,13 +41,6 @@ const TeamsPage = () => {
 //     linkedin: "https://www.linkedin.com/in/er-asad-ahmed-r-phd-85965911/",
 //     image: "/team/asad.png"
 //   },
-//   {
-//     name: "Dr. S. Solai Manohar",
-//     role: "Dean IEDC & Professor",
-//     position: "Dean, IEDC & Professor, EEE, KCG Tech",
-//     linkedin: "https://www.linkedin.com/in/dr-s-solai-manohar-61917a19a/",
-//     image: "/team/solai.jpg"
-//   }
 // ];
 
 
