@@ -31,16 +31,15 @@ const HeroBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
+    if (videoRef.current) {
       const playVideo = () => {
-        if (video) {
-          video.play().catch(() => console.log('Autoplay prevented'));
+        if (videoRef.current) {
+          videoRef.current.play().catch(() => console.log('Autoplay prevented'));
         }
       };
-      video.addEventListener('loadeddata', playVideo);
+      videoRef.current.addEventListener('loadeddata', playVideo);
       return () => {
-        if (video) video.removeEventListener('loadeddata', playVideo);
+        if (videoRef.current) videoRef.current.removeEventListener('loadeddata', playVideo);
       };
     }
   }, []);
