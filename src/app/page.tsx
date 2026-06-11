@@ -66,37 +66,48 @@ const Hero = () => {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center pt-20">
       <HeroBackground />
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
-        <motion.p 
-          className="eyebrow mb-6"
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="relative px-8 py-12 md:px-16 md:py-20 w-full mb-12"
+        >
+          
+          <motion.p 
+            className="eyebrow mb-6 tracking-[0.25em] text-zinc-400 font-medium"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Dashagriv Aerospace
+          </motion.p>
+          
+          <motion.h1 
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold uppercase tracking-tight leading-tight text-white mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            Pioneering the<br />Near Space Frontier
+          </motion.h1>
+          
+          <motion.p 
+            className="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto font-body leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            High-Altitude Platform Systems (HAPS) engineered for next-generation stratospheric operations.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, delay: 0.6 }}
         >
-          Dashagriv Aerospace
-        </motion.p>
-        <motion.h1 
-          className="text-5xl md:text-7xl lg:text-9xl font-display font-bold uppercase tracking-tighter leading-none mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.1 }}
-        >
-          Redefining<br />Near Space
-        </motion.h1>
-        <motion.p 
-          className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          High-Altitude Platform Systems (HAPS) for next-generation stratospheric applications.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-        >
-          <button className="ghost-btn" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+          <button className="solid-btn" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
             Discover More
           </button>
         </motion.div>
@@ -125,27 +136,34 @@ const Contact = () => {
   return (
     <section id="contact" className="py-32 bg-zinc-950 border-t border-white/10 text-white">
       <div className="container mx-auto px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-display uppercase tracking-tight mb-12">Get In Touch</h2>
-          <form className="space-y-6 text-left">
-            <input
-              type="text"
-              placeholder="NAME"
-              className="w-full px-4 py-3 bg-transparent border-b border-white/20 focus:border-white outline-none transition-colors font-display uppercase text-sm"
-            />
-            <input
-              type="email"
-              placeholder="EMAIL"
-              className="w-full px-4 py-3 bg-transparent border-b border-white/20 focus:border-white outline-none transition-colors font-display uppercase text-sm"
-            />
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="eyebrow mb-4">Connection</p>
+            <h2 className="text-4xl md:text-5xl font-display uppercase tracking-tight">Get In Touch</h2>
+          </div>
+          <form className="space-y-8 text-left">
+            <div className="grid md:grid-cols-2 gap-8">
+              <input
+                type="text"
+                placeholder="NAME"
+                className="w-full px-4 py-3 bg-transparent border-b border-white/20 focus:border-white outline-none transition-colors font-display uppercase text-sm"
+              />
+              <input
+                type="email"
+                placeholder="EMAIL"
+                className="w-full px-4 py-3 bg-transparent border-b border-white/20 focus:border-white outline-none transition-colors font-display uppercase text-sm"
+              />
+            </div>
             <textarea
               placeholder="MESSAGE"
               rows={4}
               className="w-full px-4 py-3 bg-transparent border-b border-white/20 focus:border-white outline-none transition-colors font-display uppercase text-sm resize-none"
             />
-            <button className="ghost-btn w-full mt-8">
-              Send Message
-            </button>
+            <div className="pt-8">
+              <button className="solid-btn w-full py-4">
+                Send Message
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -167,16 +185,17 @@ const LogoShowcase = () => {
     <section className="py-24 bg-black border-t border-white/10">
       <div className="container mx-auto px-6">
         <p className="eyebrow text-center mb-12">Supported and Partnered with</p>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60">
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
           {logos.map((logo, index) => (
-            <Image
-              key={index}
-              src={logo}
-              alt={`Partner ${index + 1}`}
-              width={120}
-              height={60}
-              className="object-contain filter grayscale brightness-200"
-            />
+            <div key={index} className="transition-all duration-300 ease-in-out hover:scale-105">
+              <Image
+                src={logo}
+                alt={`Partner ${index + 1}`}
+                width={120}
+                height={60}
+                className="object-contain cursor-pointer filter grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-in-out"
+              />
+            </div>
           ))}
         </div>
       </div>

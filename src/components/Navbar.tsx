@@ -43,7 +43,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className={`fixed left-0 right-0 top-0 z-[100] transition-colors duration-300 ${scrolled ? "bg-black/90 backdrop-blur-md border-b border-white/10" : "bg-transparent"}`}>
+    <nav className={`fixed left-0 right-0 top-[44px] z-[100] transition-colors duration-300 ${scrolled ? "bg-black/90 backdrop-blur-md border-b border-white/10" : "bg-transparent"}`}>
       <div className="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl">
         <motion.div
           className="relative cursor-pointer flex items-center gap-2"

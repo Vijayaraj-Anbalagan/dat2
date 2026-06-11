@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AnnouncementTicker from "@/components/AnnouncementTicker";
 
 export const metadata: Metadata = {
   title: "Dashagriv Aerospace Technology",
@@ -13,9 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
-      </head>
+      <head />
       <body className={`font-body antialiased bg-black text-white`}>
+        <AnnouncementTicker />
         {children}
       </body>
     </html>

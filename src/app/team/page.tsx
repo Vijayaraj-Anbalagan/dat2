@@ -4,6 +4,7 @@ import { FaLinkedin } from 'react-icons/fa';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const TeamsPage = () => {
   const mentors = [
@@ -111,18 +112,23 @@ const TeamsPage = () => {
         </div>
 
         <div className="relative z-10 container px-6 mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="eyebrow mb-4">Our Story</p>
-            <h1 className="text-5xl md:text-7xl font-display uppercase font-bold tracking-tighter mb-8">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-3xl"
+          >
+            <p className="eyebrow mb-4 tracking-[0.25em] text-zinc-400 font-medium">Our Story</p>
+            <h1 className="text-4xl md:text-6xl font-display uppercase font-bold tracking-tight leading-tight text-white mb-6">
               The People<br/>Behind The Mission
             </h1>
-            <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+            <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-body">
               Exactly two years ago, what began as a simple college project fueled by curiosity, late nights, and pure ambition has transformed into a full-fledged spacetech revolution.
             </p>
-            <p className="text-zinc-400 text-lg leading-relaxed">
+            <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-body">
               Today, <strong className="text-white font-normal">Dashagriv Aerospace</strong> is proud to be India&apos;s first dedicated HAPS spacetech startup, building next-gen platforms for surveillance, Earth observation, defense, telecom, and scientific research.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -144,7 +150,7 @@ const TeamsPage = () => {
             <p className="eyebrow mb-4">Guidance</p>
             <h2 className="text-4xl md:text-5xl font-display uppercase tracking-tight">Mentor</h2>
           </div>
-          <div className="max-w-md">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {mentors.map((mentor, idx) => <ProfileCard key={idx} member={mentor} />)}
           </div>
         </div>
@@ -160,23 +166,65 @@ const TeamsPage = () => {
             {teamMembers.aerospace.map((member, idx) => <ProfileCard key={idx} member={member} />)}
           </div>
 
-          <h3 className="text-2xl font-display uppercase tracking-wide mb-10 text-white">Software & Data</h3>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-20">
-            {teamMembers.software.map((member, idx) => <ProfileCard key={idx} member={member} />)}
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-20">
-            <div>
-               <h3 className="text-2xl font-display uppercase tracking-wide mb-10 text-white">Technical</h3>
-               <div className="grid grid-cols-1 gap-6">
-                 {teamMembers.technical.map((member, idx) => <ProfileCard key={idx} member={member} />)}
-               </div>
+          <div className="flex gap-6 mb-20">
+            {/* Software & Data */}
+            <div className="flex flex-col flex-[2]">
+              <h3 className="text-2xl font-display uppercase tracking-wide mb-6 text-white border-b border-white/10 pb-4">Software &amp; Data</h3>
+              <div className="grid grid-cols-2 gap-6">
+                {teamMembers.software.map((member, idx) => (
+                  <div key={idx} className="flex flex-col border border-white/10 p-6 bg-zinc-950 group hover:bg-zinc-900 transition-colors">
+                    <div className="relative aspect-square w-full mb-6 overflow-hidden bg-black">
+                      <Image src={member.image || "/team/avatar.png"} alt={member.name} layout="fill" objectFit="cover" className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                    </div>
+                    <div className="text-left flex-1 flex flex-col">
+                      <h3 className="text-xl font-display uppercase tracking-wide mb-1">{member.name}</h3>
+                      <p className="eyebrow mb-2">{member.role}</p>
+                      <p className="text-zinc-500 text-sm mb-4 flex-1">{member.education || '\u00A0'}</p>
+                      <a href={member.linkedin} className="text-zinc-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><FaLinkedin className="w-5 h-5" /></a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div>
-               <h3 className="text-2xl font-display uppercase tracking-wide mb-10 text-white">Operations</h3>
-               <div className="grid grid-cols-1 gap-6">
-                 {teamMembers.operations.map((member, idx) => <ProfileCard key={idx} member={member} />)}
-               </div>
+
+            {/* Technical */}
+            <div className="flex flex-col flex-1">
+              <h3 className="text-2xl font-display uppercase tracking-wide mb-6 text-white border-b border-white/10 pb-4">Technical</h3>
+              <div className="flex flex-col gap-6">
+                {teamMembers.technical.map((member, idx) => (
+                  <div key={idx} className="flex flex-col border border-white/10 p-6 bg-zinc-950 group hover:bg-zinc-900 transition-colors">
+                    <div className="relative aspect-square w-full mb-6 overflow-hidden bg-black">
+                      <Image src={member.image || "/team/avatar.png"} alt={member.name} layout="fill" objectFit="cover" className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                    </div>
+                    <div className="text-left flex-1 flex flex-col">
+                      <h3 className="text-xl font-display uppercase tracking-wide mb-1">{member.name}</h3>
+                      <p className="eyebrow mb-2">{member.role}</p>
+                      <p className="text-zinc-500 text-sm mb-4 flex-1">{member.education || '\u00A0'}</p>
+                      <a href={member.linkedin} className="text-zinc-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><FaLinkedin className="w-5 h-5" /></a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Operations */}
+            <div className="flex flex-col flex-1">
+              <h3 className="text-2xl font-display uppercase tracking-wide mb-6 text-white border-b border-white/10 pb-4">Operations</h3>
+              <div className="flex flex-col gap-6">
+                {teamMembers.operations.map((member, idx) => (
+                  <div key={idx} className="flex flex-col border border-white/10 p-6 bg-zinc-950 group hover:bg-zinc-900 transition-colors">
+                    <div className="relative aspect-square w-full mb-6 overflow-hidden bg-black">
+                      <Image src={member.image || "/team/avatar.png"} alt={member.name} layout="fill" objectFit="cover" className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                    </div>
+                    <div className="text-left flex-1 flex flex-col">
+                      <h3 className="text-xl font-display uppercase tracking-wide mb-1">{member.name}</h3>
+                      <p className="eyebrow mb-2">{member.role}</p>
+                      <p className="text-zinc-500 text-sm mb-4 flex-1">{member.education || '\u00A0'}</p>
+                      <a href={member.linkedin} className="text-zinc-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"><FaLinkedin className="w-5 h-5" /></a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

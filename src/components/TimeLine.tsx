@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Timeline = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
 
   const milestones = [
     {
@@ -69,6 +70,9 @@ const Timeline = () => {
           {milestones.map((milestone, index) => (
             <TimelineItem 
               key={index} 
+              index={index}
+              isActive={index === activeItemIndex}
+              onVisible={(idx) => setActiveItemIndex(idx)}
               {...milestone} 
               onImageClick={(image) => setSelectedImage(image)}
             />
@@ -110,6 +114,9 @@ const Timeline = () => {
 };
 
 interface TimelineItemProps {
+  index: number;
+  isActive: boolean;
+  onVisible: (index: number) => void;
   title: string;
   date: string;
   category: string;
@@ -120,6 +127,9 @@ interface TimelineItemProps {
 }
 
 const TimelineItem: React.FC<TimelineItemProps> = ({
+  index,
+  isActive,
+  onVisible,
   title,
   date,
   category,
@@ -128,10 +138,43 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   upcoming,
   onImageClick,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (upcoming || !image) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          onVisible(index);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -35% 0px",
+        threshold: 0,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [index, upcoming, image, onVisible]);
+
+  const imageVariants = {
+    grayscale: { filter: "grayscale(100%)", opacity: 0.7 },
+    color: { filter: "grayscale(0%)", opacity: 1 },
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
       className={`border-t border-white/10 py-8 ${upcoming ? "opacity-50" : ""}`}
     >
@@ -146,16 +189,23 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           
           {!upcoming && image && (
             <div 
-              className="relative aspect-video w-full max-w-2xl cursor-pointer overflow-hidden group bg-zinc-900"
+              className="relative aspect-video w-full max-w-2xl cursor-pointer overflow-hidden bg-zinc-900"
               onClick={() => onImageClick(image)}
             >
-              <Image
-                src={image}
-                alt={title}
-                layout="fill"
-                objectFit="cover"
-                className="grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-              />
+              <motion.div
+                variants={imageVariants}
+                animate={isActive ? "color" : "grayscale"}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={image}
+                  alt={title}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </motion.div>
             </div>
           )}
         </div>
