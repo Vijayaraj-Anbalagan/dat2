@@ -1,13 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
-import {
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiLinkedin,
-  FiYoutube,
-} from "react-icons/fi";
-import SparklesText from "./ui/sparkles-text";
+import { FiLinkedin, FiYoutube } from "react-icons/fi";
 
 const Footer = () => {
   const socialLinks = [
@@ -23,39 +15,21 @@ const Footer = () => {
     },
   ];
 
-  const contactInfo = [
-    { icon: <FiMail className="h-5 w-5" />, text: "info@dashagriv.in" },
-    { icon: <FiPhone className="h-5 w-5" />, text: "+91 63824 97619" },
-    {
-      icon: <FiMapPin className="h-5 w-5" />,
-      text: "Chennai, Tamil Nadu, India",
-    },
-  ];
-
   return (
-    <footer className="bg-zinc-900/50 border-t border-zinc-800">
-      <div className="mx-auto max-w-5xl px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Company Info */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-lg font-semibold text-zinc-50 mb-4">
-              Dashagriv Aerospace
-            </h3>
-            <p className="text-sm text-zinc-400 mb-4">
-              India&apos;s first company pioneering stratospheric platforms for
-              near-space applications, revolutionizing aerospace technology
-              through innovation and dedication.
+    <footer className="bg-black border-t border-white/10 pt-16 pb-8">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 mb-16">
+          <div className="lg:col-span-2">
+            <h3 className="eyebrow mb-6">Dashagriv Aerospace</h3>
+            <p className="text-zinc-400 text-sm max-w-sm mb-6 leading-relaxed">
+              India&apos;s first company pioneering stratospheric platforms for near-space applications.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="text-zinc-500 hover:text-blue-400 transition-colors"
+                  className="text-zinc-500 hover:text-white transition-colors"
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -64,93 +38,37 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Quick Links */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <h3 className="text-lg font-semibold text-zinc-50 mb-4">
-              Quick Links
-            </h3>
-            <ul className="space-y-2">
-              {[
-                { name: "About", route: false },
-                { name: "Technology", route: false },
-                { name: "Solution", route: true },
-                { name: "Team", route: true },
-                { name: "Careers", route: true },
-              ].map((item, index) => (
-                <li key={index}>
+          <div>
+            <h3 className="eyebrow mb-6">Navigation</h3>
+            <ul className="space-y-4">
+              {["Solution", "Team", "Careers"].map((item) => (
+                <li key={item}>
                   <a
-                    href={
-                      item.route
-                        ? `/${item.name.toLowerCase()}`
-                        : `#${item.name.toLowerCase()}`
-                    }
-                    className="text-sm text-zinc-400 hover:text-zinc-300 transition-colors"
-                    onClick={(e) => {
-                      if (!item.route) {
-                        e.preventDefault();
-                        document
-                          .querySelector(`#${item.name.toLowerCase()}`)
-                          ?.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
+                    href={`/${item.toLowerCase()}`}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors"
                   >
-                    {item.name}
+                    {item}
                   </a>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h3 className="text-lg font-semibold text-zinc-50 mb-4">Contact</h3>
-            <ul className="space-y-3">
-              {contactInfo.map((info, index) => (
-                <li
-                  key={index}
-                  className="flex items-center space-x-2 text-sm text-zinc-400 hover:text-blue-400 transition-colors"
-                >
-                  {info.icon}
-                  <span>{info.text}</span>
-                </li>
-              ))}
+          <div>
+            <h3 className="eyebrow mb-6">Contact</h3>
+            <ul className="space-y-4 text-sm text-zinc-400">
+              <li>info@dashagriv.in</li>
+              <li>+91 63824 97619</li>
+              <li>Chennai, Tamil Nadu, India</li>
             </ul>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Made with Love & Copyright */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 pt-8 border-t border-zinc-800 text-center"
-        >
-          <p className="text-sm text-zinc-400 mb-1">Made with ❤️ by</p>
-          <a
-            href="https://thesocialsync.in"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <SparklesText
-              text="SocialSync"
-              className="text-white text-4xl m-4"
-            />
-          </a>
-          <p className="text-sm text-zinc-500">
-            &copy; {new Date().getFullYear()} Dashagriv Aerospace. All rights
-            reserved.
-          </p>
-        </motion.div>
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-zinc-600">
+          <p>&copy; {new Date().getFullYear()} Dashagriv Aerospace. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );

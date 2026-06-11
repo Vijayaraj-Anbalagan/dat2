@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const imageList = [
   "/solutions/gallery-6.jpg",
-  // "/solutions/gallery-7.jpg",
-  // "/solutions/gallery-8.jpg",
-  // "/solutions/gallery-1.png",
   "/solutions/gallery-5.jpg",
 ];
 
@@ -17,43 +14,27 @@ export const StaticGallery = () => {
 
   return (
     <>
-      <section className="w-full py-16 bg-black text-white">
-        <h2 className="mb-12 text-center text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 md:text-5xl">
-          Redefining Aerospace Intelligence with Dashagriv Tools
-        </h2>
+      <section className="w-full py-32 bg-black border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-20 text-center">
+            <p className="eyebrow mb-4">Gallery</p>
+            <h2 className="text-4xl md:text-5xl font-display uppercase tracking-tight text-white">
+              Visuals
+            </h2>
+          </div>
 
-        <div className="max-w-6xl mx-auto px-4">
-          {/* First Row: 3 images */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-4">
-            {imageList.slice(0, 3).map((src, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {imageList.map((src, index) => (
               <div
                 key={index}
-                className="relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer"
+                className="relative aspect-video overflow-hidden cursor-pointer group bg-zinc-900 border border-white/10"
                 onClick={() => setZoomImage(src)}
               >
                 <Image
                   src={src}
                   alt={`Gallery image ${index + 1}`}
                   fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Second Row: 2 images, centered on larger screens, stacked on mobile */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            {imageList.slice(3).map((src, index) => (
-              <div
-                key={index}
-                className="relative aspect-[4/3] w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33%-1rem)] max-w-[300px] mx-auto sm:mx-0 rounded-lg overflow-hidden cursor-pointer"
-                onClick={() => setZoomImage(src)}
-              >
-                <Image
-                  src={src}
-                  alt={`Gallery image ${index + 4}`}
-                  fill
-                  className="object-cover"
+                  className="object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 />
               </div>
             ))}
@@ -61,11 +42,11 @@ export const StaticGallery = () => {
         </div>
       </section>
 
-      {/* Zoom Dialog */}
       <Dialog open={!!zoomImage} onOpenChange={() => setZoomImage(null)}>
-        <DialogContent className="w-full h-[90vh] max-w-5xl p-4 bg-black">
+        <DialogContent className="max-w-6xl w-full h-[80vh] p-0 bg-black border border-white/10" aria-describedby="Zoomed Image">
+          <DialogTitle className="sr-only">Zoomed Image</DialogTitle>
           {zoomImage && (
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full p-4">
               <Image
                 src={zoomImage}
                 alt="Zoomed image"
