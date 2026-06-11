@@ -10,8 +10,9 @@ export default {
   theme: {
   extend: {
       fontFamily: {
-        display: ['Rajdhani', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
         body: ['Manrope', 'sans-serif'],
+        rajdhani: ['Rajdhani', 'sans-serif'],
       },
   colors: {
   background: 'hsl(var(--background))',

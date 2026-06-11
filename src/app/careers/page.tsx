@@ -102,17 +102,22 @@ const CareersPage = () => {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="eyebrow mb-6">Careers</p>
-            <h1 className="text-5xl md:text-7xl font-display uppercase font-bold tracking-tighter mb-8">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-3xl"
+          >
+            <p className="eyebrow mb-4 tracking-[0.25em] text-zinc-400 font-medium">Careers</p>
+            <h1 className="text-4xl md:text-6xl font-display uppercase font-bold tracking-tight leading-tight text-white mb-6">
               Join Our Mission To<br/>The Stratosphere
             </h1>
-            <p className="text-xl text-zinc-400 mb-10">
+            <p className="text-base md:text-lg text-zinc-400 mb-10 font-body">
               Be part of India&apos;s pioneering aerospace innovation.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
-                className="ghost-btn bg-white text-black"
+                className="solid-btn"
                 onClick={() => document.getElementById('positions')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 View Positions
@@ -124,7 +129,7 @@ const CareersPage = () => {
                 Collaborate
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -264,7 +269,7 @@ const CareersPage = () => {
                 href={selectedPosition.formLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ghost-btn bg-white text-black text-center block w-full py-4"
+                className="solid-btn text-center block w-full py-4"
               >
                 Apply Now
               </a>

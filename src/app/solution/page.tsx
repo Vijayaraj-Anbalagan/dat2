@@ -80,17 +80,18 @@ const SolutionPage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80 z-10" />
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="container mx-auto px-6 relative z-20 text-center"
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="container mx-auto px-6 relative z-20 text-center max-w-4xl"
         >
-          <p className="eyebrow mb-6">Capabilities</p>
-          <h1 className="text-5xl md:text-8xl font-display uppercase font-bold tracking-tighter mb-8">
-            Stratospheric<br/>Solutions
-          </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            Revolutionizing near-space operations with cutting-edge HAPS technology.
-          </p>
+          <p className="eyebrow mb-6 tracking-[0.25em] text-zinc-400 font-medium">Capabilities</p>
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display uppercase font-bold tracking-tight leading-tight text-white mb-8">
+              Stratospheric<br/>Solutions
+            </h1>
+            <p className="text-base md:text-lg text-zinc-400 max-w-xl mx-auto font-body leading-relaxed">
+              Revolutionizing near-space operations with cutting-edge HAPS technology.
+            </p>
         </motion.div>
       </section>
 
