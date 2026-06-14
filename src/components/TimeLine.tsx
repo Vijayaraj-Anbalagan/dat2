@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
-import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { motion } from "framer-motion";
+import { X } from "lucide-react";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 const Timeline = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -9,7 +9,7 @@ const Timeline = () => {
 
   const milestones = [
     {
-      title: "Prototype developed and Tested",
+      title: "Prototype Developed and Tested",
       date: "August 2024",
       category: "Demonstration",
       image: "/demohaps.png",
@@ -26,34 +26,38 @@ const Timeline = () => {
       title: "Low Altitude Trials",
       date: "January 2025",
       category: "Achievement",
-      image: "/low-altitude.jpg" ,
+      image: "/low-altitude.jpg",
       location: "Testing Field",
     },
     {
       title: "Pre-flight Medium Altitude Trials",
       date: "May 2025",
       category: "Achievement",
-      image: "/mid-flight.jpg" ,
+      image: "/mid-flight.jpg",
       location: "Testing Field",
     },
-     {
-      title: "Mid Altitude Trials",
-      date: "August 2025",
-      category: "Upcoming",
-      location: "Testing Field",
-      upcoming: true,
+    {
+      title: "Mid-Sea Stratospheric Airship Trial",
+      date: "April 2026",
+      category: "Breakthrough",
+      image: "/trials.png", // ← Add this image from your media
+      location:
+        "Off Nagapattinam Coast — with Indian Coast Guard & Indian Navy",
     },
-     {
-      title: "High Altitude Trials",
-      date: "January 2026",
+    {
+      title: "Stratospheric Operations",
+      date: "2026–2027",
       category: "Upcoming",
-      location: "Testing Field",
+      location: "Target: 18–20 km altitude",
       upcoming: true,
     },
   ];
 
   return (
-    <section id="company-journey" className="relative bg-black border-t border-white/10 mx-auto w-full px-6 py-32 text-white">
+    <section
+      id="company-journey"
+      className="relative bg-black border-t border-white/10 mx-auto w-full px-6 py-32 text-white"
+    >
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -68,12 +72,12 @@ const Timeline = () => {
 
         <div className="space-y-0">
           {milestones.map((milestone, index) => (
-            <TimelineItem 
-              key={index} 
+            <TimelineItem
+              key={index}
               index={index}
               isActive={index === activeItemIndex}
               onVisible={(idx) => setActiveItemIndex(idx)}
-              {...milestone} 
+              {...milestone}
               onImageClick={(image) => setSelectedImage(image)}
             />
           ))}
@@ -152,7 +156,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       {
         rootMargin: "-35% 0px -35% 0px",
         threshold: 0,
-      }
+      },
     );
 
     if (ref.current) {
@@ -180,15 +184,21 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     >
       <div className="grid md:grid-cols-4 gap-8 items-start">
         <div className="md:col-span-1">
-          <p className="text-sm font-display uppercase tracking-widest text-zinc-500 mb-2">{date}</p>
-          <p className="eyebrow">{category} / {location}</p>
+          <p className="text-sm font-display uppercase tracking-widest text-zinc-500 mb-2">
+            {date}
+          </p>
+          <p className="eyebrow">
+            {category} / {location}
+          </p>
         </div>
-        
+
         <div className="md:col-span-3">
-          <h3 className="text-2xl font-display uppercase tracking-wide mb-6">{title}</h3>
-          
+          <h3 className="text-2xl font-display uppercase tracking-wide mb-6">
+            {title}
+          </h3>
+
           {!upcoming && image && (
-            <div 
+            <div
               className="relative aspect-video w-full max-w-2xl cursor-pointer overflow-hidden bg-zinc-900"
               onClick={() => onImageClick(image)}
             >

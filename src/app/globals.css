@@ -4,25 +4,25 @@
 @tailwind utilities;
 
 @layer base {
-  :root { 
-    --background: 0 0% 0%; 
-    --foreground: 0 0% 100%; 
-    --card: 0 0% 5%; 
-    --card-foreground: 0 0% 100%; 
-    --popover: 0 0% 5%; 
-    --popover-foreground: 0 0% 100%; 
-    --primary: 0 0% 100%; 
-    --primary-foreground: 0 0% 0%; 
-    --secondary: 0 0% 15%; 
-    --secondary-foreground: 0 0% 100%; 
-    --muted: 0 0% 15%; 
-    --muted-foreground: 0 0% 64%; 
-    --accent: 0 0% 15%; 
-    --accent-foreground: 0 0% 100%; 
-    --destructive: 0 84.2% 60.2%; 
-    --destructive-foreground: 0 0% 98%; 
-    --border: 0 0% 15%; 
-    --input: 0 0% 15%; 
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
     --ring: 0 0% 83.1%;
     --radius: 0rem;
   }
@@ -35,7 +35,12 @@
   body {
     @apply bg-background text-foreground;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display tracking-tight uppercase;
   }
 }
@@ -45,11 +50,15 @@
   .eyebrow {
     @apply text-[10px] sm:text-xs font-display uppercase tracking-widest text-zinc-400;
   }
+
   .ghost-btn {
-    @apply px-6 py-2 border border-white bg-white text-black font-display uppercase tracking-widest text-sm hover:bg-transparent hover:text-white transition-colors duration-300 rounded-full;
+    @apply px-6 py-2 border border-white/40 bg-transparent text-white font-display uppercase tracking-widest text-sm hover:border-white hover:bg-white hover:text-black transition-colors duration-300 rounded-full cursor-pointer;
   }
   .solid-btn {
-    @apply px-6 py-2 border border-white bg-white text-black font-display uppercase tracking-widest text-sm hover:bg-transparent hover:text-white transition-colors duration-300 rounded-full;
+    @apply px-6 py-2 border border-white bg-white text-black font-display uppercase tracking-widest text-sm hover:bg-transparent hover:text-white transition-colors duration-300 rounded-full cursor-pointer;
+  }
+  .kicker {
+    @apply text-[9px] font-display uppercase tracking-[0.3em] text-zinc-600;
   }
 }
 
@@ -143,13 +152,28 @@ body {
   animation: ticker-pulse 3s ease-in-out infinite;
 }
 
+:root {
+  --ticker-h: 44px;
+}
+
+.ticker-gone {
+  --ticker-h: 0px;
+}
+
 @keyframes ticker-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 6px 2px rgba(255,255,255,0.3); }
-  50%       { opacity: 0.4; box-shadow: 0 0 2px 1px rgba(255,255,255,0.1); }
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.1);
+  }
 }
 
 .ticker-label-text {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -157,39 +181,8 @@ body {
   white-space: nowrap;
 }
 
-/* Centre marquee — capped at 25% width, centered */
-.ticker-marquee-wrap {
-  width: 25%;
-  max-width: 25%;
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.ticker-fade-left,
-.ticker-fade-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.ticker-fade-left  { left: 0;  background: linear-gradient(to right, #000, transparent); }
-.ticker-fade-right { right: 0; background: linear-gradient(to left,  #000, transparent); }
-
-.ticker-track {
-  display: flex;
-  white-space: nowrap;
-  animation: ticker-scroll 25s linear infinite;
-}
-
 .ticker-text {
-  font-family: var(--font-body, 'Manrope', sans-serif);
+  font-family: var(--font-body, "Manrope", sans-serif);
   font-size: 11px;
   letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.45);
@@ -198,24 +191,17 @@ body {
 
 .ticker-text strong {
   color: rgba(255, 255, 255, 0.85);
-  font-weight: 600;
-}
-
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
 }
 
 /* Right CTA */
 .ticker-cta {
-  display: flex;
   align-items: center;
   gap: 4px;
   padding: 0 16px;
   border-left: 1px solid rgba(255, 255, 255, 0.08);
   flex-shrink: 0;
   height: 100%;
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
   font-size: 9px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -237,21 +223,3 @@ body {
 .ticker-cta:hover .ticker-arrow {
   transform: translateX(3px);
 }
-
-/* Reduced-motion fallback */
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track      { animation: none; }
-  .ticker-dot        { animation: none; }
-  .ticker-fade-left,
-  .ticker-fade-right { display: none; }
-}
-
-/* Mobile: widen marquee on small screens */
-@media (max-width: 768px) {
-  .ticker-marquee-wrap {
-    width: 50%;
-    max-width: 50%;
-  }
-}
-
-

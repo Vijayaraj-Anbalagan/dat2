@@ -2,12 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
 
-const imageList = [
-  "/solutions/gallery-6.jpg",
-  "/solutions/gallery-5.jpg",
-];
+const imageList = ["/solutions/gallery-6.jpg", "/solutions/gallery-5.jpg"];
 
 export const StaticGallery = () => {
   const [zoomImage, setZoomImage] = useState<string | null>(null);
@@ -42,21 +40,60 @@ export const StaticGallery = () => {
         </div>
       </section>
 
-      <Dialog open={!!zoomImage} onOpenChange={() => setZoomImage(null)}>
-        <DialogContent className="max-w-6xl w-full h-[80vh] p-0 bg-black border border-white/10" aria-describedby="Zoomed Image">
-          <DialogTitle className="sr-only">Zoomed Image</DialogTitle>
-          {zoomImage && (
-            <div className="relative w-full h-full p-4">
-              <Image
-                src={zoomImage}
-                alt="Zoomed image"
-                fill
-                className="object-contain"
-              />
+      {/*
+       * ── FIX: Custom overlay instead of Radix Dialog.
+       *
+       * Problem: Radix DialogContent has z-50. Our Navbar is z-[100] and
+       * the AnnouncementTicker is z-[200]. So the navbar overlapped the
+       * dialog's built-in X button at top-4 right-4, making it unclickable.
+       *
+       * Solution: Use the same manual overlay pattern as TimeLine.tsx.
+       * z-[300] sits above ticker (z-200) and navbar (z-100).
+       * The close button is positioned relative to the IMAGE, not the
+       * top of the viewport — so it's always visible and reachable.
+       */}
+      <AnimatePresence>
+        {zoomImage && (
+          <motion.div
+            key="gallery-zoom"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            /* Clicking the dark backdrop closes the zoom */
+            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 p-6"
+            onClick={() => setZoomImage(null)}
+          >
+            <div
+              className="relative max-w-6xl w-full"
+              /* Stop clicks on the image block from propagating to the backdrop */
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button — sits just above the image, always visible */}
+              <button
+                onClick={() => setZoomImage(null)}
+                aria-label="Close image"
+                className="absolute -top-10 right-0 flex items-center gap-2 text-white/50 hover:text-white transition-colors group"
+              >
+                <span className="text-[10px] font-display uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                  Close
+                </span>
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Image */}
+              <div className="relative aspect-video w-full overflow-hidden">
+                <Image
+                  src={zoomImage}
+                  alt="Enlarged view"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
-          )}
-        </DialogContent>
-      </Dialog>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

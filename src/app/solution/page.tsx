@@ -1,10 +1,94 @@
-'use client';
-import React from "react";
+"use client";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Nav from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { StaticGallery } from "@/components/Gallery";
+import StatsSection from "@/components/StatsSection";
+
+// ─── ApplicationCard ─────────────────────────────────────────────────────────
+//
+// On DESKTOP: hover-based color activation (same as before).
+// On MOBILE:  viewport-based color activation via IntersectionObserver.
+//             When the card enters the viewport (threshold 55%), it colorizes
+//             and reveals the description. When it leaves, it reverts.
+//
+interface AppData {
+  title: string;
+  description: string;
+  image: string;
+}
+
+function ApplicationCard({ app, index }: { app: AppData; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile once on mount + on resize
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // IntersectionObserver tracks when the card is in the viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.55 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Only apply inView state on mobile — on desktop, CSS group-hover handles it
+  const mobileActive = isMobile && inView;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="relative group aspect-square overflow-hidden bg-black"
+    >
+      <Image
+        src={app.image}
+        alt={app.title}
+        fill
+        /*
+         * Base state: grayscale + dim.
+         * Desktop hover: CSS group-hover overrides.
+         * Mobile in-view: inline style overrides (higher specificity than class).
+         */
+        className="object-cover grayscale opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+        style={
+          mobileActive
+            ? { filter: "grayscale(0%)", opacity: 1, transform: "scale(1.05)" }
+            : {}
+        }
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+      <div className="absolute bottom-0 left-0 p-8 w-full">
+        <h3 className="text-xl font-display uppercase tracking-wide mb-2">
+          {app.title}
+        </h3>
+        <p
+          className="text-sm text-zinc-400 transition-all duration-500 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0"
+          style={mobileActive ? { opacity: 1, transform: "translateY(0)" } : {}}
+        >
+          {app.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 const SolutionPage = () => {
   const applications = [
@@ -56,17 +140,33 @@ const SolutionPage = () => {
   ];
 
   const features = [
-    { title: 'Stratospheric HAPS Development', description: 'Building high-altitude platforms for long-endurance missions in research, surveillance, and advanced communications.' },
-    { title: 'Payload Hosting Services (HaaS)', description: 'Host your payloads on our stratospheric platforms with plug-and-play ease.' },
-    { title: 'Stratospheric Subsystems', description: 'Reliable integration-ready subsystems for HAPS-based missions.' },
-    { title: 'Flight Data & Planning', description: 'Advanced software suite for mission planning and flight data analytics.' }
+    {
+      title: "Stratospheric HAPS Development",
+      description:
+        "Building high-altitude platforms for long-endurance missions in research, surveillance, and advanced communications.",
+    },
+    {
+      title: "Payload Hosting Services (HaaS)",
+      description:
+        "Host your payloads on our stratospheric platforms with plug-and-play ease.",
+    },
+    {
+      title: "Stratospheric Subsystems",
+      description:
+        "Reliable integration-ready subsystems for HAPS-based missions.",
+    },
+    {
+      title: "Flight Data & Planning",
+      description:
+        "Advanced software suite for mission planning and flight data analytics.",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-black text-white relative">
       <Nav />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -78,35 +178,51 @@ const SolutionPage = () => {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80 z-10" />
-
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           className="container mx-auto px-6 relative z-20 text-center max-w-4xl"
         >
-          <p className="eyebrow mb-6 tracking-[0.25em] text-zinc-400 font-medium">Capabilities</p>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display uppercase font-bold tracking-tight leading-tight text-white mb-8">
-              Stratospheric<br/>Solutions
-            </h1>
-            <p className="text-base md:text-lg text-zinc-400 max-w-xl mx-auto font-body leading-relaxed">
-              Revolutionizing near-space operations with cutting-edge HAPS technology.
-            </p>
+          <p className="eyebrow mb-6 tracking-[0.25em] text-zinc-400 font-medium">
+            Capabilities
+          </p>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display uppercase font-bold tracking-tight leading-tight text-white mb-8">
+            Stratospheric
+            <br />
+            Solutions
+          </h1>
+          <p className="text-base md:text-lg text-zinc-400 max-w-xl mx-auto font-body leading-relaxed">
+            Revolutionizing near-space operations with cutting-edge HAPS
+            technology.
+          </p>
         </motion.div>
       </section>
 
+      {/* What We Do */}
       <section className="py-32 bg-black border-t border-white/10">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-24">
             <p className="eyebrow mb-4">Core Systems</p>
-            <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight">What We Do</h2>
+            <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight">
+              What We Do
+            </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10">
             {features.map((feature, index) => (
-              <div key={index} className="bg-black p-12 group hover:bg-zinc-900 transition-colors">
-                <div className="text-zinc-600 font-display text-xl mb-6 group-hover:text-white transition-colors">0{index + 1}</div>
-                <h3 className="text-2xl font-display uppercase mb-4">{feature.title}</h3>
-                <p className="text-zinc-400 leading-relaxed">{feature.description}</p>
+              <div
+                key={index}
+                className="bg-black p-12 group hover:bg-zinc-900 transition-colors"
+              >
+                <div className="text-zinc-600 font-display text-xl mb-6 group-hover:text-white transition-colors">
+                  0{index + 1}
+                </div>
+                <h3 className="text-2xl font-display uppercase mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-zinc-400 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -114,52 +230,34 @@ const SolutionPage = () => {
       </section>
 
       <StaticGallery />
+      <StatsSection />
 
-      {/* Applications Section */}
+      {/* Applications — uses ApplicationCard with mobile viewport coloring */}
       <section className="py-32 bg-zinc-950 border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
             <p className="eyebrow mb-4">Deployments</p>
-            <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight">Applications</h2>
+            <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight">
+              Applications
+            </h2>
           </div>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {applications.map((app, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="relative group aspect-square overflow-hidden bg-black"
-              >
-                <Image
-                  src={app.image}
-                  alt={app.title}
-                  fill
-                  className="object-cover grayscale opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8 w-full">
-                  <h3 className="text-xl font-display uppercase tracking-wide mb-2">
-                    {app.title}
-                  </h3>
-                  <p className="text-sm text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0 transform">
-                    {app.description}
-                  </p>
-                </div>
-              </motion.div>
+              <ApplicationCard key={index} app={app} index={index} />
             ))}
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-32 bg-black text-center border-t border-white/10">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight mb-8">
             Ready to Transform Your Operations?
           </h2>
           <p className="text-zinc-400 mb-12 max-w-xl mx-auto">
-            Join us in revolutionizing near-space technology and unlock new possibilities.
+            Join us in revolutionizing near-space technology and unlock new
+            possibilities.
           </p>
           <a
             href="mailto:info@dashagriv.in?subject=Inquiry about solutions"
@@ -169,7 +267,7 @@ const SolutionPage = () => {
           </a>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

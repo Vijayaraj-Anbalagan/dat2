@@ -1,3 +1,15 @@
+"use client";
+/**
+ * Navbar.tsx — only change from original:
+ *
+ * `top-[44px]` is replaced with `style={{ top: 'var(--ticker-h, 44px)' }}`
+ * so the nav automatically slides up when the ticker is dismissed.
+ *
+ * AnnouncementTicker adds `.ticker-gone` to <html> on close.
+ * globals.css maps that class to  --ticker-h: 0px;
+ * The `transition-[top]` class on <nav> animates it smoothly.
+ */
+
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -29,12 +41,16 @@ const Nav = () => {
       if (pathname !== "/") {
         await router.push("/");
         setTimeout(() => {
-          if (item.sectionId) {
-            if (item.sectionId) document.getElementById(item.sectionId)?.scrollIntoView({ behavior: "smooth" });
-          }
+          if (item.sectionId)
+            document
+              .getElementById(item.sectionId)
+              ?.scrollIntoView({ behavior: "smooth" });
         }, 100);
       } else {
-        if (item.sectionId) document.getElementById(item.sectionId)?.scrollIntoView({ behavior: "smooth" });
+        if (item.sectionId)
+          document
+            .getElementById(item.sectionId)
+            ?.scrollIntoView({ behavior: "smooth" });
       }
     } else if (item.path) {
       router.push(item.path);
@@ -43,7 +59,15 @@ const Nav = () => {
   };
 
   return (
-    <nav className={`fixed left-0 right-0 top-[44px] z-[100] transition-colors duration-300 ${scrolled ? "bg-black/90 backdrop-blur-md border-b border-white/10" : "bg-transparent"}`}>
+    // ── KEY CHANGE: style top uses CSS variable set by AnnouncementTicker ──
+    <nav
+      style={{ top: "var(--ticker-h, 44px)" }}
+      className={`fixed left-0 right-0 z-[100] transition-[top] duration-300 ${
+        scrolled
+          ? "bg-black/90 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent"
+      }`}
+    >
       <div className="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl">
         <motion.div
           className="relative cursor-pointer flex items-center gap-2"
@@ -76,17 +100,18 @@ const Nav = () => {
         </div>
 
         <div className="hidden md:block">
-          <button
-            onClick={() => (window.location.href = "tel:+916382497619")}
-            className="ghost-btn"
-          >
+          <a href="mailto:info@dashagriv.in" className="ghost-btn">
             Contact
-          </button>
+          </a>
         </div>
 
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
-            {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+            {isOpen ? (
+              <FiX className="w-6 h-6" />
+            ) : (
+              <FiMenu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>
@@ -97,7 +122,7 @@ const Nav = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black border-b border-white/10"
+            className="md:hidden bg-black border-b border-white/10 overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-6">
               {menuItems.map((item, index) => (
@@ -113,12 +138,12 @@ const Nav = () => {
                   {item.name}
                 </button>
               ))}
-              <button
-                onClick={() => (window.location.href = "tel:+916382497619")}
+              <a
+                href="mailto:info@dashagriv.in"
                 className="ghost-btn w-max mt-4"
               >
                 Contact
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

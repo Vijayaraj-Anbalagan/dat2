@@ -1,108 +1,140 @@
-'use client';
+"use client";
 
-import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-import { ArrowRight, Code, Layers, SatelliteDish, Zap } from 'lucide-react';
+import { motion } from "framer-motion";
+import { SatelliteDish, Zap, Layers, Code, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import React from "react";
+
+// ─── Types ─────────────────────────────────────────────
 
 interface BentoGridItemProps {
   title: string;
   description: string;
   icon: React.ReactNode;
+  size: "large" | "medium" | "small";
   className?: string;
-  size?: 'small' | 'medium' | 'large';
 }
 
-const BentoGridItem = ({
+// ─── Individual card ────────────────────────────────────
+
+const BentoGridItem: React.FC<BentoGridItemProps> = ({
   title,
   description,
   icon,
   className,
-}: BentoGridItemProps) => {
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 25 } },
+}) => {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   return (
     <motion.div
-      variants={variants}
+      variants={itemVariants}
       className={cn(
-        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border border-gray-700 bg-[#0e0e0e] px-6 pb-10 pt-6 shadow-md transition-all duration-500 hover:border-gray-500',
+        "group relative overflow-hidden border-0 bg-black p-10 transition-colors duration-300 hover:bg-zinc-900",
         className,
       )}
     >
-      <div className="absolute -right-1/2 top-0 z-0 size-full bg-[linear-gradient(to_right,#3d16165e_1px,transparent_1px),linear-gradient(to_bottom,#3d16165e_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      {/* Subtle grid texture */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:28px_28px]" />
 
+      {/* Content */}
       <div className="relative z-10 flex h-full flex-col justify-between text-white">
         <div>
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-white text-xl shadow shadow-gray-900 transition-all duration-500 group-hover:bg-gray-700 group-hover:shadow-gray-800">
+          {/* Icon container */}
+          <div className="mb-8 inline-flex h-10 w-10 items-center justify-center border border-white/10 text-zinc-400 transition-colors duration-300 group-hover:border-white/30 group-hover:text-white">
             {icon}
           </div>
-          <h3 className="mb-2 text-xl font-semibold tracking-tight">{title}</h3>
-          <p className="text-sm text-gray-400">{description}</p>
+
+          <h3 className="mb-3 font-display text-xl uppercase tracking-wide text-white leading-tight">
+            {title}
+          </h3>
+          <p className="text-sm text-zinc-500 leading-relaxed group-hover:text-zinc-400 transition-colors duration-300">
+            {description}
+          </p>
         </div>
-        <div className="mt-4 flex items-center text-sm bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 ">
-          {/* <span className="mr-1">Learn more</span> */}
-          <ArrowRight className="size-4 transition-all duration-500 group-hover:translate-x-2" />
+
+        {/* Arrow */}
+        <div className="mt-8">
+          <ArrowRight className="h-4 w-4 text-zinc-700 transition-all duration-300 group-hover:translate-x-1 group-hover:text-zinc-400" />
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-indigo-500 to-indigo-400/30 blur-2xl transition-all duration-500 group-hover:blur-lg" />
+
+      {/* Bottom edge sweep on hover */}
+      <div className="absolute bottom-0 left-0 h-px w-0 bg-white/30 transition-all duration-500 ease-out group-hover:w-full" />
     </motion.div>
   );
 };
 
+// ─── Data ────────────────────────────────────────────────
+
 const items = [
   {
-    title: 'Stratospheric HAPS Development',
-    description: 'Building high-altitude platforms (HAPS) for long-endurance missions in research, surveillance, and advanced communications.',
-     icon: <SatelliteDish className="size-6" />,
-    size: 'large' as const,
+    title: "Stratospheric HAPS Development",
+    description:
+      "Building high-altitude platform systems for long-endurance missions in research, surveillance, and advanced communications — operating at 18–20 km.",
+    icon: <SatelliteDish className="h-5 w-5" />,
+    size: "large" as const,
   },
   {
-    title: 'Payload Hosting Services (HaaS)',
-    description: 'Host your payloads on our stratospheric platforms with plug-and-play ease.',
-    icon: <Zap className="size-6" />,
-    size: 'small' as const,
+    title: "Payload Hosting Services (HaaS)",
+    description:
+      "Deploy your sensors and payloads on our stratospheric platforms with plug-and-play integration.",
+    icon: <Zap className="h-5 w-5" />,
+    size: "small" as const,
   },
   {
-    title: 'Stratospheric Subsystems',
-    description: 'Reliable integration-ready subsystems for HAPS-based missions.',
-    icon: <Layers className="size-6" />,
-    size: 'medium' as const,
+    title: "Stratospheric Subsystems",
+    description:
+      "Reliable, integration-ready subsystems purpose-built for HAPS-based missions.",
+    icon: <Layers className="h-5 w-5" />,
+    size: "medium" as const,
   },
   {
-    title: 'Flight Data & Planning Software',
-    description: 'Advanced software suite for mission planning and flight data analytics.',
-    icon: <Code className="size-6" />,
-    size: 'medium' as const,
+    title: "Flight Data & Planning Software",
+    description:
+      "Advanced software suite for mission planning, real-time telemetry, and flight data analytics.",
+    icon: <Code className="h-5 w-5" />,
+    size: "medium" as const,
   },
 ];
 
-export default function BentoGrid1() {
+// ─── Grid ────────────────────────────────────────────────
+
+export default function CoreFeature() {
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
       },
     },
   };
 
   return (
-    <div className={` bg-black px-4 mt-16`}>
-      <div className="mx-auto max-w-6xl px-4 py-12 bg-black">
-        <h2 className="mb-4 text-center text-4xl font-bold leading-[1.2] bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600  tracking-tighter md:text-5xl">
-          What We Do 
-        </h2>
-        <p className="mx-auto mb-8 max-w-lg text-center text-lg font-medium text-gray-400">
-          Explore our core stratospheric solutions built for the future.
-        </p>
+    <section className="bg-black py-32 border-t border-white/10">
+      <div className="mx-auto max-w-6xl px-6">
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <p className="eyebrow mb-4">Core Systems</p>
+          <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight text-white">
+            What We Do
+          </h2>
+        </div>
+
+        {/* Bento grid */}
         <motion.div
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-6"
+          className="grid grid-cols-1 gap-px bg-white/10 border border-white/10 sm:grid-cols-2 md:grid-cols-6"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
         >
           {items.map((item, i) => (
             <BentoGridItem
@@ -112,17 +144,17 @@ export default function BentoGrid1() {
               icon={item.icon}
               size={item.size}
               className={cn(
-                item.size === 'large'
-                  ? 'col-span-4'
-                  : item.size === 'medium'
-                  ? 'col-span-3'
-                  : 'col-span-2',
-                'h-full sm:h-[210px]',
+                item.size === "large"
+                  ? "md:col-span-4"
+                  : item.size === "medium"
+                    ? "md:col-span-3"
+                    : "md:col-span-2",
+                "min-h-[200px]",
               )}
             />
           ))}
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
