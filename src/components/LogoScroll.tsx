@@ -1,7 +1,6 @@
 import React from "react";
 
 function LogoScroll() {
-  
   const logos = [
     "/logo/DPIIT.png",
     "/logo/HAPS.png",
@@ -10,12 +9,15 @@ function LogoScroll() {
     "/logo/TAA.png",
     "/logo/TS.png",
     "/logo/kcg.png",
-
-  ]
+    "/logo/kiet.png",
+  ];
 
   return (
     <div className="logo-scroll-container mt-96">
-    <p className="text-center text-md mt-4 text-white"> Supported and Partnered with </p>
+      <p className="text-center text-md mt-4 text-white">
+        {" "}
+        Supported and Partnered with{" "}
+      </p>
       <div className="logo-scroll">
         <div className="logo-track">
           {logos.map((logo, index) => (

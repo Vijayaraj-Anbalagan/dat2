@@ -2,58 +2,37 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
 
-const imageList = [
-  "/solutions/gallery-6.jpg",
-  // "/solutions/gallery-7.jpg",
-  // "/solutions/gallery-8.jpg",
-  // "/solutions/gallery-1.png",
-  "/solutions/gallery-5.jpg",
-];
+const imageList = ["/solutions/gallery-6.jpg", "/solutions/gallery-5.jpg"];
 
 export const StaticGallery = () => {
   const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   return (
     <>
-      <section className="w-full py-16 bg-black text-white">
-        <h2 className="mb-12 text-center text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-pink-600 md:text-5xl">
-          Redefining Aerospace Intelligence with Dashagriv Tools
-        </h2>
+      <section className="w-full py-32 bg-black border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-20 text-center">
+            <p className="eyebrow mb-4">Gallery</p>
+            <h2 className="text-4xl md:text-5xl font-display uppercase tracking-tight text-white">
+              Visuals
+            </h2>
+          </div>
 
-        <div className="max-w-6xl mx-auto px-4">
-          {/* First Row: 3 images */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-4">
-            {imageList.slice(0, 3).map((src, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {imageList.map((src, index) => (
               <div
                 key={index}
-                className="relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer"
+                className="relative aspect-video overflow-hidden cursor-pointer group bg-zinc-900 border border-white/10"
                 onClick={() => setZoomImage(src)}
               >
                 <Image
                   src={src}
                   alt={`Gallery image ${index + 1}`}
                   fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Second Row: 2 images, centered on larger screens, stacked on mobile */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            {imageList.slice(3).map((src, index) => (
-              <div
-                key={index}
-                className="relative aspect-[4/3] w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33%-1rem)] max-w-[300px] mx-auto sm:mx-0 rounded-lg overflow-hidden cursor-pointer"
-                onClick={() => setZoomImage(src)}
-              >
-                <Image
-                  src={src}
-                  alt={`Gallery image ${index + 4}`}
-                  fill
-                  className="object-cover"
+                  className="object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 />
               </div>
             ))}
@@ -61,21 +40,60 @@ export const StaticGallery = () => {
         </div>
       </section>
 
-      {/* Zoom Dialog */}
-      <Dialog open={!!zoomImage} onOpenChange={() => setZoomImage(null)}>
-        <DialogContent className="w-full h-[90vh] max-w-5xl p-4 bg-black">
-          {zoomImage && (
-            <div className="relative w-full h-full">
-              <Image
-                src={zoomImage}
-                alt="Zoomed image"
-                fill
-                className="object-contain"
-              />
+      {/*
+       * ── FIX: Custom overlay instead of Radix Dialog.
+       *
+       * Problem: Radix DialogContent has z-50. Our Navbar is z-[100] and
+       * the AnnouncementTicker is z-[200]. So the navbar overlapped the
+       * dialog's built-in X button at top-4 right-4, making it unclickable.
+       *
+       * Solution: Use the same manual overlay pattern as TimeLine.tsx.
+       * z-[300] sits above ticker (z-200) and navbar (z-100).
+       * The close button is positioned relative to the IMAGE, not the
+       * top of the viewport — so it's always visible and reachable.
+       */}
+      <AnimatePresence>
+        {zoomImage && (
+          <motion.div
+            key="gallery-zoom"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            /* Clicking the dark backdrop closes the zoom */
+            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 p-6"
+            onClick={() => setZoomImage(null)}
+          >
+            <div
+              className="relative max-w-6xl w-full"
+              /* Stop clicks on the image block from propagating to the backdrop */
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button — sits just above the image, always visible */}
+              <button
+                onClick={() => setZoomImage(null)}
+                aria-label="Close image"
+                className="absolute -top-10 right-0 flex items-center gap-2 text-white/50 hover:text-white transition-colors group"
+              >
+                <span className="text-[10px] font-display uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                  Close
+                </span>
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Image */}
+              <div className="relative aspect-video w-full overflow-hidden">
+                <Image
+                  src={zoomImage}
+                  alt="Enlarged view"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
-          )}
-        </DialogContent>
-      </Dialog>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

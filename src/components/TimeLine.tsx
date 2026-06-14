@@ -1,45 +1,15 @@
-import { motion } from 'framer-motion';
-import { MapPin, X } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import { X } from "lucide-react";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 const Timeline = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
 
   const milestones = [
-    // {
-    //   title: "Designed and Developed Nanosatellite",
-    //   date: "March 2023",
-    //   category: "Development",
-    //   image: "/cubesat.png",
-    //   location: "KCG Space Technology Center",
-    // },
-    
-    // {
-    //   title: "CubeSat demonstration at Ground Station",
-    //   date: "May 2023",
-    //   category: "Demonstration",
-    //   image: "/demo.png",
-    //   location: "KCG Space Technology Center",
-    //   description: "In the presence of Dr. A.S. Kiran Kumar, Former Chairman of ISRO.",
-    // },
-    // {
-    //   title: "Presented HAPS Project",
-    //   date: "November 2023",
-    //   category: "Presentation",
-    //   image: "/present.png",
-    //   location: "KCG Space Technology Center",
-    //   description: "Presented to Padma Shree Dr. A. S. Sivathanu Pillai, Father of BrahMos.",
-    // },
-    // {
-    //   title: "Initial Prototype Developed",
-    //   date: "May 2024",
-    //   category: "Development",
-    //   image: "/hapsproto.png",
-    //   location: "Testing Facility",
-    // },
     {
-      title: "Prototype developed and Tested ",
+      title: "Prototype Developed and Tested",
       date: "August 2024",
       category: "Demonstration",
       image: "/demohaps.png",
@@ -52,102 +22,85 @@ const Timeline = () => {
       image: "/incubation.jpg",
       location: "KCG College",
     },
-    // {
-    //   title: "Joined HAPS Alliance",
-    //   date: "November 2024",
-    //   category: "Partnership",
-    //   image: "",
-    //   location: "Virtual Event",
-    // },
-    // {
-    //   title: "Joined The Airship Association",
-    //   date: "December 2024",
-    //   category: "Partnership",
-    //   image: "",
-    //   location: "Virtual Event",
-    // },
     {
       title: "Low Altitude Trials",
       date: "January 2025",
       category: "Achievement",
-      image: "/low-altitude.jpg" ,
+      image: "/low-altitude.jpg",
       location: "Testing Field",
-      // upcoming: true,
     },
     {
       title: "Pre-flight Medium Altitude Trials",
       date: "May 2025",
       category: "Achievement",
-      image: "/mid-flight.jpg" ,
+      image: "/mid-flight.jpg",
       location: "Testing Field",
-      // upcoming: true,
     },
-     {
-      title: "Mid Altitude Trials",
-      date: "August 2025",
-      category: "Upcoming",
-      location: "Testing Field",
-      upcoming: true,
+    {
+      title: "Mid-Sea Stratospheric Airship Trial",
+      date: "April 2026",
+      category: "Breakthrough",
+      image: "/trials.png", // ← Add this image from your media
+      location:
+        "Off Nagapattinam Coast — with Indian Coast Guard & Indian Navy",
     },
-     {
-      title: "High Altitude Trials",
-      date: "January 2026",
+    {
+      title: "Stratospheric Operations",
+      date: "2026–2027",
       category: "Upcoming",
-      location: "Testing Field",
+      location: "Target: 18–20 km altitude",
       upcoming: true,
     },
   ];
 
   return (
-    <section id="company-journey" className="relative mx-auto max-w-5xl px-4 py-10 text-white sm:py-32">
-      <motion.h1
-        initial={{ y: 48, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.75 }}
-        className="text-3xl font-bold uppercase text-zinc-50 mb-2 sm:text-4xl"
-      >
-        Traction
-      </motion.h1>
-      <motion.p
-        initial={{ y: 48, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.75 }}
-        className="mb-10 text-sm text-zinc-400 sm:text-xl"
-      >
-        Click on images to view them in full size.
-      </motion.p>
+    <section
+      id="company-journey"
+      className="relative bg-black border-t border-white/10 mx-auto w-full px-6 py-32 text-white"
+    >
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="eyebrow mb-4">Traction</p>
+          <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight mb-16">
+            Company Journey
+          </h2>
+        </motion.div>
 
-      <div className="space-y-8">
-        {milestones.map((milestone, index) => (
-          <TimelineItem 
-            key={index} 
-            {...milestone} 
-            onImageClick={(image) => setSelectedImage(image)}
-          />
-        ))}
+        <div className="space-y-0">
+          {milestones.map((milestone, index) => (
+            <TimelineItem
+              key={index}
+              index={index}
+              isActive={index === activeItemIndex}
+              onVisible={(idx) => setActiveItemIndex(idx)}
+              {...milestone}
+              onImageClick={(image) => setSelectedImage(image)}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Image Modal */}
       {selectedImage && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-4xl w-full">
+          <div className="relative max-w-6xl w-full">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 p-2 text-white hover:text-blue-400 transition-colors"
+              className="absolute -top-12 right-0 text-white opacity-50 hover:opacity-100 transition-opacity"
             >
-              <X className="w-6 h-6" />
+              <X className="w-8 h-8" />
             </button>
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="relative aspect-video w-full overflow-hidden rounded-lg"
+            <div
+              className="relative aspect-video w-full overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -155,9 +108,8 @@ const Timeline = () => {
                 alt="Enlarged view"
                 layout="fill"
                 objectFit="contain"
-                className="bg-zinc-900"
               />
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       )}
@@ -166,74 +118,107 @@ const Timeline = () => {
 };
 
 interface TimelineItemProps {
+  index: number;
+  isActive: boolean;
+  onVisible: (index: number) => void;
   title: string;
   date: string;
   category: string;
   location: string;
   image?: string;
-  description?: string;
   upcoming?: boolean;
   onImageClick: (image: string) => void;
 }
 
 const TimelineItem: React.FC<TimelineItemProps> = ({
+  index,
+  isActive,
+  onVisible,
   title,
   date,
   category,
   location,
   image,
-  description,
   upcoming,
   onImageClick,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (upcoming || !image) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          onVisible(index);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -35% 0px",
+        threshold: 0,
+      },
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [index, upcoming, image, onVisible]);
+
+  const imageVariants = {
+    grayscale: { filter: "grayscale(100%)", opacity: 0.7 },
+    color: { filter: "grayscale(0%)", opacity: 1 },
+  };
+
   return (
     <motion.div
-      initial={{ y: 48, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.75 }}
-      className={`group relative border-b border-zinc-800 pb-8 ${upcoming ? "opacity-50" : ""}`}
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className={`border-t border-white/10 py-8 ${upcoming ? "opacity-50" : ""}`}
     >
-      <div className="flex flex-col space-y-4">
-        <div className="flex items-center justify-between px-3">
-          <div className="flex-1">
-            <div>
-              <h3 className="mb-1.5 text-xl text-zinc-50">{title}</h3>
-              <p className="text-sm uppercase text-zinc-500">{date}</p>
-              {description && <p className="mt-1 text-sm text-zinc-400">{description}</p>}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1.5 text-end text-sm uppercase text-zinc-500">
-            <span className="hidden sm:inline">{category}</span>
-            <p>{location}</p>
-            <MapPin className="h-4 w-4" />
-          </div>
+      <div className="grid md:grid-cols-4 gap-8 items-start">
+        <div className="md:col-span-1">
+          <p className="text-sm font-display uppercase tracking-widest text-zinc-500 mb-2">
+            {date}
+          </p>
+          <p className="eyebrow">
+            {category} / {location}
+          </p>
         </div>
 
-        {/* Image displayed directly below content */}
-        {!upcoming && image && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-full px-3"
-          >
-            <div 
-              className="relative aspect-video max-w-md cursor-pointer overflow-hidden rounded-lg 
-                        border border-zinc-800 bg-zinc-900/50 hover:border-blue-500/50 
-                        transition-colors duration-300"
+        <div className="md:col-span-3">
+          <h3 className="text-2xl font-display uppercase tracking-wide mb-6">
+            {title}
+          </h3>
+
+          {!upcoming && image && (
+            <div
+              className="relative aspect-video w-full max-w-2xl cursor-pointer overflow-hidden bg-zinc-900"
               onClick={() => onImageClick(image)}
             >
-              <Image
-                src={image}
-                alt={title}
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-300 hover:scale-105"
-              />
+              <motion.div
+                variants={imageVariants}
+                animate={isActive ? "color" : "grayscale"}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={image}
+                  alt={title}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </motion.div>
             </div>
-          </motion.div>
-        )}
+          )}
+        </div>
       </div>
     </motion.div>
   );
