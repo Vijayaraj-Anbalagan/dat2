@@ -173,7 +173,7 @@ const SolutionPage = () => {
             src="/solutions/solution-bg1.png"
             alt="Hero background"
             fill
-            className="object-cover opacity-60 grayscale"
+            className="object-cover opacity-70 grayscale"
             priority
           />
         </div>

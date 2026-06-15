@@ -145,7 +145,7 @@ const ScrollProfileCard = ({ member }: { member: TeamMember }) => {
 const TeamsPage = () => {
   const mentors = [
     {
-      name: "Dr. Vijayraja K",
+      name: "Dr. Vijayaraja K",
       role: "Mentor",
       position: "Professor & Head, Aero & Aerospace, KCG Tech",
       linkedin: "https://www.linkedin.com/in/dr-vijayraja-kvijayraja-2627ba2a/",
@@ -171,7 +171,7 @@ const TeamsPage = () => {
     {
       name: "Hariharan R",
       role: "Founder & CTO",
-      education: "University of Leicester",
+      education: "Aerospace Engineer",
       image: "/team/hariharan.jpg",
       linkedin: "https://www.linkedin.com/in/hariharan-rajaraman/",
     },
@@ -289,7 +289,7 @@ const TeamsPage = () => {
             src="/team/Team_bg.png"
             alt="Team background"
             fill
-            className="object-cover opacity-30 grayscale"
+            className="object-cover opacity-50 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
