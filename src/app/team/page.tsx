@@ -145,7 +145,7 @@ const ScrollProfileCard = ({ member }: { member: TeamMember }) => {
 const TeamsPage = () => {
   const mentors = [
     {
-      name: "Dr. Vijayraja K",
+      name: "Dr. Vijayaraja K",
       role: "Mentor",
       position: "Professor & Head, Aero & Aerospace, KCG Tech",
       linkedin: "https://www.linkedin.com/in/dr-vijayraja-kvijayraja-2627ba2a/",
@@ -165,13 +165,13 @@ const TeamsPage = () => {
       name: "Jayashree B",
       role: "Founder & COO",
       education: "Coventry University",
-      image: "/team/jayashree.jpg",
+      image: "/team/jayashree.png",
       linkedin: "https://www.linkedin.com/in/jayashree-b-67950621a/",
     },
     {
       name: "Hariharan R",
       role: "Founder & CTO",
-      education: "University of Leicester",
+      education: "Aerospace Engineer",
       image: "/team/hariharan.jpg",
       linkedin: "https://www.linkedin.com/in/hariharan-rajaraman/",
     },
@@ -191,7 +191,7 @@ const TeamsPage = () => {
         role: "Re-entry Vehicles",
         education: "IIT MADRAS",
         linkedin: "https://www.linkedin.com/in/barani-l-aa679323b/",
-        image: "/team/barani.jpeg",
+        image: "/team/barani.png",
       },
       {
         name: "Hariharamadhavan M",
@@ -206,7 +206,7 @@ const TeamsPage = () => {
         education: "Coventry University",
         linkedin:
           "https://www.linkedin.com/in/srikanth-ravichandran-9974b521a/",
-        image: "/team/srikanth.jpg",
+        image: "/team/srikanth.png",
       },
       {
         name: "Balajee E",
@@ -214,13 +214,6 @@ const TeamsPage = () => {
         education: "MIT, Anna University",
         linkedin: "https://www.linkedin.com/in/balajee-e-a35755230/",
         image: "/team/balaji.png",
-      },
-      {
-        name: "Barath Kanna B O",
-        role: "Avionics",
-        education: "MIT, Anna University",
-        linkedin: "https://www.linkedin.com/in/barath-kanna-079074289/",
-        image: "/team/barath.png",
       },
       {
         name: "Sabari Balan G",
@@ -265,7 +258,7 @@ const TeamsPage = () => {
         role: "Technical Engineer",
         linkedin:
           "https://www.linkedin.com/in/dhilagam-parvathi-nathan-39701526b/",
-        image: "/team/avatar.png",
+        image: "/team/dpn.png",
       },
     ],
     operations: [
@@ -289,7 +282,7 @@ const TeamsPage = () => {
             src="/team/Team_bg.png"
             alt="Team background"
             fill
-            className="object-cover opacity-30 grayscale"
+            className="object-cover opacity-50 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
