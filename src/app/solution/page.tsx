@@ -98,19 +98,9 @@ const SolutionPage = () => {
       image: "/applications/earth-observation.jpg",
     },
     {
-      title: "Emergency Response",
-      description: "Rapid deployment for disaster recovery.",
-      image: "/applications/emergency.jpg",
-    },
-    {
       title: "Border Surveillance",
       description: "Real-time monitoring with wide-area coverage.",
       image: "/applications/border-survilance.jpg",
-    },
-    {
-      title: "Urban Air Mobility",
-      description: "Support infrastructure for future urban transportation.",
-      image: "/applications/urban.jpg",
     },
     {
       title: "Fixed Wireless Access",
@@ -125,12 +115,7 @@ const SolutionPage = () => {
     {
       title: "Maritime Surveillance",
       description: "Offshore tracking and vessel monitoring at scale.",
-      image: "/applications/marirtime-survilance.jpg",
-    },
-    {
-      title: "White Spot Reduction",
-      description: "Bridging connectivity gaps in under-served areas.",
-      image: "/applications/white_spot.jpg",
+      image: "/applications/maritime-surveillance.jpg",
     },
     {
       title: "Terrestrial Backhaul",
@@ -173,7 +158,7 @@ const SolutionPage = () => {
             src="/solutions/solution-bg1.png"
             alt="Hero background"
             fill
-            className="object-cover opacity-70 grayscale"
+            className="object-cover opacity-90 grayscale"
             priority
           />
         </div>

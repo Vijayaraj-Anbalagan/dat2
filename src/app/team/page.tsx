@@ -50,6 +50,7 @@ const ViewportProfileCard = ({ member }: { member: TeamMember }) => {
           fill
           style={{
             objectFit: "cover",
+            objectPosition: "top",
             filter: inView ? "grayscale(0%)" : "grayscale(100%)",
             opacity: inView ? 1 : 0.8,
             transition: "filter 0.7s ease, opacity 0.7s ease",
@@ -189,7 +190,7 @@ const TeamsPage = () => {
       {
         name: "Barani L",
         role: "Re-entry Vehicles",
-        education: "IIT MADRAS",
+        education: "Advisor - Flight Design",
         linkedin: "https://www.linkedin.com/in/barani-l-aa679323b/",
         image: "/team/barani.png",
       },
@@ -282,7 +283,7 @@ const TeamsPage = () => {
             src="/team/Team_bg.png"
             alt="Team background"
             fill
-            className="object-cover opacity-50 grayscale"
+            className="object-cover opacity-65 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />

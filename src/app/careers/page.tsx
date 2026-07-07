@@ -104,7 +104,7 @@ const CareersPage = () => {
             src="/Career_bg.png"
             alt="Hero background"
             fill
-            className="object-cover opacity-60 grayscale"
+            className="object-cover opacity-75 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />

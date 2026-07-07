@@ -51,7 +51,7 @@ const HeroBackground = () => {
     <div className="absolute inset-0 w-full h-full overflow-hidden">
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover grayscale opacity-60"
+        className="absolute inset-0 w-full h-full object-cover grayscale opacity-75"
         autoPlay
         muted
         loop
