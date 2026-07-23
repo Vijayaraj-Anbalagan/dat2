@@ -210,20 +210,6 @@ const TeamsPage = () => {
         image: "/team/srikanth.png",
       },
       {
-        name: "Balajee E",
-        role: "Design Engineer",
-        education: "MIT, Anna University",
-        linkedin: "https://www.linkedin.com/in/balajee-e-a35755230/",
-        image: "/team/balaji.png",
-      },
-      {
-        name: "Sabari Balan G",
-        role: "Flight System Engineer",
-        linkedin: "https://www.linkedin.com/in/sabaribalan1710/",
-        education: " ",
-        image: "/team/sabari.png",
-      },
-      {
         name: "Karpaganathan N",
         role: "Embedded Engineer",
         linkedin:
@@ -260,14 +246,6 @@ const TeamsPage = () => {
         linkedin:
           "https://www.linkedin.com/in/dhilagam-parvathi-nathan-39701526b/",
         image: "/team/dpn.png",
-      },
-    ],
-    operations: [
-      {
-        name: "Sowmya R",
-        role: "Chief Human Resource Officer",
-        linkedin: "https://www.linkedin.com/in/sowmya-ramesh-0b1650251/",
-        image: "/team/sowmya.png",
       },
     ],
   };
@@ -404,28 +382,14 @@ const TeamsPage = () => {
             </div>
           </div>
 
-          {/* Technical + Operations — side by side on md+, stacked on mobile */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div>
-              <h3 className="text-xs font-display uppercase tracking-widest text-zinc-500 border-b border-white/10 pb-4 mb-8">
-                Technical
-              </h3>
-              <div className="grid grid-cols-2 gap-6">
-                {teamMembers.technical.map((member, idx) => (
-                  <ScrollProfileCard key={idx} member={member} />
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-display uppercase tracking-widest text-zinc-500 border-b border-white/10 pb-4 mb-8">
-                Operations
-              </h3>
-              <div className="grid grid-cols-2 gap-6">
-                {teamMembers.operations.map((member, idx) => (
-                  <ScrollProfileCard key={idx} member={member} />
-                ))}
-              </div>
+          <div>
+            <h3 className="text-xs font-display uppercase tracking-widest text-zinc-500 border-b border-white/10 pb-4 mb-8">
+              Technical
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+              {teamMembers.technical.map((member, idx) => (
+                <ScrollProfileCard key={idx} member={member} />
+              ))}
             </div>
           </div>
         </div>
